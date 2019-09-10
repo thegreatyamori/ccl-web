@@ -28,9 +28,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/sass/now-ui-kit.scss"
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/rellax/rellax.min.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -93,9 +96,12 @@
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
+              "src/styles.scss",
+              "src/assets/sass/now-ui-kit.scss",
             ],
-            "scripts": []
+            "scripts": [
+              "node_modules/rellax/rellax.min.js"
+            ]
           }
         },
         "lint": {
