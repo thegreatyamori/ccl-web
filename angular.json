@@ -97,7 +97,7 @@
             ],
             "styles": [
               "src/styles.scss",
-              "src/assets/sass/now-ui-kit.scss",
+              "src/assets/sass/now-ui-kit.scss"
             ],
             "scripts": [
               "node_modules/rellax/rellax.min.js"
@@ -128,8 +128,13 @@
               "devServerTarget": "ccl-web:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "ccl-web"
 }
