@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { HomeComponent } from './home/home.component';
-import { QuienesSomosComponent } from './quienes-somos/quienes-somos.component';
-import { RadioComponent } from './radio/radio.component';
-import { ConectateComponent } from './conectate/conectate.component';
-import { NotFoundComponent } from './not-found/not-found.component';
+import { HomeComponent } from './components/home/home.component';
+import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
+import { RadioComponent } from './components/radio/radio.component';
+import { ConectateComponent } from './components/conectate/conectate.component';
+import { NotFoundComponent } from './components/not-found/not-found.component';
 
 
 const routes: Routes = [

@@ -4,7 +4,7 @@
       <a class="navbar-brand" [routerLink]="['/home']" placement="bottom" ngbTooltip="{{ title }}">
         <span class="font-size-navbar">{{ title }}</span>
       </a>
-      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
+      <button #navbarToggler class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation" (click)="sidebarToggle()">
         <span class="navbar-toggler-bar bar1"></span>
         <span class="navbar-toggler-bar bar2"></span>
         <span class="navbar-toggler-bar bar3"></span>

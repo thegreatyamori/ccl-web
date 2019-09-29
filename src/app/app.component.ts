@@ -1,11 +1,11 @@
-import { Component, OnInit, Inject, Renderer, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Inject, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { Router, NavigationEnd } from "@angular/router";
 import { Subscription } from 'rxjs';
 import { filter } from 'rxjs/operators';
 // import { DOCUMENT } from "@angular/platform-browser";
 import { Location } from "@angular/common";
 
-import { HeaderComponent } from "./shared/header/header.component";
+import { HeaderComponent } from "./components/shared/header/header.component";
 
 @Component({
   selector: 'app-root',
@@ -13,16 +13,18 @@ import { HeaderComponent } from "./shared/header/header.component";
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent implements OnInit {
-  // private _router : Subscription;
+  private _router : Subscription;
+  @ViewChild(HeaderComponent, { static: false }) navbar: HeaderComponent;
 
-  // constructor(
-  //   private renderer : Renderer,
-  //   private router : Router,
+  constructor(
+    private renderer : Renderer2,
+    private router : Router,
   //   private document : any,
   //   private element : ElementRef,
-  //   public location : Location) {}
+    public location : Location) {}
 
   ngOnInit() {
+    this.navbar.sidebarClose();
   //   var header : HTMLElement = this.element.nativeElement.children[0].children[0];
   //   this._router = this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
   //     if (window.outerWidth > 991) {

@@ -1,4 +1,4 @@
-import { Component, OnInit, ElementRef } from '@angular/core';
+import { Component, Directive, OnInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBroadcastTower, faUsers, faPlug } from '@fortawesome/free-solid-svg-icons';
@@ -11,38 +11,40 @@ import { faFacebook, faTwitter, faYoutube, faInstagram } from "@fortawesome/free
 })
 export class HeaderComponent implements OnInit {
   public title = 'Centro Cristiano de loja'
-  private toggleButton : any;
+  // private toggleButton : any;
   private sidebarVisible : boolean;
-
-  constructor(private library: FaIconLibrary, public location: Location, private element: ElementRef) {
+  
+  @ViewChild("navbarToggler", { static: false }) toggleButton: ElementRef;
+  
+  constructor(
+    private library: FaIconLibrary, 
+    public location: Location,
+    private renderer: Renderer2,
+    private element: ElementRef) {
     library.addIcons(faBroadcastTower, faUsers, faPlug, faFacebook, faTwitter, faInstagram, faYoutube);
     this.sidebarVisible = false;
   }
 
   ngOnInit() {
-    const navbar: HTMLElement = this.element.nativeElement;
-    this.toggleButton = navbar.getElementsByClassName('navbar-toggler')[0];
   }
+
   sidebarOpen() {
-    const toggleButton = this.toggleButton;
     const html = document.getElementsByTagName('html')[0];
     setTimeout(() => {
-      toggleButton.classList.add('toggled');
+      this.renderer.addClass(this.toggleButton.nativeElement, 'toggled');
     }, 500);
+    
     html.classList.add('nav-open');
-
     this.sidebarVisible = true;
   }
   sidebarClose() {
     const html = document.getElementsByTagName('html')[0];
-    this.toggleButton.classList.remove('toggled');
+    this.renderer.removeClass(this.toggleButton.nativeElement, 'toggled');
     this.sidebarVisible = false;
     html.classList.remove('nav-open');
   }
   sidebarToggle() {
-    if (this.sidebarVisible === false)
-      this.sidebarOpen();
-    else
-      this.sidebarClose();
+    if (this.sidebarVisible === false) this.sidebarOpen();
+    else this.sidebarClose();
   }
 }
