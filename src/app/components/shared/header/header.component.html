@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg bg-primary fixed-top" color-on-scroll="500">
+<nav #navbar class="navbar navbar-expand-lg bg-primary navbar-transparent fixed-top" color-on-scroll="500" (scroll)="onWindowScroll($event);">
   <div class="container">
     <div class="navbar-translate">
       <a class="navbar-brand" [routerLink]="['/home']" placement="bottom" ngbTooltip="{{ title }}">
@@ -14,23 +14,21 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a [routerLink]="'/radio'" routerLinkActive="active" class="nav-link">
-            <p>
-              <fa-icon [icon]="['fas', 'broadcast-tower']" size="2x"></fa-icon>
+            <p><fa-icon [icon]="['fas', 'broadcast-tower']" size="lg"></fa-icon>
               <span class="font-size-navbar nav-text">Radio</span>
             </p>
           </a>
         </li>
         <li class="nav-item">
           <a [routerLink]="'/quienes-somos'" routerLinkActive="active" class="nav-link">
-            <p>
-              <fa-icon [icon]="['fas', 'users']" size="2x"></fa-icon>
+            <p><fa-icon [icon]="['fas', 'users']" size="lg"></fa-icon>
               <span class="font-size-navbar nav-text">Quienes Somos</span>
             </p>
           </a>
         </li>
         <li class="nav-item">
           <a [routerLink]="'/conectate'" routerLinkActive="active" class="nav-link">
-            <p><fa-icon [icon]="['fas', 'plug']" size="2x"></fa-icon>
+            <p><fa-icon [icon]="['fas', 'plug']" size="lg"></fa-icon>
               <span class="font-size-navbar nav-text">Conéctate</span>
             </p>
           </a>
@@ -63,6 +61,12 @@
             </p>
           </a>
         </li>
+        <!-- TODO: cambiar el diseño del boton donaciones --> 
+        <!-- <li class="nav-item">
+          <a class="nav-link btn-round" href="#">
+            <span class="font-size-navbar nav-text">Donaciones</span>
+          </a>
+        </li> -->
       </ul>
     </div>
   </div>

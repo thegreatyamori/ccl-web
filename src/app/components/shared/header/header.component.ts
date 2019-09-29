@@ -1,4 +1,4 @@
-import { Component, Directive, OnInit, Renderer2, ElementRef, ViewChild } from '@angular/core';
+import { Component, OnInit, Renderer2, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { faBroadcastTower, faUsers, faPlug } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,7 @@ export class HeaderComponent implements OnInit {
   private sidebarVisible : boolean;
   
   @ViewChild("navbarToggler", { static: false }) toggleButton: ElementRef;
+  @ViewChild("navbar", { static: false }) navbar: ElementRef;
   
   constructor(
     private library: FaIconLibrary, 
@@ -26,6 +27,15 @@ export class HeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  @HostListener('window:scroll', ['$event'])
+  onWindowsScroll(e) {
+    if (window.pageYOffset > 150) {
+      this.renderer.removeClass(this.navbar.nativeElement, 'navbar-transparent');
+    } else {
+      this.renderer.addClass(this.navbar.nativeElement, 'navbar-transparent');
+    }
   }
 
   sidebarOpen() {
