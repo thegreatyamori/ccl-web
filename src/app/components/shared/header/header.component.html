@@ -14,25 +14,25 @@
       <ul class="navbar-nav ml-auto">
         <li class="nav-item">
           <a [routerLink]="'/radio'" routerLinkActive="active" class="nav-link">
-            <p><fa-icon [icon]="['fas', 'broadcast-tower']" size="lg"></fa-icon>
-              <span class="font-size-navbar nav-text">Radio</span>
+            <p><fa-icon [icon]="['fas', 'broadcast-tower']" size="2x"></fa-icon>
+              <span class="font-size-navbar nav-text">CCL Radio</span>
             </p>
           </a>
         </li>
         <li class="nav-item">
           <a [routerLink]="'/quienes-somos'" routerLinkActive="active" class="nav-link">
-            <p><fa-icon [icon]="['fas', 'users']" size="lg"></fa-icon>
+            <p><fa-icon [icon]="['fas', 'users']" size="2x"></fa-icon>
               <span class="font-size-navbar nav-text">Quienes Somos</span>
             </p>
           </a>
         </li>
         <li class="nav-item">
           <a [routerLink]="'/conectate'" routerLinkActive="active" class="nav-link">
-            <p><fa-icon [icon]="['fas', 'plug']" size="lg"></fa-icon>
+            <p><fa-icon [icon]="['fas', 'plug']" size="2x"></fa-icon>
               <span class="font-size-navbar nav-text">Conéctate</span>
             </p>
           </a>
-        </li>
+        <!-- </li> -->
         <li class="nav-item">
           <a class="nav-link" href="https://www.facebook.com/centrocristianoloja">
             <p><fa-icon [icon]="['fab', 'facebook']" size="2x"></fa-icon>
@@ -63,7 +63,7 @@
         </li>
         <!-- TODO: cambiar el diseño del boton donaciones --> 
         <!-- <li class="nav-item">
-          <a class="nav-link btn-round" href="#">
+          <a class="nav-link btn-round" [routerLink]="'/donaciones'">
             <span class="font-size-navbar nav-text">Donaciones</span>
           </a>
         </li> -->

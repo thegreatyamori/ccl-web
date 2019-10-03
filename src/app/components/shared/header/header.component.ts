@@ -1,8 +1,5 @@
 import { Component, OnInit, Renderer2, ElementRef, ViewChild, HostListener } from '@angular/core';
 import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { faBroadcastTower, faUsers, faPlug } from '@fortawesome/free-solid-svg-icons';
-import { faFacebook, faTwitter, faYoutube, faInstagram } from "@fortawesome/free-brands-svg-icons";
 
 @Component({
   selector: 'app-header',
@@ -17,12 +14,7 @@ export class HeaderComponent implements OnInit {
   @ViewChild("navbarToggler", { static: false }) toggleButton: ElementRef;
   @ViewChild("navbar", { static: false }) navbar: ElementRef;
   
-  constructor(
-    private library: FaIconLibrary, 
-    public location: Location,
-    private renderer: Renderer2,
-    private element: ElementRef) {
-    library.addIcons(faBroadcastTower, faUsers, faPlug, faFacebook, faTwitter, faInstagram, faYoutube);
+  constructor(public location: Location, private renderer: Renderer2, private element: ElementRef) {
     this.sidebarVisible = false;
   }
 
@@ -30,7 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   @HostListener('window:scroll', ['$event'])
-  onWindowsScroll(e) {
+  onWindowScroll(e) {
     if (window.pageYOffset > 150) {
       this.renderer.removeClass(this.navbar.nativeElement, 'navbar-transparent');
     } else {
