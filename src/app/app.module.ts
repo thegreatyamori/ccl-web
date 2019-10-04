@@ -14,6 +14,8 @@ import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.
 import { NotFoundComponent } from './components/not-found/not-found.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
+import { ActividadesComponent } from './components/actividades/actividades.component';
+import { DonacionesComponent } from './components/donaciones/donaciones.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +27,8 @@ import { FooterComponent } from './components/shared/footer/footer.component';
     NotFoundComponent,
     HeaderComponent,
     FooterComponent,
+    ActividadesComponent,
+    DonacionesComponent,
   ],
   imports: [
     AppRoutingModule,
