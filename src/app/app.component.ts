@@ -6,13 +6,21 @@ import {
   faPlug,
   faCalendarAlt,
   faGlobeAmericas,
-  faBible
+  faBible,
+  faPhone,
+  faMapMarkerAlt,
+  faMapMarkedAlt,
+  faGlobe,
+  faEnvelope,
+  faAngleDoubleRight
 } from '@fortawesome/free-solid-svg-icons';
 import { 
   faFacebook,
   faTwitter,
   faYoutube,
-  faInstagram
+  faInstagram,
+  faChrome,
+  faFirefox
 } from "@fortawesome/free-brands-svg-icons";
 
 @Component({
@@ -30,10 +38,18 @@ export class AppComponent implements OnInit {
       faCalendarAlt,
       faGlobeAmericas,
       faBible,
+      faPhone,
+      faMapMarkedAlt,
+      faMapMarkerAlt,
+      faGlobe,
+      faEnvelope,
+      faAngleDoubleRight,
       faFacebook,
       faTwitter,
       faInstagram,
-      faYoutube
+      faYoutube,
+      faChrome,
+      faFirefox
     );
   }
 

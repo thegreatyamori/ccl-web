@@ -39,4 +39,20 @@ footer {
             }
         }
     }
+
+    ul.information {
+        li {
+            padding: 3px 0;
+        
+            fa-icon {
+                margin-right: 5px;
+            }
+        }
+    }
+
+    p.browsers-support {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+    }
 }
