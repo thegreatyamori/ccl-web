@@ -12,32 +12,35 @@ import { ConectateComponent } from './components/conectate/conectate.component';
 import { RadioComponent } from './components/radio/radio.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
-import { HeaderComponent } from './components/shared/header/header.component';
-import { FooterComponent } from './components/shared/footer/footer.component';
 import { ActividadesComponent } from './components/actividades/actividades.component';
 import { DonacionesComponent } from './components/donaciones/donaciones.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { MapModalComponent } from './components/shared/footer/map/map.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
-    ConectateComponent,
     RadioComponent,
-    QuienesSomosComponent,
-    NotFoundComponent,
     HeaderComponent,
     FooterComponent,
-    ActividadesComponent,
+    MapModalComponent,
+    NotFoundComponent,
+    ConectateComponent,
     DonacionesComponent,
+    ActividadesComponent,
+    QuienesSomosComponent
   ],
   imports: [
-    AppRoutingModule,
-    BrowserModule,
-    BrowserAnimationsModule,
+    NgbModule,
     FormsModule,
+    BrowserModule,
+    AppRoutingModule,
     FontAwesomeModule,
-    NgbModule
+    BrowserAnimationsModule,
   ],
+  exports: [FooterComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
