@@ -1,25 +1,40 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { DebugElement } from "@angular/core";
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 
-import { HomeComponent } from './home.component';
+import { HomeComponent } from "./home.component";
+import { ButtonsBarComponent } from "./buttons-bar/buttons-bar.component";
+import { RouterTestingModule } from "@angular/router/testing";
 
-describe('HomeComponent', () => {
-  let component: HomeComponent;
-  let fixture: ComponentFixture<HomeComponent>;
-
+describe("HomeComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ HomeComponent ]
-    })
-    .compileComponents();
+      declarations: [HomeComponent, ButtonsBarComponent, FaIconComponent],
+      imports: [ RouterTestingModule ]
+    }).compileComponents();
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(HomeComponent);
-    component = fixture.componentInstance;
-    fixture.detectChanges();
-  });
+  describe(":", () => {
+    let component: HomeComponent;
+    let fixture: ComponentFixture<HomeComponent>;
+    let debugEl: DebugElement;
+    let element: HTMLElement;
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
+    beforeEach(() => {
+      fixture = TestBed.createComponent(HomeComponent);
+      component = fixture.componentInstance;
+      debugEl = fixture.debugElement;
+      element = debugEl.nativeElement;
+      fixture.detectChanges();
+    });
+
+    it("should create home", () => {
+      expect(component).toBeTruthy();
+    });
+
+    it("should render ButtonsBarComponent", () => {
+      fixture.detectChanges();
+      expect(element.querySelector("app-buttons-bar")).toBeTruthy();
+    });
   });
 });

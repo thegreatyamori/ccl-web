@@ -61,3 +61,13 @@ body{
         background-color: $primary-color;
     }
 }
+
+.nav-pulse {
+    -webkit-animation: msPulseEffect 1s infinite;
+    animation: msPulseEffect 1s infinite;
+}
+  
+@keyframes msPulseEffect {
+    0% { box-shadow: 0 0 0 0px rgba(0, 0, 0, 0.5); }
+    100% {  box-shadow: 0 0 0 20px rgba(0, 0, 0, 0); }
+}

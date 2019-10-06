@@ -259,6 +259,11 @@
         margin-left: 0;
         margin-bottom: 30px;
     }
+    
+    .nav-md-pulse {
+        -webkit-animation: msPulseEffect 1s infinite;
+        animation: msPulseEffect 1s infinite;
+    }
 }
 
 @media screen and (max-width: 576px){
@@ -289,6 +294,11 @@
         .container h6.category-absolute{
             width: 90%;
         }
+    }
+
+    .nav-sm-pulse {
+        -webkit-animation: msPulseEffect 1s infinite;
+        animation: msPulseEffect 1s infinite;
     }
 }
 
