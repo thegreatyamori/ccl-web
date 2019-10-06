@@ -1,0 +1,39 @@
+<div class="nav-bg" [ngStyle]="{'background-image': 'url(' + navImage + ')'}">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12 ml-auto mr-auto">
+          <div class="card bg-dark text-white">
+            <a [routerLink]="'/actividades'" class="nav-card-link">
+              <img class="card-img" src="{{ navCalendarImage }}" alt="{{ textCaledar }}">
+              <div class="nav-card-img-overlay text-center">
+                <fa-icon [icon]="['fas', 'calendar-alt']" size="3x"></fa-icon>
+                <h3 class="nav-card-title">{{ textCaledar }}</h3>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12 ml-auto mr-auto">
+          <div class="card bg-dark text-white">
+            <a [routerLink]="'/donaciones'" class="nav-card-link">
+              <img class="card-img" src="{{ navDonationsImage }}" alt="{{ textDonations }}">
+              <div class="nav-card-img-overlay text-center">
+                <fa-icon [icon]="['fas', 'globe-americas']" size="3x"></fa-icon>
+                <h3 class="nav-card-title">{{ textDonations }}</h3>
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12 ml-auto mr-auto">
+          <div class="card bg-dark text-white">
+            <a [routerLink]="'/conectate'" fragment="hogares-bendicion" class="nav-card-link">
+              <img class="card-img" src="{{ navHDBImage }}" alt="{{ textHDB }}">
+              <div class="nav-card-img-overlay text-center">
+                <fa-icon [icon]="['fas', 'bible']" size="3x"></fa-icon>
+                <h4 class="nav-card-title">{{ textHDB }}</h4>
+              </div>
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

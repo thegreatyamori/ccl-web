@@ -1,13 +1,12 @@
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, FormGroup } from "@angular/forms";
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FormsModule, FormGroup } from "@angular/forms";
+import { BrowserModule } from '@angular/platform-browser';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
-
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from './app-routing.module';
+
 import { AppComponent } from './app.component';
-import { HomeComponent } from './components/home/home.component';
 import { ConectateComponent } from './components/conectate/conectate.component';
 import { RadioComponent } from './components/radio/radio.component';
 import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
@@ -16,7 +15,9 @@ import { ActividadesComponent } from './components/actividades/actividades.compo
 import { DonacionesComponent } from './components/donaciones/donaciones.component';
 import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
-import { MapModalComponent } from './components/shared/footer/map/map.component';
+import { MapModalComponent } from './components/shared/footer/map-modal/map-modal.component';
+import { HomeComponent } from './components/home/home.component';
+import { ButtonsBarComponent } from './components/home/buttons-bar/buttons-bar.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { MapModalComponent } from './components/shared/footer/map/map.component'
     MapModalComponent,
     NotFoundComponent,
     ConectateComponent,
+    ButtonsBarComponent,
     DonacionesComponent,
     ActividadesComponent,
     QuienesSomosComponent
@@ -38,7 +40,7 @@ import { MapModalComponent } from './components/shared/footer/map/map.component'
     BrowserModule,
     AppRoutingModule,
     FontAwesomeModule,
-    BrowserAnimationsModule,
+    BrowserAnimationsModule
   ],
   exports: [FooterComponent],
   providers: [],
