@@ -16,6 +16,7 @@ import {
 } from '@fortawesome/free-solid-svg-icons';
 import { 
   faFacebook,
+  faWhatsapp,
   faTwitter,
   faYoutube,
   faInstagram,
@@ -45,6 +46,7 @@ export class AppComponent implements OnInit {
       faEnvelope,
       faAngleDoubleRight,
       faFacebook,
+      faWhatsapp,
       faTwitter,
       faInstagram,
       faYoutube,
