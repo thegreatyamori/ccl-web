@@ -7,9 +7,8 @@ import { Location, LocationStrategy, PathLocationStrategy } from '@angular/commo
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent implements OnInit {
-  public title = 'Centro Cristiano de loja'
-  // private toggleButton : any;
-  private sidebarVisible : boolean;
+  title: string = 'Centro Cristiano de loja'
+  sidebarVisible: boolean;
   
   @ViewChild("navbarToggler", { static: false }) toggleButton: ElementRef;
   @ViewChild("navbar", { static: false }) navbar: ElementRef;
@@ -18,11 +17,10 @@ export class HeaderComponent implements OnInit {
     this.sidebarVisible = false;
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
   @HostListener('window:scroll', ['$event'])
-  onWindowScroll(e) {
+  onWindowScroll($event) {
     if (window.pageYOffset > 150) {
       this.renderer.removeClass(this.navbar.nativeElement, 'navbar-transparent');
     } else {
@@ -46,7 +44,7 @@ export class HeaderComponent implements OnInit {
     html.classList.remove('nav-open');
   }
   sidebarToggle() {
-    if (this.sidebarVisible === false) this.sidebarOpen();
-    else this.sidebarClose();
+    if (!this.sidebarVisible) this.sidebarOpen();
+    else if (this.sidebarVisible) this.sidebarClose();
   }
 }
