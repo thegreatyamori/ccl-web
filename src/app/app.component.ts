@@ -12,7 +12,8 @@ import {
   faMapMarkedAlt,
   faGlobe,
   faEnvelope,
-  faAngleDoubleRight
+  faAngleDoubleRight,
+  faAlignLeft
 } from '@fortawesome/free-solid-svg-icons';
 import { 
   faFacebook,
@@ -21,7 +22,9 @@ import {
   faYoutube,
   faInstagram,
   faChrome,
-  faFirefox
+  faFirefox,
+  faSpotify,
+  faApple
 } from "@fortawesome/free-brands-svg-icons";
 
 @Component({
@@ -45,13 +48,16 @@ export class AppComponent implements OnInit {
       faGlobe,
       faEnvelope,
       faAngleDoubleRight,
+      faAlignLeft,
       faFacebook,
       faWhatsapp,
       faTwitter,
       faInstagram,
       faYoutube,
       faChrome,
-      faFirefox
+      faFirefox,
+      faSpotify,
+      faApple
     );
   }
 

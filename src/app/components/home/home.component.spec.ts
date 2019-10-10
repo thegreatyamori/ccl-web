@@ -1,15 +1,16 @@
 import { DebugElement } from "@angular/core";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { RouterTestingModule } from "@angular/router/testing";
 
 import { HomeComponent } from "./home.component";
 import { ButtonsBarComponent } from "./buttons-bar/buttons-bar.component";
-import { RouterTestingModule } from "@angular/router/testing";
+import { TowDahComponent } from './tow-dah/tow-dah.component';
 
 describe("HomeComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent, ButtonsBarComponent, FaIconComponent],
+      declarations: [HomeComponent, ButtonsBarComponent, FaIconComponent, TowDahComponent],
       imports: [ RouterTestingModule ]
     }).compileComponents();
   }));

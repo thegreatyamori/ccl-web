@@ -18,6 +18,7 @@ import { FooterComponent } from './components/shared/footer/footer.component';
 import { MapModalComponent } from './components/shared/footer/map-modal/map-modal.component';
 import { HomeComponent } from './components/home/home.component';
 import { ButtonsBarComponent } from './components/home/buttons-bar/buttons-bar.component';
+import { TowDahComponent } from './components/home/tow-dah/tow-dah.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { ButtonsBarComponent } from './components/home/buttons-bar/buttons-bar.c
     ButtonsBarComponent,
     DonacionesComponent,
     ActividadesComponent,
-    QuienesSomosComponent
+    QuienesSomosComponent,
+    TowDahComponent
   ],
   imports: [
     NgbModule,
