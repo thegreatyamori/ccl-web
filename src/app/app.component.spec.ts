@@ -1,16 +1,18 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+
 import { AppComponent } from './app.component';
+import { FooterComponent } from './components/shared/footer/footer.component';
+import { HeaderComponent } from './components/shared/header/header.component';
+import { NgbTooltipModule } from '@ng-bootstrap/ng-bootstrap';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { MapModalComponent } from './components/shared/footer/map-modal/map-modal.component';
 
 describe('AppComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [
-        RouterTestingModule
-      ],
-      declarations: [
-        AppComponent
-      ],
+      declarations: [ AppComponent, FaIconComponent, HeaderComponent, FooterComponent, MapModalComponent ],
+      imports: [ RouterTestingModule, NgbTooltipModule ]
     }).compileComponents();
   }));
 
@@ -18,18 +20,5 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.debugElement.componentInstance;
     expect(app).toBeTruthy();
-  });
-
-  it(`should have as title 'ccl-web'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('ccl-web');
-  });
-
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('.content span').textContent).toContain('ccl-web app is running!');
   });
 });
