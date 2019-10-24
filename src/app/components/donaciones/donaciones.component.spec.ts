@@ -1,3 +1,13 @@
+/**
+ * ***************************************
+ * Centro Cristiano de Loja Web
+ * @author Jerson Morocho
+ * 
+ * ---------------------------------------
+ * - Creation (29-sep-2019)
+ * ---------------------------------------
+ */
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { DonacionesComponent } from './donaciones.component';

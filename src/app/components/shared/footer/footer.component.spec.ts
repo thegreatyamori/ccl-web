@@ -1,9 +1,20 @@
+/**
+ * ***************************************
+ * Centro Cristiano de Loja Web
+ * @author Jerson Morocho
+ * 
+ * ---------------------------------------
+ * - Creation (9-sep-2019)
+ * - Test (7-oct-2019)
+ * ---------------------------------------
+ */
+
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
+import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 
 import { FooterComponent } from './footer.component';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
 import { MapModalComponent } from './map-modal/map-modal.component';
-import { RouterTestingModule } from '@angular/router/testing';
 
 describe('FooterComponent', () => {
   let component: FooterComponent;

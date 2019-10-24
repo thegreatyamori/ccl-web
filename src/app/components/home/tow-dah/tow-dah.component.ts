@@ -1,3 +1,13 @@
+/**
+ * ***************************************
+ * Centro Cristiano de Loja Web
+ * @author Jerson Morocho
+ * 
+ * ---------------------------------------
+ * - Creation (10-oct-2019)
+ * ---------------------------------------
+ */
+
 import { Component, OnInit } from '@angular/core';
 import * as Rellax from 'rellax';
 

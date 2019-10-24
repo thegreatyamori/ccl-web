@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: "https://next.json-generator.com/api/json/get"
+  // api: "http://mobile.ccloja.com/api"
 };
 
 /*
