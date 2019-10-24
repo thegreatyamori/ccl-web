@@ -6,11 +6,17 @@ import { RouterTestingModule } from "@angular/router/testing";
 import { HomeComponent } from "./home.component";
 import { ButtonsBarComponent } from "./buttons-bar/buttons-bar.component";
 import { TowDahComponent } from './tow-dah/tow-dah.component';
+import { HeroSliderComponent } from './hero-slider/hero-slider.component';
 
 describe("HomeComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HomeComponent, ButtonsBarComponent, FaIconComponent, TowDahComponent],
+      declarations: [HomeComponent,
+        ButtonsBarComponent,
+        HeroSliderComponent,
+        FaIconComponent,
+        TowDahComponent
+      ],
       imports: [ RouterTestingModule ]
     }).compileComponents();
   }));

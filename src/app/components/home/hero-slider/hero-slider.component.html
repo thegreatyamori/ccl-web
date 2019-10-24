@@ -1,0 +1,12 @@
+<section id="hero-slider">
+    <ngb-carousel>
+        <ng-template ngbSlide *ngFor="let slide of slides">
+            <img class="d-block" src="{{ slide.image }}" alt="{{ slide.title }}">
+            <div class="carousel-caption d-none d-md-block">
+                <a *ngIf="slide.link" class="h1 text-white" href="{{ slide.link }}" target="_blank">{{ slide.title }}</a>
+                <a *ngIf="!slide.link" class="h1 text-white" routerLink="/home" fragment="tow-dah">{{ slide.title }}</a>
+                <h3>{{ slide.subtitle }}</h3>
+            </div>
+        </ng-template>
+    </ngb-carousel>
+</section>

@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, FormGroup } from "@angular/forms";
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from './app-routing.module';
@@ -19,6 +20,7 @@ import { MapModalComponent } from './components/shared/footer/map-modal/map-moda
 import { HomeComponent } from './components/home/home.component';
 import { ButtonsBarComponent } from './components/home/buttons-bar/buttons-bar.component';
 import { TowDahComponent } from './components/home/tow-dah/tow-dah.component';
+import { HeroSliderComponent } from './components/home/hero-slider/hero-slider.component';
 
 @NgModule({
   declarations: [
@@ -34,12 +36,14 @@ import { TowDahComponent } from './components/home/tow-dah/tow-dah.component';
     DonacionesComponent,
     ActividadesComponent,
     QuienesSomosComponent,
-    TowDahComponent
+    TowDahComponent,
+    HeroSliderComponent
   ],
   imports: [
     NgbModule,
     FormsModule,
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,
     BrowserAnimationsModule
