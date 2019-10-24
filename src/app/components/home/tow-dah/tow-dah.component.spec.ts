@@ -13,7 +13,7 @@ describe("TowDahComponent", () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TowDahComponent, FaIconComponent],
+      declarations: [ TowDahComponent, FaIconComponent ],
       imports: [NgbTooltipModule]
     }).compileComponents();
   }));
