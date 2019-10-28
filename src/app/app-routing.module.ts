@@ -1,24 +1,16 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 
-import { HomeComponent } from './components/home/home.component';
-import { QuienesSomosComponent } from './components/quienes-somos/quienes-somos.component';
-import { RadioComponent } from './components/radio/radio.component';
-import { ConectateComponent } from './components/conectate/conectate.component';
-import { ActividadesComponent } from './components/actividades/actividades.component';
-import { DonacionesComponent } from './components/donaciones/donaciones.component';
-import { NotFoundComponent } from './components/not-found/not-found.component';
-
-
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'home',          component: HomeComponent},
-  {path: 'quienes-somos', component: QuienesSomosComponent},
-  {path: 'radio',         component: RadioComponent},
-  {path: 'conectate',     component: ConectateComponent},
-  {path: 'actividades',     component: ActividadesComponent},
-  {path: 'donaciones',     component: DonacionesComponent},
-  {path: '**',           component: NotFoundComponent},
+  { path: 'home', loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule) },
+  { path: 'actividades', loadChildren: () => import('./components/actividades/actividades.module').then(m => m.ActividadesModule) },
+  { path: 'conectate', loadChildren: () => import('./components/conectate/conectate.module').then(m => m.ConectateModule) },
+  { path: 'donaciones', loadChildren: () => import('./components/donaciones/donaciones.module').then(m => m.DonacionesModule) },
+  { path: 'quienes-somos', loadChildren: () => import('./components/quienes-somos/quienes-somos.module').then(m => m.QuienesSomosModule) },
+  { path: 'radio', loadChildren: () => import('./components/radio/radio.module').then(m => m.RadioModule) },
+  { path: 'donaciones', loadChildren: () => import('./components/donaciones/donaciones.module').then(m => m.DonacionesModule) },
+  { path: '**', loadChildren: () => import('./components/not-found/not-found.module').then(m => m.NotFoundModule) },
 ]
 
 const routerOptions: ExtraOptions = {
