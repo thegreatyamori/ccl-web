@@ -3,10 +3,10 @@
         <ng-template ngbSlide *ngFor="let slide of slides">
             <picture class="lazy" (lazyImage)="showImage = true">
                 <!-- <source srcset="{{ slide.image }}" media="(min-width: 1200px)"> -->
-                <source srcset="{{ slide.image + rand }}" media="(min-width: 992px)">
-                <source srcset="{{ slide.imageMedium + rand }}" media="(min-width: 768px)">
-                <source srcset="{{ slide.imageSmall + rand }}" media="(max-width: 576px)">
-                <img *ngIf="showImage" class="d-block img-thumb" src="{{ slide.image + rand }}" alt="{{ slide.title }}">
+                <source srcset="{{ slide.image }}" media="(min-width: 992px)">
+                <source srcset="{{ slide.imageMedium }}" media="(min-width: 768px)">
+                <source srcset="{{ slide.imageSmall }}" media="(max-width: 576px)">
+                <img class="d-block img-thumb" src="{{ slide.image }}" alt="{{ slide.title }}">
             </picture>
             <div class="carousel-caption d-none d-md-block">
                 <a *ngIf="slide.link" class="h1 text-white" href="{{ slide.link }}" target="_blank">{{ slide.title }}</a>

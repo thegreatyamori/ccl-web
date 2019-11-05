@@ -8,7 +8,7 @@
  * ---------------------------------------
  */
 
-import { async, ComponentFixture, TestBed, inject } from "@angular/core/testing";
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
 import { NgbCarousel } from "@ng-bootstrap/ng-bootstrap";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 import { DebugElement } from "@angular/core";

@@ -5,11 +5,11 @@
  * 
  * ---------------------------------------
  * - Creation (24-oct-2019)
- * - Added @var rand & @var showImage (4-nov-2019)
+ * - Added @var showImage (4-nov-2019)
  * ---------------------------------------
  */
 
-import { Component, OnInit } from '@angular/core';
+import { OnInit, Component } from '@angular/core';
 import { HomeService } from 'src/app/services/home.service';
 import { Slide } from 'src/app/models/slide';
 
@@ -34,7 +34,6 @@ import { Slide } from 'src/app/models/slide';
 export class HeroSliderComponent implements OnInit {
   slides: Slide[];
   showImage: boolean;
-  rand = ['/dog', '/paris', '/girl'][Math.floor(Math.random() * 3)];
 
   constructor(private rest: HomeService) { }
 
