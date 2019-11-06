@@ -6,10 +6,20 @@
  * ---------------------------------------
  * - Creation (24-oct-2019)
  * - Added @var showImage (4-nov-2019)
+ * - Added animations (5-nov-2019)
  * ---------------------------------------
  */
 
-import { OnInit, Component } from '@angular/core';
+import { OnInit, Component, ElementRef, ViewChild } from '@angular/core';
+import {
+  trigger,
+  state,
+  style,
+  animate,
+  transition,
+  keyframes,
+} from '@angular/animations';
+
 import { HomeService } from 'src/app/services/home.service';
 import { Slide } from 'src/app/models/slide';
 
@@ -17,23 +27,35 @@ import { Slide } from 'src/app/models/slide';
   selector: 'app-hero-slider',
   templateUrl: './hero-slider.component.html',
   styles: [`
-    .img-thumb {
-      width: 100%;
-      height: auto;
-      overflow: hidden;
+    .img-thumb { width: 100%; height: auto; }
+    .lazy-bg {
+      position: absolute;
+      top: 0;
+      z-index: 10;
     }
-    // picture.lazy img {
-    //   filter: blur(20px);
-    // }
-    // picture img {
-    //   transition: filter 0.5s;
-    // }
-  `]
+  `],
+  animations: [
+    trigger('fadeInOut', [
+      state('in', style({  opacity: 1 })),
+      state('out', style({  opacity: 0 })),
+      transition('in => out', [
+        animate(1000, keyframes([
+          style({ opacity: 1, offset: 0}),
+          style({ opacity: 0, offset: 1})
+        ]))
+      ])
+    ])
+  ]
 })
 
 export class HeroSliderComponent implements OnInit {
   slides: Slide[];
   showImage: boolean;
+  showBgImage: boolean = true;
+  fade: boolean = true;
+  private delay = (t: number) => new Promise(resolve => setTimeout(resolve, t));
+
+  @ViewChild("bgImage", { static: false }) bgImage: ElementRef;
 
   constructor(private rest: HomeService) { }
 
@@ -45,5 +67,10 @@ export class HeroSliderComponent implements OnInit {
     this.rest.getSlides().subscribe((data: Slide[]) => {
       this.slides = data;
     }, err => console.error(err));
+  }
+
+  imgLoaded() {
+    this.delay(1000).then(() => this.fade = false);
+    this.delay(2000).then(() => this.showBgImage = false);
   }
 }

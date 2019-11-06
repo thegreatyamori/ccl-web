@@ -5,6 +5,7 @@
  * 
  * ---------------------------------------
  * - Creation (27-oct-2019)
+ * - Deleted Thumb values (5-nov-2019)
  * ---------------------------------------
  */
 
@@ -12,10 +13,7 @@ export interface Slide {
     title: string;
     subtitle: string;
     image: string;
-    imageThumb: string;
     imageSmall: string;
-    imageSmallThumb: string;
     imageMedium: string;
-    imageMediumThumb: string;
     link?: string;
 }

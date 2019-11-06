@@ -20,7 +20,7 @@ import { Slide } from '../models/slide';
   providedIn: 'root'
 })
 export class HomeService {
-  uri: string = environment.api + '/E1VzxwtYv';
+  uri: string = environment.api + '/4JaGs05cw';
   // uri: string = environment.api + '/slider.php';
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'applicaction/json'})

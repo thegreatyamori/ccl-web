@@ -9,6 +9,7 @@ import { HomeComponent } from './home.component';
 import { ButtonsBarComponent } from './buttons-bar/buttons-bar.component';
 import { HeroSliderComponent } from './hero-slider/hero-slider.component';
 import { TowDahComponent } from './tow-dah/tow-dah.component';
+import { LazyImgDirective } from 'src/app/directives/lazy-img.directive';
 
 
 @NgModule({
@@ -16,7 +17,8 @@ import { TowDahComponent } from './tow-dah/tow-dah.component';
     HomeComponent,
     ButtonsBarComponent,
     HeroSliderComponent,
-    TowDahComponent
+    TowDahComponent,
+    LazyImgDirective
   ],
   imports: [
     NgbModule,

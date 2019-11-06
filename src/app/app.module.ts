@@ -12,8 +12,6 @@ import { HeaderComponent } from './components/shared/header/header.component';
 import { FooterComponent } from './components/shared/footer/footer.component';
 import { MapModalComponent } from './components/shared/footer/map-modal/map-modal.component';
 
-import { LazyImgDirective } from './directives/lazy-img.directive';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,8 +28,8 @@ import { LazyImgDirective } from './directives/lazy-img.directive';
     FontAwesomeModule,
     BrowserAnimationsModule
   ],
-  exports: [FooterComponent],
+  exports: [ FooterComponent ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [ AppComponent ]
 })
 export class AppModule { }
