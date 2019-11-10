@@ -1,29 +1,58 @@
-<div style="position: absolute;top: 0;bottom: 0;left: 0;right: 0;background-color: rgba(0, 0, 0, 0.6);"></div>
-<div
-    style="background-image: url('assets/img/bg4.jpg');background-size:cover;background-position:center;height:100vh;display:flex;align-items:center;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-12 col-sm-12 text-center" style="display:flex;align-items:center;justify-content:center;">
-                <div>
-                    <h1 class="text-white d-none d-sm-block" style="font-weight:bold;">Proximamente Quienes Somos...!</h1>
-                    <p class="text-white h3 d-none d-sm-block">Mientras actualizamos el sitio, no te pierdas de nada y descarga nuestra
-                        aplicación en Google Play y App Store.</p>
-                    <h2 class="text-white d-none d-block d-sm-none" style="font-weight:bold;">Proximamente Quienes Somos...!</h2>
-                    <p class="text-white h5 d-none d-block d-sm-none">Mientras actualizamos el sitio, no te pierdas de nada y descarga nuestra
-                        aplicación en Google Play y App Store.</p>
-                    <a
-                        href="https://play.google.com/store/apps/details?id=storyrex.morenoil.com.ccloja&pcampaignid=MKT-Other-global-all-co-prtnr-py-PartBadge-Mar2515-1">
-                        <img alt="Disponible en Google Play"
-                            src="https://play.google.com/intl/en_us/badges/images/generic/es-419_badge_web_generic.png"
-                            width="150px" /></a>
-                    <a href="https://apps.apple.com/us/app/centro-cristiano-de-loja/id1472462756">
-                        <img alt="Disponible en Google Play"
-                            src="assets\img\Download_on_the_App_Store_Badge_ES_RGB_blk_100217.svg" /></a>
+<article>
+    <div class="page-header page-header-medium">
+        <div class="rellax page-header-image" data-rellax-speed="-8"
+            style="background-image:url('assets/img/quienes-somos/header.jpg')">
+        </div>
+        <div class="container">
+            <div class="content-center">
+                <h1 class="title" *ngIf="page">{{ page.title }}</h1>
+                <div class="text-center">
+                    <img src="assets/img/logo_cropped.png" alt="" srcset="assets/img/logo_cropped.png"
+                        class="img-fluid img-header">
                 </div>
-            </div>
-            <div class="col-lg-4 col-sm-12 d-none d-lg-block d-xl-block" style="height: 100vh;">
-                <img src="assets/img/wireframe.webp" alt="Wireframe CCLApp" style="width:75%;position:absolute;bottom:0;">
             </div>
         </div>
     </div>
-</div>
+    <section id="quienes-somos" class="section section-md-post" *ngIf="page">
+        <div class="container container-md-post">
+            <div class="row">
+                <div class="col-md-10 ml-auto mr-auto">
+                    <h2 class="title text-center">{{ title }}</h2>
+                    <div class="nav-tabs-navigation">
+                        <div class="nav-tabs-wrapper">
+                            <ngb-tabset #tabQuienesSomos [justify]="'center'" (tabChange)="onTabChange($event)">
+                                <ngb-tab *ngFor="let tab of page.tabs; let i = index;"
+                                    id="{{ i }}" title="{{ tab.title }}">
+                                    <ng-template ngbTabContent>
+                                        <div *ngIf="tab.content">
+                                            <p *ngIf="i == 0">{{ tab.content }}</p>
+                                            <blockquote *ngIf="i != 0">
+                                                <p class="blockquote blockquote-primary">
+                                                    {{ tab.content }}
+                                                </p>
+                                            </blockquote>
+                                        </div>
+                                        <div *ngIf="!tab.content">
+                                            <h3>{{ tab.subtitle_1 }}</h3>
+                                            <ul *ngFor="let objetivo of tab.objetivos">
+                                                <li>{{ objetivo }}</li>
+                                            </ul>
+                                            <h3>{{ tab.subtitle_2 }}</h3>
+                                            <div *ngFor="let principio of tab.principios">
+                                                <h6>{{ principio.title }}</h6>
+                                                <p>{{ principio.content }}
+                                                    <cite>{{ principio.verse }}</cite>
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </ng-template>
+                                </ngb-tab>
+                            </ngb-tabset>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="separator separator-primary"></div>
+        </div>
+    </section>
+</article>
