@@ -7,8 +7,7 @@
             <div class="content-center">
                 <h1 class="title" *ngIf="page">{{ page.title }}</h1>
                 <div class="text-center">
-                    <img src="assets/img/logo_cropped.png" alt="" srcset="assets/img/logo_cropped.png"
-                        class="img-fluid img-header">
+                    <img src="assets/img/logo_cropped.png" alt="" class="img-fluid img-header">
                 </div>
             </div>
         </div>
@@ -24,25 +23,88 @@
                                 <ngb-tab *ngFor="let tab of page.tabs; let i = index;"
                                     id="{{ i }}" title="{{ tab.title }}">
                                     <ng-template ngbTabContent>
-                                        <div *ngIf="tab.content">
-                                            <p *ngIf="i == 0">{{ tab.content }}</p>
-                                            <blockquote *ngIf="i != 0">
+                                        <div *ngIf="tab.content" class="animated fadeIn">
+                                            <blockquote>
                                                 <p class="blockquote blockquote-primary">
                                                     {{ tab.content }}
                                                 </p>
                                             </blockquote>
                                         </div>
-                                        <div *ngIf="!tab.content">
-                                            <h3>{{ tab.subtitle_1 }}</h3>
-                                            <ul *ngFor="let objetivo of tab.objetivos">
-                                                <li>{{ objetivo }}</li>
-                                            </ul>
-                                            <h3>{{ tab.subtitle_2 }}</h3>
-                                            <div *ngFor="let principio of tab.principios">
-                                                <h6>{{ principio.title }}</h6>
-                                                <p>{{ principio.content }}
-                                                    <cite>{{ principio.verse }}</cite>
-                                                </p>
+
+                                        <div *ngIf="!tab.content" class="animated fadeIn">
+                                            <div class="row" *ngIf="i == 0">
+                                                <div class="col-12 col-sm-6">
+                                                    <h5>{{ tab.subtitle_1 }}</h5>
+                                                    <div *ngFor="let p of paragraph_1">
+                                                        <p>{{ p }}</p>
+                                                    </div>
+                                                    <div class="img-foot text-white mb-3" title="PIE_DE_IMAGEN">
+                                                        <img alt="Raised Image" class="rounded img-raised" src="assets/img/quienes-somos/qs-1.jpg">
+                                                    </div>
+                                                    
+                                                    <h5>{{ tab.subtitle_2 }}</h5>
+                                                    <div *ngFor="let p of paragraph_2">
+                                                        <p>{{ p }}</p>
+                                                    </div>
+
+                                                    <div class="img-foot text-white" title="Primer bautizo">
+                                                        <img alt="Raised Image" class="rounded img-raised" src="assets/img/quienes-somos/qs-2.jpg">
+                                                    </div>
+                                                    <br>
+                                                </div>
+                                                
+                                                <div class="col-12 col-sm-6">
+                                                    <h5>{{ tab.subtitle_3 }}</h5>
+                                                    <div *ngFor="let p of paragraph_3">
+                                                        <p>{{ p }}</p>
+                                                    </div>
+                                                    
+                                                    <h5>{{ tab.subtitle_4 }}</h5>
+                                                    <div *ngFor="let p of paragraph_4">
+                                                        <p>{{ p }}</p>
+                                                    </div>
+                                                    
+                                                    <h5>{{ tab.subtitle_5 }}</h5>
+                                                    <div *ngFor="let p of paragraph_5">
+                                                        <p>{{ p }}</p>
+                                                    </div>
+                                                    <div class="img-foot text-white mb-3" title="PIE_DE_IMAGEN">
+                                                        <img alt="Raised Image" class="rounded img-raised" src="assets/img/quienes-somos/qs-3.jpg">
+                                                    </div>
+                                                </div>
+                                                <div class="col-12">
+                                                    <blockquote>
+                                                        <p class="blockquote blockquote-primary text-center">
+                                                            {{ tab.paragraph_6 }}
+                                                            <br>
+                                                            <small>{{ tab.author }}</small>
+                                                        </p>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" *ngIf="tab.objetivos">
+                                                <div class="col">
+                                                    <blockquote *ngFor="let objetivo of tab.objetivos">
+                                                        <p class="blockquote blockquote-primary">
+                                                            {{ objetivo }}
+                                                        </p>
+                                                    </blockquote>
+                                                </div>
+                                            </div>
+
+                                            <div class="row" *ngIf="tab.principios">
+                                                <div class="col-12" *ngFor="let principio of tab.principios">
+                                                    <blockquote>
+                                                        <p class="blockquote blockquote-primary">
+                                                            <span class="h6">{{ principio.title }}</span>
+                                                            <br>
+                                                            {{ principio.content }}
+                                                            <br>
+                                                            <small>{{ principio.verse }}</small>
+                                                        </p>
+                                                    </blockquote>
+                                                </div>
                                             </div>
                                         </div>
                                     </ng-template>

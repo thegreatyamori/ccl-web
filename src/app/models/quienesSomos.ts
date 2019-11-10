@@ -18,7 +18,17 @@ export interface Tab {
     title: string;
     content?: string;
     subtitle_1?: string;
+    paragraph_1?: string;
     subtitle_2?: string;
+    paragraph_2?: string;
+    subtitle_3?: string;
+    paragraph_3?: string;
+    subtitle_4?: string;
+    paragraph_4?: string;
+    subtitle_5?: string;
+    paragraph_5?: string;
+    paragraph_6?: string;
+    author?: string;
     objetivos?: string[];
     principios?: Principio[];
   }

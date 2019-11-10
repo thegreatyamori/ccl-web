@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FormsModule, FormGroup } from "@angular/forms";
-import { BrowserModule } from '@angular/platform-browser';
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { HttpClientModule } from '@angular/common/http';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
@@ -29,7 +29,7 @@ import { MapModalComponent } from './components/shared/footer/map-modal/map-moda
     BrowserAnimationsModule
   ],
   exports: [ FooterComponent ],
-  providers: [],
+  providers: [ Title ],
   bootstrap: [ AppComponent ]
 })
 export class AppModule { }

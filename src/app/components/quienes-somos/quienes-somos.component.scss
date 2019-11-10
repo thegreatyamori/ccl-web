@@ -1,13 +1,54 @@
 .img-header {
-    max-width: 50%;
+  max-width: 50%;
+}
+.img-foot {
+  padding: 0;
+  width: 100%;
+  position: relative;
+}
+.img-foot span {
+  width: 100%;
+  height: auto;
+  display: block;
+  padding: 0;
+  border: 0;
+}
+.img-foot::before {
+  content: attr(title);
+  position: absolute;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom-left-radius: 0.25rem;
+  border-bottom-right-radius: 0.25rem;
+  padding: 5px;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  text-align: center;
+  z-index: 1;
 }
 .section-md-post {
-    padding-top: 0;
+  padding-top: 0;
 }
 .container-md-post {
-    position: relative;
-    top: -65px;
-    background-color: white;
-    padding-top: 65px;
-    border-radius: 20px;
+  position: relative;
+  top: -65px;
+  background-color: white;
+  padding-top: 65px;
+  border-radius: 20px;
+}
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+.fadeIn  {
+  animation-name: fadeIn;
+}
+.animated {
+  animation-duration: 1s;
+  animation-fill-mode: both;
 }

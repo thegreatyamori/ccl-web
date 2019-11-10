@@ -5,10 +5,12 @@
  * 
  * ---------------------------------------
  * - Creation (29-sep-2019)
+ * - Added Title Document (9-nov-2019)
  * ---------------------------------------
  */
 
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-donaciones',
@@ -17,9 +19,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonacionesComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleDocument: Title) { }
 
   ngOnInit() {
+    this.titleDocument.setTitle("Dona !");
+
   }
 
 }

@@ -5,10 +5,12 @@
  * 
  * ---------------------------------------
  * - Creation (28-sep-2019)
+ * - Added Title Document (9-nov-2019)
  * ---------------------------------------
  */
 
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-home',
@@ -17,7 +19,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomeComponent implements OnInit {
 
-  constructor() { }
+  constructor(private titleDocument: Title) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+    this.titleDocument.setTitle("Centro Cristiano de Loja");
+  }
 }
