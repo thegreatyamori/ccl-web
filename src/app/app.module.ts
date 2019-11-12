@@ -17,7 +17,7 @@ import { MapModalComponent } from './components/shared/footer/map-modal/map-moda
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    MapModalComponent
+    MapModalComponent,
   ],
   imports: [
     NgbModule,
