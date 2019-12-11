@@ -7,7 +7,7 @@
             <img #bgImage [@fadeInOut]="fade ? 'in' : 'out'" class="img-thumb lazy-bg" src="assets\img\home\large.jpg" alt="slider">
         </picture>
     </div>
-    <ngb-carousel>
+    <ngb-carousel *ngIf="status">
         <ng-template ngbSlide *ngFor="let slide of slides">
             <picture (lazyImage)="showImage = true">
                 <!-- <source srcset="{{ slide.image }}" media="(min-width: 1200px)"> -->

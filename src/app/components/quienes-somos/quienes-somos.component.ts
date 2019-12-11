@@ -15,7 +15,7 @@ import { NgbTabChangeEvent } from "@ng-bootstrap/ng-bootstrap";
 import { Title } from "@angular/platform-browser";
 import * as Rellax from "rellax";
 
-import { RootObject as Page } from "src/app/models/quienesSomos";
+import { RootObject as Res, Tab } from "src/app/models/quienesSomos";
 import { QuienesSomosService } from "src/app/services/quienes-somos.service";
 
 @Component({
@@ -25,7 +25,9 @@ import { QuienesSomosService } from "src/app/services/quienes-somos.service";
 })
 export class QuienesSomosComponent implements OnInit {
   title: string = "Reseña Histórica";
-  page: Page;
+  status: boolean;
+  tabs: Tab[];
+
 
   constructor(
     private rest: QuienesSomosService,
@@ -39,14 +41,14 @@ export class QuienesSomosComponent implements OnInit {
   }
 
   getPage() {
-    this.rest.getPage().subscribe((data: Page) => {
-      this.page = data;
-    },
-    err => console.error(err));
+    this.rest.getPage().subscribe((data: Res) => {
+      this.status = data.status;
+      this.tabs = data.res;
+    });
   }
 
   onTabChange(event: NgbTabChangeEvent) {
-    let tab = this.page.res.find(tab => tab.id === Number(event.nextId));
+    let tab = this.tabs.find(tab => tab.id === Number(event.nextId));
 
     this.title = tab.title;
     this.titleDocument.setTitle(this.title);

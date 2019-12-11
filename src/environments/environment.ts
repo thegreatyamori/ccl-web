@@ -4,8 +4,9 @@
 
 export const environment = {
   production: false,
-  api: "https://next.json-generator.com/api/json/get"
-  // api: "http://mobile.ccloja.com/api"
+  // api: "https://ccl-api.herokuapp.com/api/"
+  // api: "http://mobile.ccloja.com/api/"
+  api: "http://localhost/ccl/api/"
 };
 
 /*

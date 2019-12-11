@@ -21,7 +21,7 @@ import {
 } from '@angular/animations';
 
 import { HomeService } from 'src/app/services/home.service';
-import { Slide } from 'src/app/models/slide';
+import { RootObject as Res, Slide } from 'src/app/models/slide';
 
 @Component({
   selector: 'app-hero-slider',
@@ -49,6 +49,7 @@ import { Slide } from 'src/app/models/slide';
 })
 
 export class HeroSliderComponent implements OnInit {
+  status: boolean;
   slides: Slide[];
   showImage: boolean;
   showBgImage: boolean = true;
@@ -64,9 +65,10 @@ export class HeroSliderComponent implements OnInit {
   }
 
   getSlides() {
-    this.rest.getSlides().subscribe((data: Slide[]) => {
-      this.slides = data;
-    }, err => console.error(err));
+    this.rest.getSlides().subscribe((data: Res) => {
+      this.status = data.status;
+      this.slides = data.res;
+    });
   }
 
   imgLoaded() {

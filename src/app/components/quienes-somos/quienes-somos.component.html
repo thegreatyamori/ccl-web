@@ -1,5 +1,5 @@
 <article>
-    <div class="page-header page-header-medium">
+    <div class="page-header page-header-small">
         <div class="rellax page-header-image" data-rellax-speed="-8"
             style="background-image:url('assets/img/quienes-somos/header.jpg')">
         </div>
@@ -12,17 +12,17 @@
             </div>
         </div>
     </div>
-    <section id="quienes-somos" class="section section-md-post" *ngIf="page">
+    <section id="quienes-somos" class="section section-md-post">
         <div class="container container-md-post">
-            <div class="row">
+            <div class="row" *ngIf="status">
                 <div class="col-md-10 ml-auto mr-auto">
                     <h2 class="title text-center">{{ title }}</h2>
                     <div class="nav-tabs-navigation">
                         <div class="nav-tabs-wrapper">
                             <ngb-tabset #tabQuienesSomos [justify]="'center'" (tabChange)="onTabChange($event)">
-                                <ngb-tab *ngFor="let tab of page.res" id="{{ tab.id }}" title="{{ tab.title }}">
+                                <ngb-tab *ngFor="let tab of tabs" id="{{ tab.id }}" title="{{ tab.title }}">
                                     <ng-template ngbTabContent>
-                                        <div *ngIf="page.status" class="animated fadeIn"
+                                        <div class="animated fadeIn"
                                             [innerHtml]="tab.paragraph | sanitizeHtml">
                                         </div>
                                     </ng-template>

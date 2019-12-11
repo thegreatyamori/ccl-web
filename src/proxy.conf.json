@@ -1,0 +1,7 @@
+{
+    "/api": {
+        "target": "http://localhost/ccl",
+        "secure": false,
+        "logLevel": "debug"
+      }
+}
