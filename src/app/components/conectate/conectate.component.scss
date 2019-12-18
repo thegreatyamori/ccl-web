@@ -1,0 +1,48 @@
+.hdb-type {
+    display: flex;
+    place-items: center;
+    justify-content: space-between;
+
+    span {
+      margin: 0;
+    }
+}
+
+.hdb-list {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 60px;
+  padding: 20px;
+
+  span {
+    margin-top: initial;
+    margin-bottom: initial;
+  }
+  span.hdb-day {
+    line-height: 0.5;
+  }
+}
+
+.hdb-whatsapp {
+  background-color: transparent;
+
+  &:hover, &:not(:disabled):not(.disabled):active {
+    background-color: transparent !important;
+  }
+}
+
+.loja-map {
+  path {
+    fill: #b9b9b9;
+    stroke: white;
+    stroke-width: 0.5px;
+    transition: fill 0.3s;
+
+    &:hover {
+      fill: #4a69bd;
+    }
+
+    &.active {
+      fill: orange;
+    }
+  }
+}

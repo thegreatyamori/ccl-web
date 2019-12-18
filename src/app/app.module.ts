@@ -18,7 +18,7 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor";
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    MapModalComponent
+    MapModalComponent,
   ],
   imports: [
     NgbModule,

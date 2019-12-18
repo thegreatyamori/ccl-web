@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
-import { 
+import { Component, OnInit } from "@angular/core";
+import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
+import {
   faBroadcastTower,
   faUsers,
   faPlug,
@@ -9,13 +9,17 @@ import {
   faBible,
   faPhone,
   faMapMarkerAlt,
+  faDirections,
   faMapMarkedAlt,
   faGlobe,
   faEnvelope,
   faAngleDoubleRight,
-  faAlignLeft
-} from '@fortawesome/free-solid-svg-icons';
-import { 
+  faAlignLeft,
+  faSearch,
+  faArrowLeft,
+  faTimes,
+} from "@fortawesome/free-solid-svg-icons";
+import {
   faFacebook,
   faWhatsapp,
   faTwitter,
@@ -24,16 +28,15 @@ import {
   faChrome,
   faFirefox,
   faSpotify,
-  faApple
+  faApple,
 } from "@fortawesome/free-brands-svg-icons";
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: "app-root",
+  templateUrl: "./app.component.html",
+  styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-
   constructor(private library: FaIconLibrary) {
     library.addIcons(
       faBroadcastTower,
@@ -45,10 +48,14 @@ export class AppComponent implements OnInit {
       faPhone,
       faMapMarkedAlt,
       faMapMarkerAlt,
+      faDirections,
       faGlobe,
       faEnvelope,
       faAngleDoubleRight,
       faAlignLeft,
+      faSearch,
+      faArrowLeft,
+      faTimes,
       faFacebook,
       faWhatsapp,
       faTwitter,
@@ -61,5 +68,5 @@ export class AppComponent implements OnInit {
     );
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 }
