@@ -4,9 +4,9 @@
 
 export const environment = {
   production: false,
-  // api: "https://ccl-api.herokuapp.com/api/"
+  api: "https://ccl-api.herokuapp.com/api/"
   // api: "http://mobile.ccloja.com/api/"
-  api: "http://localhost/ccl/api/"
+  // api: "http://localhost/ccl/api/"
 };
 
 /*
