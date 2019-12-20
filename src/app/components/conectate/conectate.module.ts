@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { NgbTooltipModule } from "@ng-bootstrap/ng-bootstrap";
+import { NgbTooltipModule, NgbPaginationModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -18,6 +18,7 @@ import { SharedModule } from '../shared/shared.module';
     SharedModule,
     NgbTooltipModule,
     FontAwesomeModule,
+    NgbPaginationModule,
     ConectateRoutingModule,
   ]
 })

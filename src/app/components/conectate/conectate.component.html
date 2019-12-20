@@ -242,8 +242,8 @@
 
                 <div *ngIf="!tablet" class="col-lg-4">
                     <ng-template #search_section>
-                        <div [ngClass]="!isCardActive && !isSearchActive ?
-                            ['animated', 'fadeOutRight'] : ['animated', 'fadeInRight']">
+                        <div *ngIf="!isCardActive" [@fadeInOutRight]
+                            class=" position-absolute w-100">
                             <div class="form-group d-flex">
                                 <fa-icon [icon]="['fas', 'search']" class="px-2 d-flex align-items-center"></fa-icon>
                                 <input class="form-control" placeholder="Busca 'jovenes'" type="search" name="filterHDB"
@@ -251,10 +251,19 @@
                             </div>
                             <div *ngIf="filterHDB.length > 2; else search_message" class="btn-group-vertical w-100"
                                 role="group">
-                                <button (click)="showCard(hdb)" class="btn m-0 w-100"
-                                    *ngFor="let hdb of hdbs | filter:filterHDB">
-                                    {{ hdb.typeHDB | titlecase }}
+                                <button (click)="showCard(hdb)" class="btn m-0"
+                                    *ngFor="let hdb of hdbs | filter:filterHDB | slice: (page - 1) * itemsPerPage : (page - 1) * itemsPerPage + itemsPerPage"
+                                    [ngStyle]="{'background-color': hdb.color}">
+                                    <b>{{ hdb.typeHDB | titlecase }}</b>
+                                    <p class="text-capitalize m-0">{{ hdb.place | place }}</p>
                                 </button>
+                                <div class="pt-3 w-100 d-flex flex-column align-items-center">
+                                    <span>{{(hdbs | filter:filterHDB)?.length}} resultados</span>
+                                    <ngb-pagination [collectionSize]="(hdbs | filter:filterHDB)?.length"
+                                        [(page)]="page" [pageSize]="itemsPerPage" 
+                                        aria-label="Default pagination" class="pagination-primary">
+                                    </ngb-pagination>
+                                </div>
                             </div>
                             <ng-template #search_message>
                                 <div class="alert alert-primary">
@@ -270,11 +279,11 @@
                     </ng-template>
 
                     <div *ngIf="isCardActive; else search_section" id="hdb_card"
-                        [ngClass]="isCardActive ? ['animated', 'fadeInRight'] : ['animated', 'fadeOutRight']"
-                        class="card text-center text-light" 
-                        [ngStyle]="{'background-color': hdb.color}">
-                        <div class="p-1 pr-3 pl-3 hdb-type">
-                            <div (click)="closeCard()" class="p-2">
+                        class="card text-center text-light position-absolute"
+                        [ngStyle]="{'background-color': hdb.color}" [@fadeInOutRight]>
+                        <div class="p-1 pr-5 pl-3 hdb-type">
+                            <div (click)="closeCard()" class="p-2"
+                                ngbTooltip="Haz click aquí para regresar" placement="right">
                                 <fa-icon [icon]="['fas', 'arrow-left']"></fa-icon>
                             </div>
                             <span class="h4 font-weight-bold">{{ hdb.typeHDB | uppercase }}</span>
@@ -282,7 +291,7 @@
                         </div>
                         <div class="list-group hdb-list">
                             <div class="m-auto">
-                                <img alt="{{ hdb.name }}" class="w-25 m-3 rounded-circle img-raised"
+                                <img alt="{{ hdb.name }}" class="w-50 rounded-circle img-raised"
                                     src="{{ hdb.image }}" title="">
                             </div>
                             <p class="h3">{{ hdb.name }}</p>
@@ -307,7 +316,7 @@
                                 </span>
                             </div>
                         </div>
-                        <button ngbTooltip="Haz click aquí" class="btn btn-block hdb-whatsapp m-0"
+                        <button ngbTooltip="Envía un mensaje!" class="btn btn-block hdb-whatsapp m-0"
                             (click)="openWhatsapp(hdb.telephone)"
                             *ngIf="hdb.telephone.toString().length === 9">
                             <span class="h4 font-weight-bold">
