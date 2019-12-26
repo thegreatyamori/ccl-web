@@ -6,12 +6,12 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 import { ConectateRoutingModule } from './conectate-routing.module';
 import { ConectateComponent } from './conectate.component';
-import { SvgZoomDirective } from 'src/app/directives/svg-zoom.directive';
+import { TitleSectorDirective } from "src/app/directives/title-sector.directive";
 import { SharedModule } from '../shared/shared.module';
 
 
 @NgModule({
-  declarations: [ConectateComponent, SvgZoomDirective],
+  declarations: [ConectateComponent, TitleSectorDirective],
   imports: [
     FormsModule,
     CommonModule,
@@ -19,7 +19,7 @@ import { SharedModule } from '../shared/shared.module';
     NgbTooltipModule,
     FontAwesomeModule,
     NgbPaginationModule,
-    ConectateRoutingModule,
+    ConectateRoutingModule
   ]
 })
 export class ConectateModule {}
