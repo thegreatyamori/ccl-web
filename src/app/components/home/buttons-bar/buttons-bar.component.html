@@ -1,39 +1,19 @@
-<div class="nav-bg" [ngStyle]="{'background-image': 'url(' + navImage + ')'}">
-  <div class="container">
-    <div class="row">
-      <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12 ml-auto mr-auto">
-        <div class="card bg-dark text-white">
-          <a [routerLink]="'/actividades'" class="nav-card-link">
-            <img class="card-img" src="{{ navCalendarImage }}" alt="{{ textCaledar }}">
-            <div class="nav-card-img-overlay text-center">
-              <fa-icon [icon]="['fas', 'calendar-alt']" size="3x"></fa-icon>
-              <h3 class="nav-card-title">{{ textCaledar }}</h3>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12 ml-auto mr-auto">
-        <div class="card bg-dark text-white">
-          <a [routerLink]="'/donaciones'" class="nav-card-link">
-            <img class="card-img" src="{{ navDonationsImage }}" alt="{{ textDonations }}">
-            <div class="nav-card-img-overlay text-center">
-              <fa-icon [icon]="['fas', 'bible']" size="3x"></fa-icon>
-              <h3 class="nav-card-title">{{ textDonations }}</h3>
-            </div>
-          </a>
-        </div>
-      </div>
-      <div class="col-lg-4 col-md-8 col-sm-12 col-xs-12 ml-auto mr-auto">
-        <div class="card bg-dark text-white">
-          <a [routerLink]="'/misiones'" class="nav-card-link">
-            <img class="card-img" src="{{ navHDBImage }}" alt="{{ textMisions }}">
-            <div class="nav-card-img-overlay text-center">
-              <fa-icon [icon]="['fas', 'globe-americas']" size="3x"></fa-icon>
-              <h3 class="nav-card-title">{{ textMisions }}</h3>
-            </div>
-          </a>
+<section id="buttons-bar">
+  <div class="bg-blue bg-cover" [ngStyle]="{'background-image': 'url(' + navImage + ')'}">
+    <div class="container py-5">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-lg" *ngFor="let button of buttons">
+          <div class="card bg-dark m-0">
+            <a class="nav-card-link" [routerLink]="button.navLink">
+              <img src="{{ button.navImage }}" alt="{{ button.navText }}">
+              <div class="nav-card-img-overlay text-center">
+                <fa-icon [icon]="['fas', button.navIcon]" size="3x"></fa-icon>
+                <span class="h3 my-0">{{ button.navText }}</span>
+              </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
+</section>

@@ -10,6 +10,7 @@ import { ButtonsBarComponent } from './buttons-bar/buttons-bar.component';
 import { HeroSliderComponent } from './hero-slider/hero-slider.component';
 import { TowDahComponent } from './tow-dah/tow-dah.component';
 import { LazyImgDirective } from 'src/app/directives/lazy-img.directive';
+import { PastoresComponent } from './pastores/pastores.component';
 
 
 @NgModule({
@@ -18,7 +19,8 @@ import { LazyImgDirective } from 'src/app/directives/lazy-img.directive';
     ButtonsBarComponent,
     HeroSliderComponent,
     TowDahComponent,
-    LazyImgDirective
+    LazyImgDirective,
+    PastoresComponent
   ],
   imports: [
     NgbModule,

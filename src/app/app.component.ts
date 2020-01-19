@@ -17,6 +17,9 @@ import {
   faAlignLeft,
   faSearch,
   faArrowLeft,
+  faArrowRight,
+  faArrowDown,
+  faArrowUp,
   faTimes,
 } from "@fortawesome/free-solid-svg-icons";
 import {
@@ -55,6 +58,9 @@ export class AppComponent implements OnInit {
       faAlignLeft,
       faSearch,
       faArrowLeft,
+      faArrowRight,
+      faArrowDown,
+      faArrowUp,
       faTimes,
       faFacebook,
       faWhatsapp,

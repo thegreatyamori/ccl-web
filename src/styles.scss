@@ -1,11 +1,30 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~bootstrap/scss/bootstrap.scss";
 
+// general styles
+.bg-cover {
+  background-size: cover;
+}
 
-// Animations
+.parallax {
+  /* Set a specific height */
+  height: 100%;
+
+  /* Create the parallax scrolling effect */
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+// TODO: Animations desaparecen en la version final
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
+}
+
+.animated.infinite {
+  animation-iteration-count: infinite;
 }
 
 @keyframes fadeIn {
