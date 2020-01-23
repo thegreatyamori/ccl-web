@@ -6,6 +6,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
+import { SharedModule } from './components/shared/shared.module';
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/shared/header/header.component";
@@ -23,6 +24,7 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor";
   imports: [
     NgbModule,
     FormsModule,
+    SharedModule,
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,

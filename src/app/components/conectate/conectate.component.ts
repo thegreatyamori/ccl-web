@@ -71,7 +71,7 @@ import { LightHDB } from "src/app/models/hdb";
               opacity: 0,
               transform: "scale3d(0.3, 0.3, 0.3)",
               offset: 1
-            }),
+            })
           ])
         )
       ])
@@ -149,11 +149,7 @@ export class ConectateComponent implements OnInit {
 
     this.hdb = <LightHDB>{};
     this.isCardActive = false;
-    this.zoomPath(
-      path,
-      "haz click en cualquier parte del mapa",
-      false
-    );
+    this.zoomPath(path, "haz click en cualquier parte del mapa", false);
   }
 
   /**
@@ -168,7 +164,7 @@ export class ConectateComponent implements OnInit {
     let _pathName = path.id.split("_");
     let pathName = _pathName.join(" ");
 
-    this.zoomPath(path, pathName, true, 'orange');
+    this.zoomPath(path, pathName, true, "orange");
   }
 
   /**

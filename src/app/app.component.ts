@@ -21,6 +21,11 @@ import {
   faArrowDown,
   faArrowUp,
   faTimes,
+  faVolumeUp,
+  faVolumeOff,
+  faVolumeDown,
+  faPlay,
+  faPause
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -31,8 +36,10 @@ import {
   faChrome,
   faFirefox,
   faSpotify,
-  faApple,
+  faApple
 } from "@fortawesome/free-brands-svg-icons";
+import { RadioHelperService } from "./services/radio-helper.service";
+import { audioManager } from "./models/audioManager";
 
 @Component({
   selector: "app-root",
@@ -40,7 +47,12 @@ import {
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  constructor(private library: FaIconLibrary) {
+  audioOptions: audioManager;
+
+  constructor(
+    private library: FaIconLibrary,
+    private helper: RadioHelperService
+  ) {
     library.addIcons(
       faBroadcastTower,
       faUsers,
@@ -62,6 +74,11 @@ export class AppComponent implements OnInit {
       faArrowDown,
       faArrowUp,
       faTimes,
+      faVolumeUp,
+      faVolumeOff,
+      faVolumeDown,
+      faPlay,
+      faPause,
       faFacebook,
       faWhatsapp,
       faTwitter,
@@ -74,5 +91,25 @@ export class AppComponent implements OnInit {
     );
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.helper.audioState.subscribe(
+      (options: audioManager) => (this.audioOptions = options)
+    );
+  }
+
+  /**
+   * Se activa cuando se cambia a una nueva ruta
+   * @param event Evento de cambio de ruta
+   */
+  onActivate(event: any): void {
+    let component = event.__proto__.constructor.name;
+
+    if (this.audioOptions.id === "initial")
+      this.helper.playerHidden(true);
+    else {
+      if (component === "RadioComponent")
+        this.helper.playerHidden(true);
+      else this.helper.playerHidden(false);
+    }
+  }
 }

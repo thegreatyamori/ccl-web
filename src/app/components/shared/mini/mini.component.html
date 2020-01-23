@@ -1,0 +1,10 @@
+<div class="position-fixed" [ngStyle]="style" [hidden]="isActive">
+  <div class="bg-dark d-flex flex-column">
+    <span class="badge badge-danger rounded-0"
+      [ngClass]="{'animated infinite flash' : audioOptions.state}">{{ audioOptions.state ? 'ON AIR' : 'LIVE' }}</span>
+    <span class="px-4 text-white">CCL Radio</span>
+    <button (click)="switchState()" class="btn btn-dark m-0">
+      <fa-icon [icon]="['fas', audioOptions.state ? 'pause':'play']" size="2x"></fa-icon>
+    </button>
+  </div>
+</div>

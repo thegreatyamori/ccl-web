@@ -1,12 +1,19 @@
 import { NgModule } from "@angular/core";
-
-import { FilterPipe } from "src/app/pipes/filter.pipe";
-import { SanitizeHtmlPipe } from "src/app/pipes/sanitize-html.pipe";
-import { PhonePipe } from 'src/app/pipes/phone.pipe';
-import { PlacePipe } from 'src/app/pipes/place.pipe';
+import { CommonModule } from '@angular/common';
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { SharedComponent } from './shared.component';
+import { StreamComponent } from './stream/stream.component';
+import { MiniComponent } from './mini/mini.component';
+import { FullPlayerDirective } from 'src/app/directives/full-player.directive';
 
 @NgModule({
-  declarations: [FilterPipe, SanitizeHtmlPipe, PhonePipe, PlacePipe],
-  exports: [FilterPipe, SanitizeHtmlPipe, PhonePipe, PlacePipe],
+  declarations: [
+    SharedComponent,
+    StreamComponent,
+    MiniComponent,
+    FullPlayerDirective
+  ],
+  imports: [CommonModule, FontAwesomeModule],
+  exports: [SharedComponent]
 })
 export class SharedModule {}

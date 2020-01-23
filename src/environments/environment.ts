@@ -3,11 +3,13 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  api: "https://ccl-api.herokuapp.com/api/"
-  // api: "http://mobile.ccloja.com/api/"
-  // api: "http://localhost/ccl/api/"
-};
+         production: false,
+         api: "https://ccl-api.herokuapp.com/api/",
+         // api: "http://mobile.ccloja.com/api/",
+         // api: "http://localhost/ccl/api/",
+         // radio: "http://174.142.126.11:9942/;"
+         radio: "http://rfcmedia.streamguys1.com/MusicPulse.mp3"
+       };
 
 /*
  * For easier debugging in development mode, you can import the following file

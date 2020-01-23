@@ -20,7 +20,8 @@
 
 .page-header{
     height: 100vh;
-    max-height: 1050px;
+    // TODO: si da errores en el resto de pantallas, volver a activar
+    // max-height: 1050px;
     padding: 0;
     color: $white-color;
     position: relative;
