@@ -7,7 +7,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { ConectateRoutingModule } from './conectate-routing.module';
 import { ConectateComponent } from './conectate.component';
 import { TitleSectorDirective } from "src/app/directives/title-sector.directive";
-import { SharedModule } from '../shared/shared.module';
+import { PipeModule } from '../shared/pipe.module';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     FormsModule,
     CommonModule,
-    SharedModule,
+    PipeModule,
     NgbTooltipModule,
     FontAwesomeModule,
     NgbPaginationModule,

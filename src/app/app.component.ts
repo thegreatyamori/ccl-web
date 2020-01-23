@@ -21,6 +21,11 @@ import {
   faArrowDown,
   faArrowUp,
   faTimes,
+  faVolumeUp,
+  faVolumeOff,
+  faVolumeDown,
+  faPlay,
+  faPause
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -31,8 +36,9 @@ import {
   faChrome,
   faFirefox,
   faSpotify,
-  faApple,
+  faApple
 } from "@fortawesome/free-brands-svg-icons";
+import { RadioHelperService } from './services/radio-helper.service';
 
 @Component({
   selector: "app-root",
@@ -40,7 +46,7 @@ import {
   styleUrls: ["./app.component.scss"]
 })
 export class AppComponent implements OnInit {
-  constructor(private library: FaIconLibrary) {
+  constructor(private library: FaIconLibrary, private helper: RadioHelperService) {
     library.addIcons(
       faBroadcastTower,
       faUsers,
@@ -62,6 +68,11 @@ export class AppComponent implements OnInit {
       faArrowDown,
       faArrowUp,
       faTimes,
+      faVolumeUp,
+      faVolumeOff,
+      faVolumeDown,
+      faPlay,
+      faPause,
       faFacebook,
       faWhatsapp,
       faTwitter,
@@ -75,4 +86,15 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  /**
+   * Se activa cuando se cambia a una nueva ruta
+   * @param event Evento de cambio de ruta
+   */
+  onActivate(event: any): void {
+    if (event.__proto__.constructor.name === "RadioComponent")
+      this.helper.changeVisibility(true); // mini-player oculto
+    else
+      this.helper.changeVisibility(false); // mini-player visible
+  }
 }
