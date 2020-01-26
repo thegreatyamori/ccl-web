@@ -7,6 +7,7 @@ import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from './components/shared/shared.module';
+import { CarouselModule } from "ngx-owl-carousel-o";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/shared/header/header.component";
@@ -26,6 +27,7 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor";
     FormsModule,
     SharedModule,
     BrowserModule,
+    CarouselModule,
     HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,

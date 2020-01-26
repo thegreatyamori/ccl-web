@@ -1,0 +1,25 @@
+// Evita que los sponsors se muestren cuando el telefono esta en ladndscape
+@media (min-width: 576px) and (max-width: 1023px) and (orientation: landscape) {
+  .fix-col {
+    display: none;
+  }
+}
+
+// Evita que los sponsors se muestren en un iPhone 5/SE en landscape
+@media (max-width: 568px) and (orientation: landscape) {
+  .fix-col {
+    display: none;
+  }
+}
+
+// Aumenta el tamaño de los sponsors en una tablet en modo portrait
+$max-width: 40%;
+
+@media (min-width: 992px) and (orientation: portrait) {
+  .fix-col {
+    margin-left: 100% - $max-width;
+    -webkit-box-flex: 0;
+    flex: 0 0 $max-width;
+    max-width: $max-width;
+  }
+}

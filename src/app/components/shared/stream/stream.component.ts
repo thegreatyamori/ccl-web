@@ -11,7 +11,7 @@
 import { Component, OnInit } from "@angular/core";
 import { environment } from "src/environments/environment";
 import { RadioHelperService } from "src/app/services/radio-helper.service";
-import { audioManager } from 'src/app/models/audioManager';
+import { audioManager } from "src/app/models/audioManager";
 
 @Component({
   selector: "stream",
