@@ -4,9 +4,7 @@
  * @author Jerson Morocho
  *
  * ---------------------------------------
- * - Creation (23-oct-2019)
- * - Added Slide Interface (27-oct-2019)
- * - Modified uri + headers (17-nov-2019)
+ * - Creation (26-ene-2020)
  * ---------------------------------------
  */
 
@@ -16,19 +14,23 @@ import { Observable, throwError } from "rxjs";
 import { retry, catchError } from "rxjs/operators";
 
 import { environment } from "../../environments/environment";
-import { RootObject as Slides } from "../models/slide";
+import { RootObject as Pastores } from "../models/pastores";
 
 @Injectable({
   providedIn: "root"
 })
-export class HomeService {
-  uri: string = environment.api + "slides.php";
+export class PastoresService {
+  private uri: string = environment.api + "pastores.php";
 
   constructor(private http: HttpClient) {}
 
-  getSlides(): Observable<Slides> {
+  /**
+   * Obtiene una lista de pastores del API
+   * @returns Observable<Pastores>
+   */
+  getPastores(): Observable<Pastores> {
     return this.http
-      .get<Slides>(this.uri)
+      .get<Pastores>(this.uri)
       .pipe(retry(2), catchError(this.handleError));
   }
 

@@ -28,7 +28,6 @@ export class QuienesSomosComponent implements OnInit {
   status: boolean;
   tabs: Tab[];
 
-
   constructor(
     private rest: QuienesSomosService,
     private titleDocument: Title
@@ -40,7 +39,7 @@ export class QuienesSomosComponent implements OnInit {
     this.getPage();
   }
 
-  getPage() {
+  getPage(): void {
     this.rest.getPage().subscribe((data: Res) => {
       this.status = data.status;
       this.tabs = data.res;

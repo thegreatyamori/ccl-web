@@ -3,6 +3,7 @@ import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 
 const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
+  // FIXME: la ruta no debe ser lazy loading
   { path: 'home', loadChildren: () => import('./components/home/home.module').then(m => m.HomeModule) },
   { path: 'actividades', loadChildren: () => import('./components/actividades/actividades.module').then(m => m.ActividadesModule) },
   { path: 'conectate', loadChildren: () => import('./components/conectate/conectate.module').then(m => m.ConectateModule) },

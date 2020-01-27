@@ -25,3 +25,14 @@
 .animated.infinite {
   animation-iteration-count: infinite;
 }
+
+.section-md-post {
+  padding-top: 0!important;
+}
+.container-md-post {
+  position: relative;
+  top: -65px;
+  background-color: white;
+  padding-top: 65px;
+  border-radius: 20px;
+}
