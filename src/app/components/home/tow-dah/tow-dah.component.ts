@@ -2,13 +2,13 @@
  * ***************************************
  * Centro Cristiano de Loja Web
  * @author Jerson Morocho
- * 
+ *
  * ---------------------------------------
  * - Creation (10-oct-2019)
  * ---------------------------------------
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-tow-dah",
@@ -22,9 +22,9 @@ export class TowDahComponent implements OnInit {
 
   ngOnInit() {
     this.settings = {
-      bgTowDah: "assets/img/home/bg-tow-dah.jpg",
-      logoTowDah: "assets/img/home/tow-dah.jpeg",
-      bgTowDahText: "assets/img/home/bg-buttons-bar.svg",
+      bg_image: "assets/img/home/bg-buttons-bar.svg",
+      logo: "assets/img/home/tow-dah.jpeg",
+      bg_image_tow: "assets/img/home/bg-tow-dah.jpg",
       social: [
         {
           text: "Siguenos en YouTube",
@@ -56,7 +56,7 @@ export class TowDahComponent implements OnInit {
           typeIcon: "fab",
           link:
             "https://music.apple.com/ec/album/manifestando-su-gloria/1417446915"
-        },
+        }
         // {
         //   text: "Escúchanos en Spotify",
         //   icon: "spotify",

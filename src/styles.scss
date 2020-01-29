@@ -7,14 +7,26 @@
 }
 
 .parallax {
-  /* Set a specific height */
   height: 100%;
-
-  /* Create the parallax scrolling effect */
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
+.parallax-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.parallax-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  z-index: 1;
 }
 
 .animated {

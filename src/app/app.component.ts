@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
 import {
   faBroadcastTower,
@@ -40,6 +40,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import { RadioHelperService } from "./services/radio-helper.service";
 import { audioManager } from "./models/audioManager";
+import { Router, NavigationEnd } from "@angular/router";
+import { filter } from "rxjs/operators";
+import { HeaderComponent } from "./components/shared/header/header.component";
 
 @Component({
   selector: "app-root",
@@ -48,9 +51,11 @@ import { audioManager } from "./models/audioManager";
 })
 export class AppComponent implements OnInit {
   audioOptions: audioManager;
+  @ViewChild(HeaderComponent, { static: false }) navbar: HeaderComponent;
 
   constructor(
     private library: FaIconLibrary,
+    private router: Router,
     private helper: RadioHelperService
   ) {
     library.addIcons(
@@ -95,21 +100,16 @@ export class AppComponent implements OnInit {
     this.helper.audioState.subscribe(
       (options: audioManager) => (this.audioOptions = options)
     );
-  }
+    this.router.events
+      .pipe(filter(event => event instanceof NavigationEnd))
+      .subscribe((event: NavigationEnd) => {
+        this.navbar.sidebarClose();
 
-  /**
-   * Se activa cuando se cambia a una nueva ruta
-   * @param event Evento de cambio de ruta
-   */
-  onActivate(event: any): void {
-    let component = event.__proto__.constructor.name;
-
-    if (this.audioOptions.id === "initial")
-      this.helper.playerHidden(true);
-    else {
-      if (component === "RadioComponent")
-        this.helper.playerHidden(true);
-      else this.helper.playerHidden(false);
-    }
+        if (this.audioOptions.id === "initial") this.helper.playerHidden(true);
+        else {
+          if (event.url === "/radio") this.helper.playerHidden(true);
+          else this.helper.playerHidden(false);
+        }
+      });
   }
 }

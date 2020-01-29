@@ -8,24 +8,23 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from './components/shared/shared.module';
 import { CarouselModule } from "ngx-owl-carousel-o";
+import { HomeModule } from './components/home/home.module';
+import { WINDOW_PROVIDERS } from "./services/window.service";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/shared/header/header.component";
-import { FooterComponent } from "./components/shared/footer/footer.component";
-import { MapModalComponent } from "./components/shared/footer/map-modal/map-modal.component";
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
-    FooterComponent,
-    MapModalComponent,
   ],
   imports: [
     NgbModule,
     FormsModule,
-    SharedModule,
+    HomeModule,
+    SharedModule.forRoot(),
     BrowserModule,
     CarouselModule,
     HttpClientModule,
@@ -33,9 +32,9 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor";
     FontAwesomeModule,
     BrowserAnimationsModule
   ],
-  exports: [FooterComponent],
   providers: [
     Title,
+    WINDOW_PROVIDERS,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,

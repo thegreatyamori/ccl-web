@@ -2,68 +2,99 @@
  * ***************************************
  * Centro Cristiano de Loja Web
  * @author Jerson Morocho
- * 
+ *
  * ---------------------------------------
  * - Creation (9-sep-2019)
  * - Restructuration using @ViewChild (28-sep-2019)
  * - Added transparency on scroll (29-sep-2019)
  * - Deleted FaIconLibrary (3-oct-2019)
+ * - Manipulating DOM with enterely renderer2 (27-ene-2020)
  * ---------------------------------------
  */
 
-import { Component, OnInit, Renderer2, ElementRef, ViewChild, HostListener } from '@angular/core';
-import { Location, LocationStrategy, PathLocationStrategy } from '@angular/common';
+import {
+  Component,
+  OnInit,
+  Renderer2,
+  ElementRef,
+  ViewChild,
+  HostListener,
+  Inject
+} from "@angular/core";
+import { Location, DOCUMENT } from "@angular/common";
+import { WINDOW } from "src/app/services/window.service";
 
 @Component({
-  selector: 'app-header',
-  templateUrl: './header.component.html',
-  styles: [`
-    .navbar-brand {
-      padding: 0;
-      display: flex;
-      align-items: center;
-    }
-  `]
+  selector: "app-header",
+  templateUrl: "./header.component.html",
+  styles: [
+    `
+      .navbar-brand {
+        padding: 0;
+        display: flex;
+        align-items: center;
+      }
+    `
+  ]
 })
 export class HeaderComponent implements OnInit {
-  title: string = 'Centro Cristiano de loja'
-  sidebarVisible: boolean;
-  
+  title: string = "Centro Cristiano de loja";
+  private sidebarVisible: boolean;
+
   @ViewChild("navbarToggler", { static: false }) toggleButton: ElementRef;
   @ViewChild("navbar", { static: false }) navbar: ElementRef;
-  
-  constructor(public location: Location, private renderer: Renderer2, private element: ElementRef) {
+
+  constructor(
+    public location: Location,
+    private renderer: Renderer2,
+    @Inject(DOCUMENT) private document: Document,
+    @Inject(WINDOW) private window: Window
+  ) {
     this.sidebarVisible = false;
   }
 
-  ngOnInit() { }
+  ngOnInit() {}
 
-  @HostListener('window:scroll', ['$event'])
-  onWindowScroll($event) {
-    if (window.pageYOffset > 150)
-      this.renderer.removeClass(this.navbar.nativeElement, 'navbar-transparent');
+  @HostListener("window:scroll", [])
+  /**
+   * Permite cambiar el color de la navbar
+   */
+  onWindowScroll(): void {
+    if (this.window.pageYOffset > 150)
+      this.renderer.removeClass(
+        this.navbar.nativeElement,
+        "navbar-transparent"
+      );
     else
-      this.renderer.addClass(this.navbar.nativeElement, 'navbar-transparent');
+      this.renderer.addClass(this.navbar.nativeElement, "navbar-transparent");
   }
 
-  sidebarOpen() {
-    const html = document.getElementsByTagName('html')[0];
+  /**
+   * Despliega el sidebar
+   */
+  sidebarOpen(): void {
+    const html = this.document.getElementsByTagName("html")[0];
+
     setTimeout(() => {
-      this.renderer.addClass(this.toggleButton.nativeElement, 'toggled');
+      this.renderer.addClass(this.toggleButton.nativeElement, "toggled");
     }, 500);
-    
+
     this.sidebarVisible = true;
-    html.classList.add('nav-open');
+    this.renderer.addClass(html, "nav-open");
   }
 
-  sidebarClose() {
-    const html = document.getElementsByTagName('html')[0];
-    this.renderer.removeClass(this.toggleButton.nativeElement, 'toggled');
+  /**
+   * Cierra el sidebar
+   */
+  sidebarClose(): void {
+    const html = this.document.getElementsByTagName("html")[0];
+
+    this.renderer.removeClass(this.toggleButton.nativeElement, "toggled");
     this.sidebarVisible = false;
-    html.classList.remove('nav-open');
+    this.renderer.removeClass(html, "nav-open");
   }
 
-  sidebarToggle() {
+  sidebarToggle(): void {
     if (!this.sidebarVisible) this.sidebarOpen();
     else if (this.sidebarVisible) this.sidebarClose();
   }

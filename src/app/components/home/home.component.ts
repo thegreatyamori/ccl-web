@@ -19,7 +19,7 @@ import { Title } from '@angular/platform-browser';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private titleDocument: Title) { }
+  constructor(private titleDocument: Title) {}
 
   ngOnInit() {
     this.titleDocument.setTitle("Centro Cristiano de Loja");

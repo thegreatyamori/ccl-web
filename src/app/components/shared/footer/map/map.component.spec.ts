@@ -13,23 +13,23 @@ import { DebugElement } from "@angular/core";
 import { NgbModalModule } from "@ng-bootstrap/ng-bootstrap";
 import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 
-import { MapModalComponent } from "./map-modal.component";
+import { MapComponent } from "./map.component";
 
-describe("MapModalComponent", () => {
-  let component: MapModalComponent;
-  let fixture: ComponentFixture<MapModalComponent>;
+describe("MapComponent", () => {
+  let component: MapComponent;
+  let fixture: ComponentFixture<MapComponent>;
   let debugEl: DebugElement;
   let element: HTMLElement;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MapModalComponent, FaIconComponent],
+      declarations: [MapComponent, FaIconComponent],
       imports: [NgbModalModule]
     }).compileComponents();
   }));
   
   beforeEach(() => {
-    fixture = TestBed.createComponent(MapModalComponent);
+    fixture = TestBed.createComponent(MapComponent);
     component = fixture.componentInstance;
     debugEl = fixture.debugElement;
     element = debugEl.nativeElement;

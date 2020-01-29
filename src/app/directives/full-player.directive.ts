@@ -8,6 +8,11 @@ export class FullPlayerDirective implements OnChanges {
 
   constructor(private player: ElementRef) {}
 
+  /**
+   * detecta cualquier cambio en el target element y
+   * permite alternar entre play/pause
+   * @param changes SimpleChanges
+   */
   ngOnChanges(changes: SimpleChanges) {
     for (let propName in changes) {
       if (propName === "fullPlayer") {

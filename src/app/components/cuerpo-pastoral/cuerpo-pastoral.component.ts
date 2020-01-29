@@ -11,7 +11,6 @@
 
 import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import * as Rellax from "rellax";
 
 import { PastoresService } from "src/app/services/pastores.service";
 import { RootObject as Res, Pastor } from "src/app/models/pastores";
@@ -24,12 +23,17 @@ import { RootObject as Res, Pastor } from "src/app/models/pastores";
 export class CuerpoPastoralComponent implements OnInit {
   status: boolean;
   pastores: Pastor[];
+  settings: any;
 
   constructor(private titleDocument: Title, private rest: PastoresService) {}
 
   ngOnInit() {
-    let rellax = new Rellax(".rellax");
     this.titleDocument.setTitle("Cuerpo Pastoral");
+    this.settings = {
+      title: "Cuerpo Pastoral",
+      bg_image: "assets/img/quienes-somos/header.jpg",
+      logo_title: "assets/img/logo_cropped.png"
+    };
     this.getPastores();
   }
 

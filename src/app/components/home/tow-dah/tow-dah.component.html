@@ -1,15 +1,14 @@
 <section id="tow-dah">
-  <div class="bg-dark text-light bg-cover" [ngStyle]="{'background-image': 'url(' + settings.bgTowDahText + ')'}">
-    <div class="container py-5">
+  <div class="bg-dark text-light bg-cover"
+    [ngStyle]="{'background-image': 'url(' + settings.bg_image + ')'}">
+    <div class="container py-5 py-sm-0">
       <div class="row">
-        <div class="col-12 col-md-2 d-flex justify-content-center">
-          <img src="{{ settings.logoTowDah }}" alt="Tow Dah" class="w-50">
-        </div>
-        <div class="col-12 col-md-10">
-          <blockquote class="h4 m-0">
+        <div class="col-12 d-flex flex-column flex-md-row align-items-center">
+          <img src="{{ settings.logo }}" alt="Tow Dah" class="h-50">
+          <blockquote class="h4 m-0 p-2">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas maxime ex rem nemo hic asperiores, minima
             esse in officiis quisquam natus! Voluptates quasi quas veritatis omnis. Sed, fugit sapiente.
-            <br>
+            <!-- <br> -->
             <!-- <small class="float-right">- Ps. Pablo y Patricia Celi</small> -->
           </blockquote>
         </div>
@@ -18,15 +17,21 @@
   </div>
 
   <div class="page-header page-header-small parallax"
-    [ngStyle]="{'background-image': 'url(' + settings.bgTowDah + ')'}">
+    [ngStyle]="{'background-image': 'url(' + settings.bg_image_tow + ')'}">
     <div class="container d-flex align-items-center justify-content-center justify-content-lg-end">
       <div>
         <nav class="d-flex justify-content-center">
-          <a ngbTooltip="{{ social.text }}" class="m-0 btn btn-link"
-            href="{{ social.link }}" target="_blank" *ngFor="let social of settings.social">
-            <fa-icon *ngIf="social.icon == 'align-left'" [icon]="[social.typeIcon, social.icon]" size="3x" rotate="270"></fa-icon>
-            <fa-icon *ngIf="social.icon != 'align-left'" [icon]="[social.typeIcon, social.icon]" size="3x"></fa-icon>
-          </a>
+          <ng-container *ngFor="let social of settings.social">
+            <a ngbTooltip="{{ social.text }}" class="m-0 btn btn-link"
+              href="{{ social.link }}" target="_blank">
+              <ng-container *ngIf="social.icon == 'align-left'">
+                <fa-icon [icon]="[social.typeIcon, social.icon]" size="3x" rotate="270"></fa-icon>
+              </ng-container>
+              <ng-container *ngIf="social.icon != 'align-left'">
+                <fa-icon [icon]="[social.typeIcon, social.icon]" size="3x"></fa-icon>
+              </ng-container>
+            </a>
+          </ng-container>
         </nav>
         <iframe src="https://open.spotify.com/embed/artist/4YTjf9SYX6HL0eOaWEoMng" class="w-100" height="300"
           frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>

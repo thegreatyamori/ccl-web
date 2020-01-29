@@ -24,7 +24,7 @@ export class SponsorSliderComponent implements OnInit {
     dots: false,
     navSpeed: 700,
     navText: ["", ""],
-    autoplayTimeout : 3500,
+    autoplayTimeout: 3500,
     autoplaySpeed: 3000,
     autoplay: true,
     responsive: {

@@ -8,9 +8,9 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit, Input } from '@angular/core';
-import { RadioHelperService } from 'src/app/services/radio-helper.service';
-import { audioManager } from 'src/app/models/audioManager';
+import { Component, OnInit } from "@angular/core";
+import { RadioHelperService } from "src/app/services/radio-helper.service";
+import { audioManager } from "src/app/models/audioManager";
 
 @Component({
   selector: "radio-full",
@@ -25,7 +25,9 @@ export class FullComponent implements OnInit {
   constructor(private helper: RadioHelperService) {}
 
   ngOnInit() {
-    this.helper.audioState.subscribe((options: audioManager) => (this.audioOptions = options));
+    this.helper.audioState.subscribe(
+      (options: audioManager) => (this.audioOptions = options)
+    );
     this.helper.customVolume.subscribe(volume => (this.volume = volume));
     this.iconVolume = "volume-up";
   }

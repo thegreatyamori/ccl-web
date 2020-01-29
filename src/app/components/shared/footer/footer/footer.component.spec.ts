@@ -2,30 +2,29 @@
  * ***************************************
  * Centro Cristiano de Loja Web
  * @author Jerson Morocho
- * 
+ *
  * ---------------------------------------
  * - Creation (9-sep-2019)
  * - Test (7-oct-2019)
  * ---------------------------------------
  */
 
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
-import { FaIconComponent } from '@fortawesome/angular-fontawesome';
+import { async, ComponentFixture, TestBed } from "@angular/core/testing";
+import { RouterTestingModule } from "@angular/router/testing";
+import { FaIconComponent } from "@fortawesome/angular-fontawesome";
 
-import { FooterComponent } from './footer.component';
-import { MapModalComponent } from './map-modal/map-modal.component';
+import { FooterComponent } from "./footer.component";
+import { MapModalComponent } from "../../shared/footer/map-modal/map-modal.component";
 
-describe('FooterComponent', () => {
+describe("FooterComponent", () => {
   let component: FooterComponent;
   let fixture: ComponentFixture<FooterComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FooterComponent, FaIconComponent, MapModalComponent ],
+      declarations: [FooterComponent, FaIconComponent, MapModalComponent],
       imports: [RouterTestingModule]
-    })
-    .compileComponents();
+    }).compileComponents();
   }));
 
   beforeEach(() => {
@@ -34,7 +33,7 @@ describe('FooterComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create footer', () => {
+  it("should create footer", () => {
     expect(component).toBeTruthy();
   });
 });

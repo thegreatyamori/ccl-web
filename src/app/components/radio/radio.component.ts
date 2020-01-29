@@ -19,9 +19,14 @@ import { Title } from "@angular/platform-browser";
   styleUrls: ["./radio.component.scss"]
 })
 export class RadioComponent implements OnInit {
+  settings: any;
+
   constructor(private titleDocument: Title) {}
 
   ngOnInit() {
     this.titleDocument.setTitle("CCL Radio");
+    this.settings = {
+      bg_image: "assets/img/bg4.jpg"
+    };
   }
 }

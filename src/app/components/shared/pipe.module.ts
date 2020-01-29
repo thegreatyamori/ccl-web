@@ -6,17 +6,7 @@ import { PhonePipe } from "src/app/pipes/phone.pipe";
 import { PlacePipe } from "src/app/pipes/place.pipe";
 
 @NgModule({
-  declarations: [
-    FilterPipe,
-    SanitizeHtmlPipe,
-    PhonePipe,
-    PlacePipe,
-  ],
-  exports: [
-    FilterPipe,
-    SanitizeHtmlPipe,
-    PhonePipe,
-    PlacePipe,
-  ]
+  declarations: [FilterPipe, SanitizeHtmlPipe, PhonePipe, PlacePipe],
+  exports: [FilterPipe, SanitizeHtmlPipe, PhonePipe, PlacePipe]
 })
 export class PipeModule {}

@@ -10,7 +10,7 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit, Renderer2 } from "@angular/core";
+import { Component, OnInit, Renderer2, Inject } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import {
   trigger,
@@ -22,6 +22,7 @@ import {
 import * as Rellax from "rellax";
 import { HdbService } from "src/app/services/hdb.service";
 import { LightHDB } from "src/app/models/hdb";
+import { WINDOW } from "src/app/services/window.service";
 
 @Component({
   selector: "app-conectate",
@@ -79,35 +80,45 @@ import { LightHDB } from "src/app/models/hdb";
   ]
 })
 export class ConectateComponent implements OnInit {
-  titleSector: string = "haz click en cualquier parte del mapa";
+  titleSector: string;
   filterHDB: string = "";
-  isCardActive: boolean = false;
-  isPathActive: boolean = true;
   phone: string = "";
   telephone: string = "";
-  hdb: LightHDB;
-  hdbs: LightHDB[];
-  page = 1;
   itemsPerPage: number = 6;
   previousPage: number;
-  zoom = 0;
+  page: number = 1;
+  zoom: number = 0;
+  isCardActive: boolean;
+  isPathActive: boolean;
+  settings: any;
+  hdb: LightHDB;
+  hdbs: LightHDB[];
 
   constructor(
     private titleDocument: Title,
     private rest: HdbService,
-    private renderer: Renderer2
+    private renderer: Renderer2,
+    @Inject(WINDOW) private window: Window
   ) {}
 
   ngOnInit() {
     this.titleDocument.setTitle("Conéctate");
-    let rellax = new Rellax(".rellax");
+    this.settings = {
+      title: "¡Somos una iglesia celular!",
+      bg_image: "assets/img/bg4.jpg",
+      logo_title: "assets/img/logo_cropped.png"
+    };
+    this.titleSector = "haz click en cualquier parte del mapa";
+    this.isCardActive = false;
+    this.isPathActive = true;
+
     this.getAllHDBs();
   }
 
   /**
    * Retorna todos los hogares de bendicion de tipo LightHDB
    * */
-  getAllHDBs() {
+  getAllHDBs(): void {
     this.rest.getAll().subscribe((data: LightHDB[]) => {
       this.hdbs = data;
       // console.log(data);
@@ -116,9 +127,10 @@ export class ConectateComponent implements OnInit {
 
   /**
    * Muestra el contenido de un hogar de bendición formateado en una tarjeta
-   * @param hdbItem
+   * @param ref TemplateRef
+   * @param hdbItem lista de hdb de tipo LightHDB
    */
-  showCard(ref: any, hdbItem: LightHDB) {
+  showCard(ref: any, hdbItem: LightHDB): void {
     let _pathName = hdbItem.place;
     let pathName = _pathName.split("_").join(" ");
     let path = ref.children[_pathName];
@@ -138,33 +150,36 @@ export class ConectateComponent implements OnInit {
     this.isCardActive = true;
 
     // Hacemos zoom en el mapa
-    this.zoomPath(path, pathName, true, hdbItem.color);
+    this.zoomPath({ path, pathName, state: true, color: hdbItem.color });
   }
 
   /**
    * Cierra la tarjeta y resetea el contenido
+   * @param ref TemplateRef
+   * @param _pathName nombre del sector
    */
-  closeCard(ref: any, _pathName: string) {
+  closeCard(ref: any, _pathName: string): void {
     let path = ref.children[_pathName];
 
     this.hdb = <LightHDB>{};
     this.isCardActive = false;
-    this.zoomPath(path, "haz click en cualquier parte del mapa", false);
+    this.zoomPath({
+      path,
+      pathName: "haz click en cualquier parte del mapa",
+      state: false
+    });
   }
 
   /**
-   * Abre whatsapp de acuerdo al primer numero indicado
+   * Obtiene la referencia del elemento par aplicar zoom
+   * @param evt Evento click
    */
-  openWhatsapp(number: string) {
-    window.open(`https://wa.me/593${number}`, "_blank");
-  }
+  clickToZoom(evt: any): void {
+    const path = evt.target;
+    const _pathName = path.id.split("_");
+    const pathName = _pathName.join(" ");
 
-  clickToZoom(evt: { target: any }) {
-    let path = evt.target;
-    let _pathName = path.id.split("_");
-    let pathName = _pathName.join(" ");
-
-    this.zoomPath(path, pathName, true, "orange");
+    this.zoomPath({ path, pathName, state: true, color: "orange" });
   }
 
   /**
@@ -172,8 +187,20 @@ export class ConectateComponent implements OnInit {
    * @param path path svg
    * @param pathName nombre del sector
    * @param state estado del sector
+   * @param color el color que se va a pintar cuando el sector este seleccionado
    */
-  zoomPath(path: any, pathName: string, state: boolean, color?: string) {
+  private zoomPath({
+    path,
+    pathName,
+    state,
+    color
+  }: {
+    path: any;
+    pathName: string;
+    state: boolean;
+    color?: string;
+  }): void {
+    // FIXME: usar renderer
     let map = path.parentNode;
     // console.log(map);
 
@@ -181,7 +208,7 @@ export class ConectateComponent implements OnInit {
     let [xPath, yPath] = this.getBoundingBoxCenter(path);
 
     // zoom dinamico
-    this.zoom = this.getPathZoomValue(map, path);
+    this.zoom = this.getPathZoomValue({ map, path });
 
     // state == true aplica el zoom
     if (state) {
@@ -211,10 +238,16 @@ export class ConectateComponent implements OnInit {
 
   /**
    * Obtine un valor de zoom en funcion del tamaño del elemento
-   * @param map
-   * @param path
+   * @param map svg
+   * @param path svg
    */
-  private getPathZoomValue(map: SVGAElement, path: SVGAElement): number {
+  private getPathZoomValue({
+    map,
+    path
+  }: {
+    map: SVGAElement;
+    path: SVGAElement;
+  }): number {
     // factor de margen
     let k = 50;
     let zoom = 0;
@@ -250,7 +283,7 @@ export class ConectateComponent implements OnInit {
    * Obtiene el centro de un elemento svg
    * @param el svg element
    */
-  private getBoundingBoxCenter(el: SVGAElement) {
+  private getBoundingBoxCenter(el: SVGAElement): [number, number] {
     let bbox = el.getBBox();
     return [bbox.x + bbox.width / 2, bbox.y + bbox.height / 2];
   }
@@ -261,7 +294,7 @@ export class ConectateComponent implements OnInit {
    * @param cx centro en x
    * @param cy centro en y
    */
-  private drawPoint(svg: SVGAElement, cx: number, cy: number) {
+  private drawPoint(svg: SVGAElement, cx: number, cy: number): void {
     var circle = document.createElementNS(
       "http://www.w3.org/2000/svg",
       "circle"
@@ -272,5 +305,20 @@ export class ConectateComponent implements OnInit {
     circle.setAttribute("cy", `${cy}`);
 
     svg.appendChild(circle);
+  }
+
+  /**
+   * valida si un numero tiene whatsApp
+   * @returns un valor boleano
+   */
+  validateWhatsPhone(): boolean {
+    return this.hdb.telephone.toString().length === 9;
+  }
+
+  /**
+   * Abre whatsapp de acuerdo al primer numero indicado
+   */
+  openWhatsapp(): void {
+    this.window.open(`https://wa.me/593${this.hdb.telephone}`, "_blank");
   }
 }

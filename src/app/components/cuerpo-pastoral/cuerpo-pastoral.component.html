@@ -1,18 +1,19 @@
 <article>
-  <div class="page-header page-header-small">
-    <div class="rellax page-header-image" data-rellax-speed="-8"
-      style="background-image:url('assets/img/quienes-somos/header.jpg')">
+  <header class="page-header page-header-small">
+    <div parallax speedImg="0.1" speedContainer="0.5" class="parallax-image page-header-image"
+      [ngStyle]="{'background-image': 'url(' + settings.bg_image + ')'}">
     </div>
     <div class="container">
       <div class="content-center">
-        <!-- <h1 class="title">Cuerpo Pastoral</h1> -->
+        <!-- <h1 class="title">{{ settings.title }}</h1> -->
         <div class="text-center">
-          <img src="assets/img/logo_cropped.png" alt="" class="img-fluid img-header">
+          <img src="{{ settings.logo_title }}" alt="" class="img-fluid">
         </div>
       </div>
     </div>
-  </div>
-  <section id="cuerpo-pastoral" class="section section-md-post">
+  </header>
+
+  <section id="cuerpo-pastoral" class="parallax-container section section-md-post">
     <div class="container container-md-post">
       <ng-container *ngIf="status">
         <div class="row">
@@ -26,15 +27,16 @@
                   </div>
                   <h4>{{ pastor.title }}</h4>
                   <h6 class="text-primary">{{ pastor.position }}</h6>
-                  <p>{{pastor.description}}</p>
+                  <p class="text-left">{{pastor.description}}</p>
                   <hr>
                 </div>
               </ng-container>
             </div>
           </div>
         </div>
-        <div class="separator separator-primary"></div>
       </ng-container>
+      <div class="separator separator-primary"></div>
     </div>
   </section>
 </article>
+<app-footer></app-footer>

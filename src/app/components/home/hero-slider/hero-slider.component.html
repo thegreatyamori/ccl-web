@@ -1,26 +1,29 @@
 <section id="hero-slider">
-    <div *ngIf="showBgImage">
-        <picture class="lazy">
-            <source srcset="assets\img\home\large.jpg" media="(min-width: 992px)">
-            <source srcset="assets\img\home\medium.jpg" media="(min-width: 768px)">
-            <source srcset="assets\img\home\small.jpg" media="(max-width: 576px)">
-            <img #bgImage [@fadeInOut]="fade ? 'in' : 'out'" class="img-thumb lazy-bg" src="assets\img\home\large.jpg" alt="slider">
+  <ng-container *ngIf="showBgImage">
+    <picture class="lazy">
+      <source srcset="assets\img\home\large.jpg" media="(min-width: 992px)">
+      <source srcset="assets\img\home\medium.jpg" media="(min-width: 768px)">
+      <source srcset="assets\img\home\small.jpg" media="(max-width: 576px)">
+      <img #bgImage [@fadeInOut]="fade ? 'in' : 'out'" class="w-100 h-auto lazy-bg" src="assets\img\home\large.jpg"
+        alt="slider">
+    </picture>
+  </ng-container>
+  <ng-container *ngIf="status">
+    <ngb-carousel>
+      <ng-template ngbSlide *ngFor="let slide of slides">
+        <picture (lazyImage)="showImage">
+          <!-- <source srcset="{{ slide.image }}" media="(min-width: 1200px)"> -->
+          <source srcset="{{ slide.image }}" media="(min-width: 992px)">
+          <source srcset="{{ slide.imageMedium }}" media="(min-width: 768px)">
+          <source srcset="{{ slide.imageSmall }}" media="(max-width: 576px)">
+          <img class="d-block img-thumb" src="{{ slide.image }}" alt="{{ slide.title }}" (load)="imgLoaded()">
         </picture>
-    </div>
-    <ngb-carousel *ngIf="status">
-        <ng-template ngbSlide *ngFor="let slide of slides">
-            <picture (lazyImage)="showImage = true">
-                <!-- <source srcset="{{ slide.image }}" media="(min-width: 1200px)"> -->
-                <source srcset="{{ slide.image }}" media="(min-width: 992px)">
-                <source srcset="{{ slide.imageMedium }}" media="(min-width: 768px)">
-                <source srcset="{{ slide.imageSmall }}" media="(max-width: 576px)">
-                <img class="d-block img-thumb" src="{{ slide.image }}" alt="{{ slide.title }}" (load)="imgLoaded()">
-            </picture>
-            <div class="carousel-caption d-none d-md-block">
-                <a *ngIf="slide.link" class="h1 text-white" href="{{ slide.link }}" target="_blank">{{ slide.title }}</a>
-                <a *ngIf="!slide.link" class="h1 text-white" routerLink="/home" fragment="tow-dah">{{ slide.title }}</a>
-                <h3>{{ slide.subtitle }}</h3>
-            </div>
-        </ng-template>
+        <div class="carousel-caption d-none d-md-block">
+          <a *ngIf="slide.link" class="h1 text-white" href="{{ slide.link }}" target="_blank">{{ slide.title }}</a>
+          <a *ngIf="!slide.link" class="h1 text-white" routerLink="/home" fragment="tow-dah">{{ slide.title }}</a>
+          <h3>{{ slide.subtitle }}</h3>
+        </div>
+      </ng-template>
     </ngb-carousel>
+  </ng-container>
 </section>

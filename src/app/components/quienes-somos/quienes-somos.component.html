@@ -1,38 +1,41 @@
 <article>
-    <div class="page-header page-header-small">
-        <div class="rellax page-header-image" data-rellax-speed="-8"
-            style="background-image:url('assets/img/quienes-somos/header.jpg')">
-        </div>
-        <div class="container">
-            <div class="content-center">
-                <h1 class="title">¡Tu misión es hoy!</h1>
-                <div class="text-center">
-                    <img src="assets/img/logo_cropped.png" alt="" class="img-fluid img-header">
-                </div>
-            </div>
-        </div>
+  <header class="page-header page-header-small">
+    <div parallax speedImg="0" speedContainer="0.5" class="parallax-image page-header-image"
+      [ngStyle]="{'background-image': 'url(' + settings.bg_image + ')'}">
     </div>
-    <section id="quienes-somos" class="section section-md-post">
-        <div class="container container-md-post">
-            <div class="row" *ngIf="status">
-                <div class="col-md-10 ml-auto mr-auto">
-                    <h2 class="title text-center">{{ title }}</h2>
-                    <div class="nav-tabs-navigation">
-                        <div class="nav-tabs-wrapper">
-                            <ngb-tabset #tabQuienesSomos [justify]="'center'" (tabChange)="onTabChange($event)">
-                                <ngb-tab *ngFor="let tab of tabs" id="{{ tab.id }}" title="{{ tab.title }}">
-                                    <ng-template ngbTabContent>
-                                        <div class="animated fadeIn"
-                                            [innerHtml]="tab.paragraph | sanitizeHtml">
-                                        </div>
-                                    </ng-template>
-                                </ngb-tab>
-                            </ngb-tabset>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="separator separator-primary"></div>
+    <div class="container">
+      <div class="content-center">
+        <h1 class="title">{{ settings.title }}</h1>
+        <div class="text-center">
+          <img src="{{ settings.logo_title }}" alt="" class="img-fluid">
         </div>
-    </section>
+      </div>
+    </div>
+  </header>
+
+  <section id="quienes-somos" class="section section-md-post parallax-container">
+    <div class="container container-md-post">
+      <ng-container *ngIf="status">
+        <div class="row">
+          <div class="col-md-10 ml-auto mr-auto">
+            <h2 class="title text-center">{{ title }}</h2>
+            <div class="nav-tabs-navigation">
+              <div class="nav-tabs-wrapper">
+                <ngb-tabset #tabQuienesSomos [justify]="'center'" (tabChange)="onTabChange($event)">
+                  <ngb-tab *ngFor="let tab of tabs" id="{{ tab.id }}" title="{{ tab.title }}">
+                    <ng-template ngbTabContent>
+                      <div [@fadeIn]="true" [innerHtml]="tab.paragraph | sanitizeHtml">
+                      </div>
+                    </ng-template>
+                  </ngb-tab>
+                </ngb-tabset>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
+      <div class="separator separator-primary"></div>
+    </div>
+  </section>
 </article>
+<app-footer></app-footer>

@@ -10,7 +10,7 @@
 
 import { Component, OnInit, Input } from "@angular/core";
 import { RadioHelperService } from "src/app/services/radio-helper.service";
-import { audioManager } from 'src/app/models/audioManager';
+import { audioManager } from "src/app/models/audioManager";
 
 @Component({
   selector: "radio-mini",

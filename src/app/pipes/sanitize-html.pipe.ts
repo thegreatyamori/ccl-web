@@ -1,13 +1,3 @@
-/**
- * ***************************************
- * Centro Cristiano de Loja Web
- * @author Jerson Morocho
- *
- * ---------------------------------------
- * - Creation (11-nov-2019)
- * ---------------------------------------
- */
-
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer, SafeHtml } from '@angular/platform-browser';
 

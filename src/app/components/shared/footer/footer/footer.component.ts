@@ -2,7 +2,7 @@
  * ***************************************
  * Centro Cristiano de Loja Web
  * @author Jerson Morocho
- * 
+ *
  * ---------------------------------------
  * - Creation (9-sep-2019)
  * - Added FaIconLibrary (28-sep-2019)
@@ -18,8 +18,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./footer.component.scss"]
 })
 export class FooterComponent implements OnInit {
-  
   constructor() {}
-  
+
   ngOnInit() {}
 }

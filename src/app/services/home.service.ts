@@ -22,10 +22,14 @@ import { RootObject as Slides } from "../models/slide";
   providedIn: "root"
 })
 export class HomeService {
-  uri: string = environment.api + "slides.php";
+  private uri: string = environment.api + "slides.php";
 
   constructor(private http: HttpClient) {}
 
+  /**
+   * Obtiene todos los slisdes desde el api
+   * @return observable
+   */
   getSlides(): Observable<Slides> {
     return this.http
       .get<Slides>(this.uri)

@@ -7,20 +7,16 @@ import { CarouselModule } from "ngx-owl-carousel-o";
 import { RadioRoutingModule } from "./radio-routing.module";
 import { RadioComponent } from "./radio.component";
 import { FullComponent } from "./full/full.component";
-import { SponsorSliderComponent } from './sponsor-slider/sponsor-slider.component';
+import { SponsorSliderComponent } from "./sponsor-slider/sponsor-slider.component";
 
 @NgModule({
-  declarations: [
-    RadioComponent,
-    FullComponent,
-    SponsorSliderComponent,
-  ],
+  declarations: [RadioComponent, FullComponent, SponsorSliderComponent],
   imports: [
     FormsModule,
     CommonModule,
     CarouselModule,
     FontAwesomeModule,
-    RadioRoutingModule,
+    RadioRoutingModule
   ]
 })
 export class RadioModule {}

@@ -1,17 +1,16 @@
 .hdb-type {
-    display: flex;
-    place-items: center;
-    justify-content: space-between;
+  display: flex;
+  place-items: center;
+  justify-content: space-between;
 
-    span {
-      margin: 0;
-    }
+  span {
+    margin: 0;
+  }
 }
 
 .hdb-list {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 60px;
-  padding: 20px;
 
   span {
     margin-top: initial;
@@ -25,7 +24,8 @@
 .hdb-whatsapp {
   background-color: transparent;
 
-  &:hover, &:not(:disabled):not(.disabled):active {
+  &:hover,
+  &:not(:disabled):not(.disabled):active {
     background-color: transparent !important;
   }
 }

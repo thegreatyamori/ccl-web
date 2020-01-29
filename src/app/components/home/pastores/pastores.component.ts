@@ -2,14 +2,13 @@
  * ***************************************
  * Centro Cristiano de Loja Web
  * @author Jerson Morocho
- * 
+ *
  * ---------------------------------------
  * - Creation (19-ene-2020)
  * ---------------------------------------
  */
 
-
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
 
 @Component({
   selector: "app-pastores",
@@ -23,8 +22,8 @@ export class PastoresComponent implements OnInit {
 
   ngOnInit() {
     this.settings = {
-      bgPastores: "assets/img/home/bg-pablo-y-patricia.jpg",
-      bgPastoresText: "assets/img/home/bg-buttons-bar.svg",
-    }
+      bg_image: "assets/img/home/bg-buttons-bar.svg",
+      bg_image_pas: "assets/img/home/bg-pablo-y-patricia.jpg"
+    };
   }
 }
