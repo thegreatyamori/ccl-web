@@ -19,7 +19,6 @@ import {
   transition,
   keyframes
 } from "@angular/animations";
-import * as Rellax from "rellax";
 import { HdbService } from "src/app/services/hdb.service";
 import { LightHDB } from "src/app/models/hdb";
 import { WINDOW } from "src/app/services/window.service";

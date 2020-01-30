@@ -10,6 +10,7 @@ import { SharedModule } from './components/shared/shared.module';
 import { CarouselModule } from "ngx-owl-carousel-o";
 import { HomeModule } from './components/home/home.module';
 import { WINDOW_PROVIDERS } from "./services/window.service";
+import { NAVIGATOR_PROVIDERS } from './services/navigator.service';
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/shared/header/header.component";
@@ -35,6 +36,7 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor";
   providers: [
     Title,
     WINDOW_PROVIDERS,
+    NAVIGATOR_PROVIDERS,
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
