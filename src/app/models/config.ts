@@ -107,6 +107,53 @@ export class Settings {
   };
 
   // -------------------------------------------------------
+  // Misiones
+  public static misiones: any = {
+    cards: [
+      {
+        tag: "",
+        title: "Misiones",
+        text: `Misiones es llevar y compartir el evangelio a toda etnia y nación; donde existen personas que ni si quiera han podido escuchar el nombre de Jesús.`,
+        btnText: null,
+        btnColor: null,
+        link: null,
+        default: "assets/img/home/large.jpg",
+        bg: "assets/img/home/large.jpg"
+      },
+      {
+        tag: "Misiones",
+        title: "Transculturales",
+        text: `El Centro Cristiano de Loja, actualmente cuenta con 5 proyectos misioneros en el mundo.`,
+        btnText: "Ver más...",
+        btnColor: "btn-neutral",
+        link: "transculturales",
+        default: "assets/img/home/large.jpg",
+        bg: "https://placebear.com/1440/960"
+      },
+      {
+        tag: "Obras",
+        title: "Filiales",
+        text: `El Centro Cristiano de Loja, actualmente posee 11 iglesias filiales en el Ecuador.`,
+        btnText: "Ver más...",
+        btnColor: "btn-neutral",
+        link: "filiales",
+        default: "assets/img/home/large.jpg",
+        bg: "https://placebear.com/1440/960"
+      },
+      {
+        tag: "Campos",
+        title: "Blancos",
+        text: `El Centro Cristiano de Loja, actualmente posee 2 campos blancos en la provincia de Loja.`,
+        btnText: "Ver más...",
+        btnColor: "btn-danger",
+        link: "campos-blancos",
+        default: "assets/img/home/large.jpg",
+        bg: "https://placebear.com/1440/960"
+      }
+    ]
+  };
+
+  // -------------------------------------------------------
   // Quienes Somos
   public static pages: any = {
     title: "¡Tu misión es hoy!",
