@@ -15,11 +15,11 @@
 
   <section id="cuerpo-pastoral" class="parallax-container section section-md-post">
     <div class="container container-md-post">
-      <ng-container *ngIf="status">
-        <div class="row">
-          <div class="col-md-10 ml-auto mr-auto">
-            <h2 class="title text-center">Cuerpo Pastoral</h2>
-            <div class="row">
+      <div class="row">
+        <div class="col-md-10 ml-auto mr-auto">
+          <h2 class="title text-center">Cuerpo Pastoral</h2>
+          <div class="row">
+            <ng-container *ngIf="status">
               <ng-container *ngFor="let pastor of pastores;">
                 <div class="col-12 col-md-6">
                   <div class="d-flex justify-content-center">
@@ -27,15 +27,22 @@
                   </div>
                   <h4>{{ pastor.title }}</h4>
                   <h6 class="text-primary">{{ pastor.position }}</h6>
-                  <p class="text-left">{{pastor.description}}</p>
-                  <hr>
+                  <p class="text-left">{{ pastor.description }}</p>
                 </div>
               </ng-container>
-            </div>
+            </ng-container>
           </div>
+          <div class="separator separator-primary"></div>
+          <blockquote class="h4 m-0">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro minima pariatur facere deserunt
+            reprehenderit, nisi, reiciendis quo voluptatem, commodi recusandae ducimus atque fugiat qui aperiam
+            laboriosam asperiores. Consectetur, tenetur ratione.
+            <br>
+            <small class="float-right">- Ps. Pablo y Patricia Celi</small>
+          </blockquote>
+          <div class="separator separator-primary"></div>
         </div>
-      </ng-container>
-      <div class="separator separator-primary"></div>
+      </div>
     </div>
   </section>
 </article>

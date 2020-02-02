@@ -14,6 +14,7 @@ import { Title } from "@angular/platform-browser";
 
 import { PastoresService } from "src/app/services/pastores.service";
 import { RootObject as Res, Pastor } from "src/app/models/pastores";
+import { Settings } from "src/app/models/config";
 
 @Component({
   selector: "app-cuerpo-pastoral",
@@ -29,11 +30,7 @@ export class CuerpoPastoralComponent implements OnInit {
 
   ngOnInit() {
     this.titleDocument.setTitle("Cuerpo Pastoral");
-    this.settings = {
-      title: "Cuerpo Pastoral",
-      bg_image: "assets/img/quienes-somos/header.jpg",
-      logo_title: "assets/img/logo_cropped.png"
-    };
+    this.settings = Settings.cuerpo_pastoral;
     this.getPastores();
   }
 
