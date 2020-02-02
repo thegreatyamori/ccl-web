@@ -20,8 +20,10 @@ export class Settings {
 
   // Pastores
   public static pastores: any = {
-    bg_image: "assets/img/home/bg-buttons-bar.svg",
-    bg_image_pas: "assets/img/home/bg-pablo-y-patricia.jpg"
+    bg: {
+      default: "assets/img/home/large.jpg",
+      final: "assets/img/home/bg-pablo-y-patricia.jpg"
+    }
   };
 
   // Buttons bar

@@ -9,6 +9,7 @@
  */
 
 import { Component, OnInit } from "@angular/core";
+import { Settings } from 'src/app/models/config';
 
 @Component({
   selector: "app-pastores",
@@ -21,9 +22,6 @@ export class PastoresComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.settings = {
-      bg_image: "assets/img/home/bg-buttons-bar.svg",
-      bg_image_pas: "assets/img/home/bg-pablo-y-patricia.jpg"
-    };
+    this.settings = Settings.pastores;
   }
 }
