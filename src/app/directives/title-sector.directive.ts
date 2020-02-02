@@ -32,8 +32,10 @@ export class TitleSectorDirective {
     const titleSector = id.split("_").join(" ");
     const text = this.renderer.createText(titleSector);
 
-    if (this.tooltip.firstChild)
+    if (this.tooltip.firstChild) {
       this.renderer.removeChild(this.tooltip, this.tooltip.firstChild);
+    }
+
     this.renderer.appendChild(this.tooltip, text);
     this.renderer.removeClass(this.tooltip, "d-none");
   }

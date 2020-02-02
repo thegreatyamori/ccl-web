@@ -10,6 +10,7 @@
  */
 
 import { Component, OnInit } from "@angular/core";
+import { Settings } from 'src/app/models/config';
 
 @Component({
   selector: "app-buttons-bar",
@@ -22,28 +23,6 @@ export class ButtonsBarComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.settings = {
-      bg_image: "assets/img/home/bg-buttons-bar.svg",
-      opts: [
-        {
-          navLink: "/actividades",
-          navImage: "assets/img/home/card-calendar.jpg",
-          navText: "Calendario",
-          navIcon: "calendar-alt"
-        },
-        {
-          navLink: "/donaciones",
-          navImage: "assets/img/home/card-hdb.jpg",
-          navText: "Donaciones",
-          navIcon: "bible"
-        },
-        {
-          navLink: "/misiones",
-          navImage: "assets/img/home/card-donations.jpg",
-          navText: "Misiones",
-          navIcon: "globe-americas"
-        }
-      ]
-    };
+    this.settings = Settings.buttons_bar;
   }
 }

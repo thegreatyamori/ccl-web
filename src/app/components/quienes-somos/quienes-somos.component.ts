@@ -15,6 +15,7 @@ import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { NgbTabChangeEvent } from "@ng-bootstrap/ng-bootstrap";
 import { trigger, transition, animate, style } from "@angular/animations";
+import { NgxSpinnerService } from "ngx-spinner";
 
 import { RootObject as Res, Tab } from "src/app/models/quienesSomos";
 import { QuienesSomosService } from "src/app/services/quienes-somos.service";
@@ -41,6 +42,7 @@ export class QuienesSomosComponent implements OnInit {
 
   constructor(
     private rest: QuienesSomosService,
+    private spinner: NgxSpinnerService,
     private titleDocument: Title
   ) {}
 
@@ -48,6 +50,7 @@ export class QuienesSomosComponent implements OnInit {
     this.titleTab = "Reseña Histórica";
     this.titleDocument.setTitle(this.titleTab);
     this.settings = Settings.pages;
+    this.spinner.show();
     this.getPage();
   }
 
@@ -59,6 +62,7 @@ export class QuienesSomosComponent implements OnInit {
     this.rest.getPage().subscribe((data: Res) => {
       this.status = data.status;
       this.tabs = data.res;
+      this.spinner.hide();
     });
   }
 

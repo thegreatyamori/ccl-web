@@ -11,8 +11,9 @@
 
 import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-
+import { NgxSpinnerService } from 'ngx-spinner';
 import { PastoresService } from "src/app/services/pastores.service";
+
 import { RootObject as Res, Pastor } from "src/app/models/pastores";
 import { Settings } from "src/app/models/config";
 
@@ -26,11 +27,16 @@ export class CuerpoPastoralComponent implements OnInit {
   pastores: Pastor[];
   settings: any;
 
-  constructor(private titleDocument: Title, private rest: PastoresService) {}
+  constructor(
+    private titleDocument: Title,
+    private rest: PastoresService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit() {
     this.titleDocument.setTitle("Cuerpo Pastoral");
     this.settings = Settings.cuerpo_pastoral;
+    this.spinner.show();
     this.getPastores();
   }
 
@@ -42,6 +48,7 @@ export class CuerpoPastoralComponent implements OnInit {
     this.rest.getPastores().subscribe((data: Res) => {
       this.status = data.status;
       this.pastores = data.res;
+      this.spinner.hide();
     });
   }
 }

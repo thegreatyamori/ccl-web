@@ -23,7 +23,7 @@
         <nav class="d-flex justify-content-center">
           <ng-container *ngFor="let social of settings.social">
             <a ngbTooltip="{{ social.text }}" class="m-0 btn btn-link"
-              href="{{ social.link }}" target="_blank">
+              [href]="social.link | sanitizeUrl" target="_blank">
               <ng-container *ngIf="social.icon == 'align-left'">
                 <fa-icon [icon]="[social.typeIcon, social.icon]" size="3x" rotate="270"></fa-icon>
               </ng-container>

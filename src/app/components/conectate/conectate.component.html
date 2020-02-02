@@ -1,3 +1,7 @@
+<ngx-spinner bdColor="#4a69bd" size="large" color="white" type="square-jelly-box" [fullScreen]="true">
+  <p class="text-light">Cargando...</p>
+</ngx-spinner>
+
 <div class="wrapper">
   <header class="page-header page-header-small">
     <div parallax speedImg="0.1" speedContainer="0.5" class="parallax-image page-header-image"
@@ -242,7 +246,7 @@
                   </div>
                   <div class="list-group hdb-list p-4">
                     <div class="m-auto">
-                      <img alt="{{ hdb.name }}" class="w-50 rounded-circle img-raised" src="{{ hdb.image }}">
+                      <img alt="{{ hdb.name }}" class="w-50 rounded-circle img-raised" [src]="hdb.image | sanitizeUrl">
                     </div>
                     <p class="h3">{{ hdb.name }}</p>
                     <span class="h3 font-weight-bold hdb-day">{{ hdb.day | uppercase }}</span>

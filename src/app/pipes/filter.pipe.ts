@@ -17,8 +17,9 @@ export class FilterPipe implements PipeTransform {
         hdb.typeHDB.toLowerCase().indexOf(arg.toLowerCase()) > -1 ||
         hdb.day.toLowerCase().indexOf(arg.toLowerCase()) > -1 ||
         hdb.reference.toLowerCase().indexOf(arg.toLowerCase()) > -1
-      )
+      ) {
         resultHDB.push(hdb);
+      }
     }
 
     return resultHDB;

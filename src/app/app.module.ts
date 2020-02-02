@@ -8,6 +8,7 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
 import { SharedModule } from './components/shared/shared.module';
 import { CarouselModule } from "ngx-owl-carousel-o";
+import { NgxSpinnerModule } from "ngx-spinner";
 import { HomeModule } from './components/home/home.module';
 import { WINDOW_PROVIDERS } from "./services/window.service";
 import { NAVIGATOR_PROVIDERS } from './services/navigator.service';
@@ -28,6 +29,7 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor";
     SharedModule.forRoot(),
     BrowserModule,
     CarouselModule,
+    NgxSpinnerModule,
     HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,

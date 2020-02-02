@@ -22,6 +22,7 @@ import {
 import { HdbService } from "src/app/services/hdb.service";
 import { LightHDB } from "src/app/models/hdb";
 import { WINDOW } from "src/app/services/window.service";
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: "app-conectate",
@@ -96,6 +97,7 @@ export class ConectateComponent implements OnInit {
   constructor(
     private titleDocument: Title,
     private rest: HdbService,
+    private spinner: NgxSpinnerService,
     private renderer: Renderer2,
     @Inject(WINDOW) private window: Window
   ) {}
@@ -110,7 +112,7 @@ export class ConectateComponent implements OnInit {
     this.titleSector = "haz click en cualquier parte del mapa";
     this.isCardActive = false;
     this.isPathActive = true;
-
+    this.spinner.show();
     this.getAllHDBs();
   }
 
@@ -120,7 +122,7 @@ export class ConectateComponent implements OnInit {
   getAllHDBs(): void {
     this.rest.getAll().subscribe((data: LightHDB[]) => {
       this.hdbs = data;
-      // console.log(data);
+      this.spinner.hide();
     });
   }
 
@@ -267,12 +269,14 @@ export class ConectateComponent implements OnInit {
 
     if (pathSize.width > pathSize.height) {
       zoom = mapSize.widthGroup / pathSize.widthPath;
-      if (zoom * pathSize.heightPath > mapSize.heightGroup)
+      if (zoom * pathSize.heightPath > mapSize.heightGroup) {
         zoom = mapSize.heightGroup / pathSize.heightPath;
+      }
     } else {
       zoom = mapSize.heightGroup / pathSize.heightPath;
-      if (zoom * pathSize.widthPath > mapSize.widthGroup)
+      if (zoom * pathSize.widthPath > mapSize.widthGroup) {
         zoom = mapSize.widthGroup / pathSize.widthPath;
+      }
     }
 
     return zoom;

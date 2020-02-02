@@ -26,7 +26,7 @@ import { audioManager } from "src/app/models/audioManager";
       (suspend)="onSuspend($event)"
       (waiting)="onStopped($event)"
     >
-      <source src="{{ url }}" />
+      <source [src]="url | sanitizeUrlResource" />
     </audio>
   `
 })

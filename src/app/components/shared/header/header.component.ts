@@ -60,13 +60,14 @@ export class HeaderComponent implements OnInit {
    * Permite cambiar el color de la navbar
    */
   onWindowScroll(): void {
-    if (this.window.pageYOffset > 150)
+    if (this.window.pageYOffset > 150) {
       this.renderer.removeClass(
         this.navbar.nativeElement,
         "navbar-transparent"
       );
-    else
+    } else {
       this.renderer.addClass(this.navbar.nativeElement, "navbar-transparent");
+    }
   }
 
   /**

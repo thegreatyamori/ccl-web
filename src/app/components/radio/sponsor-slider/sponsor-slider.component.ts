@@ -10,6 +10,7 @@
 
 import { Component, OnInit } from "@angular/core";
 import { Carousel } from "src/app/models/carousel";
+import { Settings } from 'src/app/models/config';
 
 @Component({
   selector: "sponsor-slider",
@@ -26,7 +27,7 @@ export class SponsorSliderComponent implements OnInit {
     navSpeed: 700,
     navText: ["", ""],
     autoplayTimeout: 3500,
-    autoplaySpeed: 3000,
+    autoplaySpeed: 1000,
     autoplay: true,
     responsive: {
       0: {
@@ -40,31 +41,6 @@ export class SponsorSliderComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.sponsors = [
-      {
-        src: "assets/img/logo_cropped.png",
-        title: "Logo"
-      },
-      {
-        src: "assets/img/logo_cropped.png",
-        title: "Logo"
-      },
-      {
-        src: "assets/img/logo_cropped.png",
-        title: "Logo"
-      },
-      {
-        src: "assets/img/logo_cropped.png",
-        title: "Logo"
-      },
-      {
-        src: "assets/img/logo_cropped.png",
-        title: "Logo"
-      },
-      {
-        src: "assets/img/logo_cropped.png",
-        title: "Logo"
-      }
-    ];
+    this.sponsors = Settings.sponsors;
   }
 }

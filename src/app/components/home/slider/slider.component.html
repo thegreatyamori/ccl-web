@@ -1,4 +1,4 @@
-<section class="wrapper">
+<section>
   <div class="page-header bg-parallax">
     <div parallax speedImg="0" speedContainer="0.5" class="parallax-image page-header-image"
       [defaultImage]="settings.bg.default" [lazyLoad]="settings.bg.final">
@@ -23,7 +23,7 @@
 <section>
   <owl-carousel-o [options]="customOptions">
     <ng-template carouselSlide *ngFor="let slide of slides">
-      <a class="outer-link" [href]="slide.link">
+      <a class="outer-link" [href]="slide.link | sanitizeUrl">
         <img [defaultImage]="settings.bg.default" [lazyLoad]="slide.image" [alt]="slide.title" [title]="slide.title">
       </a>
     </ng-template>

@@ -13,6 +13,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { NAVIGATOR } from "src/app/services/navigator.service";
+import { Settings } from 'src/app/models/config';
 
 @Component({
   selector: "app-radio",
@@ -29,9 +30,7 @@ export class RadioComponent implements OnInit {
 
   ngOnInit() {
     this.titleDocument.setTitle("CCL Radio");
-    this.settings = {
-      bg_image: "assets/img/bg4.jpg"
-    };
+    this.settings = Settings.radio;
     // this.mediaSession();
   }
 

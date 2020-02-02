@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { NgbTooltipModule, NgbPaginationModule } from "@ng-bootstrap/ng-bootstrap";
 import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
 import { PipeModule } from '../shared/pipe.module';
 import { FooterModule } from '../shared/footer/footer.module';
 import { CommonModule } from '@angular/common';
@@ -20,6 +21,7 @@ import { TitleSectorDirective } from "src/app/directives/title-sector.directive"
     CommonModule,
     FooterModule,
     DirectivesModule,
+    NgxSpinnerModule,
     NgbTooltipModule,
     FontAwesomeModule,
     NgbPaginationModule,
