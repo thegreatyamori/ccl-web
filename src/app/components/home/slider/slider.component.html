@@ -1,0 +1,31 @@
+<section class="wrapper">
+  <div class="page-header bg-parallax">
+    <div parallax speedImg="0" speedContainer="0.5" class="parallax-image page-header-image"
+      [defaultImage]="settings.bg.default" [lazyLoad]="settings.bg.final">
+    </div>
+    <div class="container d-flex align-items-center justify-content-center">
+      <div class="d-flex flex-column">
+        <img class="m-auto" [src]="settings.logo_ccl" alt="{{ settings.bg_title }}">
+        <h1 class="h1-seo">{{ settings.bg_title }}</h1>
+        <!-- <h3>A beautiful Bootstrap 4 UI kit. Yours free.</h3> -->
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="parallax-container section p-4">
+  <div class="container">
+    <h2 class="text-center">Tenemos cosas nuevas para ti!</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Vitae nulla, quia aperiam voluptatibus error sed eligendi cum velit vero assumenda itaque eius, mollitia similique est quidem ullam harum maiores odio.</p>
+  </div>
+</section>
+
+<section>
+  <owl-carousel-o [options]="customOptions">
+    <ng-template carouselSlide *ngFor="let slide of slides">
+      <a class="outer-link" [href]="slide.link">
+        <img [defaultImage]="settings.bg.default" [lazyLoad]="slide.image" [alt]="slide.title" [title]="slide.title">
+      </a>
+    </ng-template>
+  </owl-carousel-o>
+</section>

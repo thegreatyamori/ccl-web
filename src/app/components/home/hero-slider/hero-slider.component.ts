@@ -10,61 +10,33 @@
  * ---------------------------------------
  */
 
-import { OnInit, Component, ElementRef, ViewChild } from "@angular/core";
-import {
-  trigger,
-  state,
-  style,
-  animate,
-  transition,
-  keyframes
-} from "@angular/animations";
-
+import { OnInit, Component } from "@angular/core";
 import { HomeService } from "src/app/services/home.service";
 import { RootObject as Res, Slide } from "src/app/models/slide";
 
 @Component({
   selector: "app-hero-slider",
   templateUrl: "./hero-slider.component.html",
-  styles: [
-    `
-      .lazy-bg {
-        position: absolute;
-        top: 0;
-        z-index: 10;
-      }
-    `
-  ],
-  animations: [
-    trigger("fadeInOut", [
-      state("in", style({ opacity: 1 })),
-      state("out", style({ opacity: 0 })),
-      transition("in => out", [
-        animate(
-          1000,
-          keyframes([
-            style({ opacity: 1, offset: 0 }),
-            style({ opacity: 0, offset: 1 })
-          ])
-        )
-      ])
-    ])
-  ]
+  styles: [""]
 })
 export class HeroSliderComponent implements OnInit {
   status: boolean;
   slides: Slide[];
-  showImage: boolean;
-  showBgImage: boolean = true;
-  fade: boolean = true;
-  private delay = (t: number) => new Promise(resolve => setTimeout(resolve, t));
+  settings: any;
 
-  @ViewChild("bgImage", { static: false }) bgImage: ElementRef;
+  // private delay = (t: number) => new Promise(resolve => setTimeout(resolve, t));
 
   constructor(private rest: HomeService) {}
 
   ngOnInit() {
     this.getSlides();
+    this.settings = {
+      default: {
+        large: "assets/img/home/large.jpg",
+        medium: "assets/img/home/medium.jpg",
+        small: "assets/img/home/small.jpg"
+      }
+    };
   }
 
   /**
@@ -74,15 +46,6 @@ export class HeroSliderComponent implements OnInit {
     this.rest.getSlides().subscribe((data: Res) => {
       this.status = data.status;
       this.slides = data.res;
-      this.showImage = true;
     });
-  }
-
-  /**
-   * Realiza los timings necesarios para establecer la img
-   */
-  imgLoaded(): void {
-    this.delay(1000).then(() => (this.fade = false));
-    this.delay(2000).then(() => (this.showBgImage = false));
   }
 }

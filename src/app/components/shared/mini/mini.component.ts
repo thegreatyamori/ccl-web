@@ -11,6 +11,7 @@
 import { Component, OnInit, Input } from "@angular/core";
 import { RadioHelperService } from "src/app/services/radio-helper.service";
 import { audioManager } from "src/app/models/audioManager";
+import { styles } from "src/app/models/radioMini";
 
 @Component({
   selector: "radio-mini",
@@ -18,7 +19,7 @@ import { audioManager } from "src/app/models/audioManager";
   styleUrls: ["./mini.component.scss"]
 })
 export class MiniComponent implements OnInit {
-  style: any;
+  style: styles;
   isActive: boolean;
   audioOptions: audioManager;
 
@@ -39,7 +40,7 @@ export class MiniComponent implements OnInit {
       bottom: this.bottom ? `${this.bottom}px` : "auto",
       left: this.left ? `${this.left}px` : "auto",
       right: this.right ? `${this.right}px` : "auto",
-      "z-index": "100"
+      "z-index": 100
     };
   }
 

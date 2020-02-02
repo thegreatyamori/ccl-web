@@ -9,6 +9,7 @@
  */
 
 import { Component, OnInit } from "@angular/core";
+import { Carousel } from "src/app/models/carousel";
 
 @Component({
   selector: "sponsor-slider",
@@ -16,7 +17,7 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./sponsor-slider.component.scss"]
 })
 export class SponsorSliderComponent implements OnInit {
-  customOptions: any = {
+  customOptions: Carousel = {
     loop: true,
     mouseDrag: true,
     touchDrag: true,

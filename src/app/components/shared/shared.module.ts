@@ -5,6 +5,7 @@ import { SharedComponent } from "./shared.component";
 import { StreamComponent } from "./stream/stream.component";
 import { MiniComponent } from "./mini/mini.component";
 import { FullPlayerDirective } from "src/app/directives/full-player.directive";
+import { LazyLoadImageModule } from "ng-lazyload-image";
 
 @NgModule({
   declarations: [
@@ -13,7 +14,7 @@ import { FullPlayerDirective } from "src/app/directives/full-player.directive";
     MiniComponent,
     FullPlayerDirective
   ],
-  imports: [CommonModule, FontAwesomeModule],
+  imports: [CommonModule, FontAwesomeModule, LazyLoadImageModule],
   exports: [SharedComponent]
 })
 export class SharedModule {

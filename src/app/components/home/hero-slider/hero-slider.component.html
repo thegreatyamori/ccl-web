@@ -1,22 +1,12 @@
 <section id="hero-slider">
-  <ng-container *ngIf="showBgImage">
-    <picture class="lazy">
-      <source srcset="assets\img\home\large.jpg" media="(min-width: 992px)">
-      <source srcset="assets\img\home\medium.jpg" media="(min-width: 768px)">
-      <source srcset="assets\img\home\small.jpg" media="(max-width: 576px)">
-      <img #bgImage [@fadeInOut]="fade ? 'in' : 'out'" class="w-100 h-auto lazy-bg" src="assets\img\home\large.jpg"
-        alt="slider">
-    </picture>
-  </ng-container>
   <ng-container *ngIf="status">
     <ngb-carousel>
       <ng-template ngbSlide *ngFor="let slide of slides">
-        <picture (lazyImage)="showImage">
-          <!-- <source srcset="{{ slide.image }}" media="(min-width: 1200px)"> -->
-          <source srcset="{{ slide.image }}" media="(min-width: 992px)">
-          <source srcset="{{ slide.imageMedium }}" media="(min-width: 768px)">
-          <source srcset="{{ slide.imageSmall }}" media="(max-width: 576px)">
-          <img class="d-block img-thumb" src="{{ slide.image }}" alt="{{ slide.title }}" (load)="imgLoaded()">
+        <picture>
+          <source [attr.lazyLoad]="slide.image" media="(min-width: 992px)">
+          <source [attr.lazyLoad]="slide.imageMedium" media="(min-width: 768px)">
+          <source [attr.lazyLoad]="slide.imageSmall" media="(max-width: 576px)">
+          <img [lazyLoad]="slide.image" offset="1000">
         </picture>
         <div class="carousel-caption d-none d-md-block">
           <a *ngIf="slide.link" class="h1 text-white" href="{{ slide.link }}" target="_blank">{{ slide.title }}</a>
