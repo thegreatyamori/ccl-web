@@ -35,7 +35,7 @@ describe('QuienesSomosComponent', () => {
     });
   
     it('should have as title "Reseña Histórica"', () => {
-      expect(component.title).toEqual('Reseña Histórica');
+      expect(component.titleTab).toEqual('Reseña Histórica');
     });
   
     it('should render title', () => {

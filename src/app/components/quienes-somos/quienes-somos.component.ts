@@ -18,6 +18,7 @@ import { trigger, transition, animate, style } from "@angular/animations";
 
 import { RootObject as Res, Tab } from "src/app/models/quienesSomos";
 import { QuienesSomosService } from "src/app/services/quienes-somos.service";
+import { Settings } from 'src/app/models/config';
 
 @Component({
   selector: "app-quienes-somos",
@@ -33,7 +34,7 @@ import { QuienesSomosService } from "src/app/services/quienes-somos.service";
   ]
 })
 export class QuienesSomosComponent implements OnInit {
-  title: string;
+  titleTab: string;
   status: boolean;
   tabs: Tab[];
   settings: any;
@@ -44,13 +45,9 @@ export class QuienesSomosComponent implements OnInit {
   ) {}
 
   ngOnInit() {
-    this.titleDocument.setTitle(this.title);
-    this.title = "Reseña Histórica";
-    this.settings = {
-      title: "¡Tu misión es hoy!",
-      bg_image: "assets/img/quienes-somos/header.jpg",
-      logo_title: "assets/img/logo_cropped.png"
-    };
+    this.titleTab = "Reseña Histórica";
+    this.titleDocument.setTitle(this.titleTab);
+    this.settings = Settings.pages;
     this.getPage();
   }
 
@@ -73,7 +70,7 @@ export class QuienesSomosComponent implements OnInit {
   onTabChange(event: NgbTabChangeEvent) {
     let tab = this.tabs.find(tab => tab.id === Number(event.nextId));
 
-    this.title = tab.title;
-    this.titleDocument.setTitle(this.title);
+    this.titleTab = tab.title;
+    this.titleDocument.setTitle(this.titleTab);
   }
 }
