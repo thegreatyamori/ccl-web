@@ -45,7 +45,7 @@ export class CuerpoPastoralComponent implements OnInit {
    * la lista de pastores
    */
   getPastores(): void {
-    this.rest.getPastores().subscribe((data: Res) => {
+    this.rest.data$.subscribe((data: Res) => {
       this.status = data.status;
       this.pastores = data.res;
       this.spinner.hide();
