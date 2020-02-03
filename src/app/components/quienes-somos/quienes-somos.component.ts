@@ -59,7 +59,8 @@ export class QuienesSomosComponent implements OnInit {
    * un stream de tabs.
    */
   getPage(): void {
-    this.rest.getPage().subscribe((data: Res) => {
+    this.rest.data$.subscribe((data: Res) => {
+      // console.log(data);
       this.status = data.status;
       this.tabs = data.res;
       this.spinner.hide();
