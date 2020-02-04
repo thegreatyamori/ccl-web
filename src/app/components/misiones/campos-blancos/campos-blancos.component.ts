@@ -1,6 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { Title } from '@angular/platform-browser';
-import { Settings } from 'src/app/models/config';
+import { Component, OnInit } from "@angular/core";
+import { Title } from "@angular/platform-browser";
+import { Settings } from "src/app/models/config";
+import { NgxSpinnerService } from "ngx-spinner";
+import { MisionesService } from "src/app/services/misiones.service";
+import { Misiones, Mision } from "src/app/models/misiones";
 
 @Component({
   selector: "app-campos-blancos",
@@ -8,10 +11,39 @@ import { Settings } from 'src/app/models/config';
   styleUrls: ["./campos-blancos.component.scss"]
 })
 export class CamposBlancosComponent implements OnInit {
-  constructor(private titleDocument: Title) {}
+  settings: any;
+  status: boolean;
+  camposBlancos: Mision[];
+
+  constructor(
+    private titleDocument: Title,
+    private rest: MisionesService,
+    private spinner: NgxSpinnerService
+  ) {}
 
   ngOnInit() {
-    let [misiones, transculturales, filiales, camposBlancos] = Settings.misiones.cards;
-    this.titleDocument.setTitle(`${misiones.title} ${camposBlancos.title}`);
+    let [, , , camposBlancos] = Settings.misiones.cards;
+    this.spinner.show();
+    this.camposBlancos = [];
+    this.titleDocument.setTitle(`${camposBlancos.tag} ${camposBlancos.title}`);
+    this.settings = {
+      title: `${camposBlancos.tag} ${camposBlancos.title}`,
+      bg_image: camposBlancos.bg
+    };
+    this.getCamposBlancos();
+  }
+
+  /**
+   * Se suscribe al observable ReplaySubject para obtener los campos blancos
+   */
+  getCamposBlancos(): void {
+    this.rest.dataCB$.subscribe((data: Misiones) => {
+      this.status = data.status;
+      this.camposBlancos = data.res.map(mission => {
+        mission.mission_locale = "campos blancos";
+        return mission;
+      });
+      this.spinner.hide();
+    });
   }
 }

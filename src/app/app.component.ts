@@ -25,7 +25,9 @@ import {
   faVolumeOff,
   faVolumeDown,
   faPlay,
-  faPause
+  faPause,
+  faFireAlt,
+  faInfo
 } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebook,
@@ -84,6 +86,8 @@ export class AppComponent implements OnInit {
       faVolumeDown,
       faPlay,
       faPause,
+      faFireAlt,
+      faInfo,
       faFacebook,
       faWhatsapp,
       faTwitter,

@@ -143,7 +143,7 @@ export class Settings {
       {
         tag: "Campos",
         title: "Blancos",
-        text: `El Centro Cristiano de Loja, actualmente posee 2 campos blancos en la provincia de Loja.`,
+        text: `Los campos blancos son lugares donde existe poca población, pero se lleva el evangelio, actualmente el Centro Cristiano de Loja tiene 2, se encuentra ubicados en Cera y Chichaca.`,
         btnText: "Ver más...",
         btnColor: "btn-danger",
         link: "campos-blancos",

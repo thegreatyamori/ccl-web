@@ -1,2 +1,78 @@
-<p>transculturales works!</p>
+<ngx-spinner bdColor="#4a69bd" size="large" color="white" type="square-jelly-box" [fullScreen]="true">
+  <p class="text-light">Cargando...</p>
+</ngx-spinner>
+
+<article>
+  <header class="page-header page-header-small">
+    <div parallax speedImg="0.1" speedContainer="0.5" class="parallax-image page-header-image"
+      [ngStyle]="{'background-image': 'url(' + settings.bg_image + ')'}">
+    </div>
+    <div class="container">
+      <div class="content-center">
+        <h1 class="title">{{ settings.title }}</h1>
+        <!-- <div class="text-center">
+          <img src="{{ settings.logo_title }}" alt="" class="img-fluid">
+        </div> -->
+      </div>
+    </div>
+  </header>
+
+  <section id="cuerpo-pastoral" class="parallax-container section section-md-post pb-0">
+    <div class="container container-md-post">
+      <div class="row">
+        <div class="col-md-10 m-auto">
+          <div class="row">
+            <div class="col-12 col-md-6 col-lg-4 d-flex">
+              <div class="card mb-4 d-flex justify-content-center align-items-center flex-column"
+                data-background-color="black">
+                <div class="text-center pt-4">
+                  <fa-icon [icon]="['fas', 'fire-alt']" size="3x"></fa-icon>
+                </div>
+                <div class="px-4 pt-4">
+                  <p class="card-description text-center">
+                    El Centro Cristiano de Loja, actualmente cuenta con {{ transculturales.length }} proyectos misioneros en el mundo.
+                  </p>
+                </div>
+                <button class="btn btn-simple">Felicidades</button>
+              </div>
+            </div>
+            <ng-container *ngIf="status">
+              <ng-container *ngFor="let transcultural of transculturales;">
+                <div class="col-12 col-md-6 col-lg-4">
+                  <div class="card">
+                    <div class="card-image">
+                      <ng-container *ngIf="transcultural.main_image">
+                        <img [src]="transcultural.main_image | sanitizeUrl" [alt]="transcultural.mission_name"
+                          [title]="transcultural.mission_name">
+                      </ng-container>
+                    </div>
+                    <div class="card-body">
+                      <h6 class="text-primary">{{ transcultural.mission_sector }}</h6>
+                      <h5 class="card-title">{{ transcultural.mission_name }}</h5>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <ng-container *ngIf="transcultural.servants_image">
+                          <img alt="misionero" class="w-25 rounded-circle img-raised"
+                          [src]="transcultural.servants_image | sanitizeUrl">
+                        </ng-container>
+                        <div class="d-flex flex-column">
+                          <span class="badge badge-primary">{{ transcultural.mission_type }}</span>
+                          <span class="badge badge-success">{{ transcultural.mission_support }}</span>
+                        </div>
+                      </div>
+
+                      <div class="d-flex justify-content-center">
+                        <app-modal [data]="transcultural"></app-modal>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+          <div class="separator separator-primary"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+</article>
 <app-footer></app-footer>
