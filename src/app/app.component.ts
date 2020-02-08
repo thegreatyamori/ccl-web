@@ -53,7 +53,7 @@ import { HeaderComponent } from "./components/shared/header/header.component";
 })
 export class AppComponent implements OnInit {
   audioOptions: audioManager;
-  @ViewChild(HeaderComponent, { static: false }) navbar: HeaderComponent;
+  @ViewChild(HeaderComponent) navbar: HeaderComponent;
 
   constructor(
     private library: FaIconLibrary,

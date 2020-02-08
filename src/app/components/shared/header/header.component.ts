@@ -41,8 +41,8 @@ export class HeaderComponent implements OnInit {
   title: string = "Centro Cristiano de loja";
   private sidebarVisible: boolean;
 
-  @ViewChild("navbarToggler", { static: false }) toggleButton: ElementRef;
-  @ViewChild("navbar", { static: false }) navbar: ElementRef;
+  @ViewChild("navbarToggler") toggleButton: ElementRef;
+  @ViewChild("navbar") navbar: ElementRef;
 
   constructor(
     public location: Location,
