@@ -2,37 +2,42 @@
  * ***************************************
  * Centro Cristiano de Loja Web
  * @author Jerson Morocho
- * 
+ *
  * ---------------------------------------
  * - Creation (9-nov-2019)
  * - Modified uri + headers (17-nov-2019)
  * ---------------------------------------
  */
 
-import { Injectable } from '@angular/core';
+import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
-import { retry, catchError } from 'rxjs/operators';
+import { Observable, throwError, ReplaySubject } from "rxjs";
+import { retry, catchError } from "rxjs/operators";
 
-import { environment } from '../../environments/environment';
-import { RootObject as Pages } from '../models/quienesSomos';
+import { environment } from "../../environments/environment";
+import { RootObject as Pages } from "../models/quienesSomos";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root'
 })
 export class QuienesSomosService {
   private uri: string = environment.api + "quienes-somos.php";
+  private _data: ReplaySubject<any> = new ReplaySubject<any>();
+  data$ = this._data.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getPage();
+  }
 
   /**
    * Obtiene una lista de información sobre el CCL del API
    * @returns Observable<Pages>
    */
-  getPage(): Observable<Pages> {
+  private getPage() {
     return this.http
       .get<Pages>(this.uri)
-      .pipe(retry(2), catchError(this.handleError));
+      .pipe(retry(2), catchError(this.handleError))
+      .subscribe((data: Pages) => this._data.next(data));
   }
 
   // Handle API errors
