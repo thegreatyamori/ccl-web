@@ -10,7 +10,7 @@
 
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpErrorResponse } from "@angular/common/http";
-import { Observable, throwError } from "rxjs";
+import { Observable, throwError, ReplaySubject, Subscription } from "rxjs";
 import { retry, catchError } from "rxjs/operators";
 
 import { environment } from "../../environments/environment";
@@ -21,17 +21,22 @@ import { RootObject as Pastores } from "../models/pastores";
 })
 export class PastoresService {
   private uri: string = environment.api + "pastores.php";
+  private _data: ReplaySubject<any> = new ReplaySubject<any>();
+  data$ = this._data.asObservable();
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient) {
+    this.getPastores();
+  }
 
   /**
    * Obtiene una lista de pastores del API
    * @returns Observable<Pastores>
    */
-  getPastores(): Observable<Pastores> {
+  private getPastores(): Subscription {
     return this.http
       .get<Pastores>(this.uri)
-      .pipe(retry(2), catchError(this.handleError));
+      .pipe(retry(2), catchError(this.handleError))
+      .subscribe((data: Pastores) => this._data.next(data));
   }
 
   // Handle API errors
