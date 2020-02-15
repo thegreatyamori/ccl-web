@@ -17,6 +17,7 @@ export class MisionesService {
   private _dataCB: ReplaySubject<any> = new ReplaySubject<any>();
   private _dataOB: ReplaySubject<any> = new ReplaySubject<any>();
   private _dataT: ReplaySubject<any> = new ReplaySubject<any>();
+
   dataCB$ = this._dataCB.asObservable();
   dataOB$ = this._dataOB.asObservable();
   dataT$ = this._dataT.asObservable();

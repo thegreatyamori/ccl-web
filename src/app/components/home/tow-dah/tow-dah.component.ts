@@ -9,7 +9,7 @@
  */
 
 import { Component, OnInit } from "@angular/core";
-import { Settings } from 'src/app/models/config';
+import { Settings } from 'src/config/config';
 
 @Component({
   selector: "app-tow-dah",

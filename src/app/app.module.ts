@@ -6,22 +6,20 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { AppRoutingModule } from "./app-routing.module";
-import { SharedModule } from './components/shared/shared.module';
+import { SharedModule } from "./components/shared/shared.module";
 import { CarouselModule } from "ngx-owl-carousel-o";
 import { NgxSpinnerModule } from "ngx-spinner";
-import { HomeModule } from './components/home/home.module';
+import { DeviceDetectorModule } from "ngx-device-detector";
+import { HomeModule } from "./components/home/home.module";
 import { WINDOW_PROVIDERS } from "./services/window.service";
-import { NAVIGATOR_PROVIDERS } from './services/navigator.service';
+import { NAVIGATOR_PROVIDERS } from "./services/navigator.service";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/shared/header/header.component";
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-  ],
+  declarations: [AppComponent, HeaderComponent],
   imports: [
     NgbModule,
     FormsModule,
@@ -33,6 +31,7 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor";
     HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,
+    DeviceDetectorModule.forRoot(),
     BrowserAnimationsModule
   ],
   providers: [

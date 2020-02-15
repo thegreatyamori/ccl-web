@@ -1,0 +1,41 @@
+<ng-container *ngIf="isDevice()">
+  <div>
+    <div class="form-group d-flex">
+      <fa-icon [icon]="['fas', 'search']" class="px-2 d-flex align-items-center"></fa-icon>
+      <input class="form-control" placeholder="Busca 'jovenes'" type="search" name="filterHDB" [(ngModel)]="filterHDB">
+    </div>
+    <!-- TODO: Verificar el funcionamiento de isClicked -->
+    <ng-container *ngIf="filterHDB.length > 2 || isClicked; else search_message">
+      <div class="btn-group-vertical w-100" role="group">
+        <ng-container *ngFor="let hdb of hdbs | filter:filterHDB | slice:startPagination():endPagination()">
+          <button (click)="open(hdb)" class="btn m-0" [ngStyle]="{'background-color': hdb.color}">
+            <b>{{ hdb.typeHDB | titlecase }}</b>
+            <ng-container *ngIf="hdb.place">
+              <p class="text-capitalize m-0">{{ hdb.place | place }}</p>
+            </ng-container>
+          </button>
+        </ng-container>
+        <div class="pt-3 w-100 d-flex flex-column align-items-center">
+          <span>{{(hdbs | filter:filterHDB)?.length}} resultados</span>
+          <ngb-pagination [collectionSize]="(hdbs | filter:filterHDB)?.length" [(page)]="page" [pageSize]="itemsPerPage"
+            class="pagination-primary">
+          </ngb-pagination>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #search_message>
+      <div class="alert alert-primary">
+        Puedes buscar un hogar de bendición de acuerdo a los siguientes criterios:
+        <ul>
+          <li>Por el tipo de hogar de bendición eg. damas</li>
+          <li>Por día eg. lunes</li>
+          <li>Por una referencia de ubicación eg. las peñas</li>
+        </ul>
+      </div>
+    </ng-template>
+  </div>
+</ng-container>
+
+  <app-card></app-card>
+  <app-card-v2></app-card-v2>

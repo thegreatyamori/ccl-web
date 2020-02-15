@@ -8,8 +8,8 @@ export const environment = {
   // api: "http://mobile.ccloja.com/api/",
   // api: "http://localhost/ccl/api/",
   // radio: "http://174.142.126.11:9942/;"
-  radio: "http://listen.radioking.com/radio/226162/stream/269701",
-  // radio: "http://rfcmedia.streamguys1.com/MusicPulse.mp3"
+  // radio: "http://listen.radioking.com/radio/226162/stream/269701",
+  radio: "http://rfcmedia.streamguys1.com/MusicPulse.mp3"
 };
 
 /*

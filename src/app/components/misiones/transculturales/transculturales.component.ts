@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { Settings } from 'src/app/models/config';
 import { Mision, Misiones } from 'src/app/models/misiones';
 import { MisionesService } from 'src/app/services/misiones.service';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Settings } from 'src/config/config';
 
 @Component({
   selector: "app-transculturales",

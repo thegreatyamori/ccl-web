@@ -1,0 +1,31 @@
+.hdb-type {
+  display: flex;
+  place-items: center;
+  justify-content: space-between;
+
+  span {
+    margin: 0;
+  }
+}
+
+.hdb-list {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 60px;
+
+  span {
+    margin-top: initial;
+    margin-bottom: initial;
+  }
+  span.hdb-day {
+    line-height: 0.5;
+  }
+}
+
+.hdb-whatsapp {
+  background-color: transparent;
+
+  &:hover,
+  &:not(:disabled):not(.disabled):active {
+    background-color: transparent !important;
+  }
+}

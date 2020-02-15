@@ -13,13 +13,12 @@
 
 import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { NgbTabChangeEvent } from "@ng-bootstrap/ng-bootstrap";
 import { trigger, transition, animate, style } from "@angular/animations";
+import { NgbTabChangeEvent } from "@ng-bootstrap/ng-bootstrap";
 import { NgxSpinnerService } from "ngx-spinner";
-
 import { RootObject as Res, Tab } from "src/app/models/quienesSomos";
 import { QuienesSomosService } from "src/app/services/quienes-somos.service";
-import { Settings } from 'src/app/models/config';
+import { Settings } from 'src/config/config';
 
 @Component({
   selector: "app-quienes-somos",

@@ -1,0 +1,68 @@
+/**
+  * Si se cambian los colores de las clases, cambiar en:
+  * src\config\config.ts
+  */
+
+$base-color: #9E9E9E;
+$secondary-color: #212529;
+$active-color: #009688;
+
+$hover-color: $secondary-color;
+$stroke-color: $secondary-color;
+
+$jovenes-color: #C56060;
+$damas-color: #8660C5;
+$caballeros-color: #383838;
+$matrimonios-color: #607CC5;
+
+svg#svg_map {
+  path {
+    fill: $base-color;
+    stroke: $stroke-color;
+    cursor: pointer;
+    transition: fill 0.3s;
+
+    &:hover {
+      fill: $hover-color;
+    }
+
+    &:active {
+      fill: $active-color;
+    }
+  }
+
+  #brujula {
+    path {
+      fill: initial;
+      stroke: initial;
+    }
+  }
+}
+
+.btn-group {
+  button {
+    border-radius: 0;
+  }
+}
+
+
+/**
+  * Si se cambian los nombres de las clases, cambiar en:
+  * src\config\config.ts
+  */
+
+.base {
+  fill: $active-color !important;
+}
+.jovenes {
+  fill: $jovenes-color !important;
+}
+.damas {
+  fill: $damas-color !important;
+}
+.caballeros {
+  fill: $caballeros-color !important;
+}
+.matrimonios {
+  fill: $matrimonios-color !important;
+}

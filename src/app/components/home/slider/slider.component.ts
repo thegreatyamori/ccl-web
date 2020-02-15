@@ -12,7 +12,7 @@ import { Component, OnInit } from "@angular/core";
 import { HomeService } from "src/app/services/home.service";
 import { RootObject as Res, Slide } from "src/app/models/slide";
 import { Carousel } from "src/app/models/carousel";
-import { Settings } from "src/app/models/config";
+import { Settings } from 'src/config/config';
 
 @Component({
   selector: "app-slider",

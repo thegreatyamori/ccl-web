@@ -1,0 +1,50 @@
+<ng-container *ngIf="isDevice()">
+  <div id="hdb_card" class="card text-center text-light m-0" [ngStyle]="{'background-color': data.color}">
+    <div class="p-1 pr-5 pl-3 hdb-type">
+      <div (click)="close()" class="p-2" ngbTooltip="Haz click aquí para regresar"
+        placement="right">
+        <fa-icon [icon]="['fas', 'arrow-left']"></fa-icon>
+      </div>
+      <span class="h4 font-weight-bold">{{ data.typeHDB | uppercase }}</span>
+      <span></span>
+    </div>
+    <div class="list-group hdb-list p-4">
+      <div class="m-auto">
+        <img alt="{{ data.name }}" class="w-50 rounded-circle img-raised" [src]="data.image | sanitizeUrl">
+      </div>
+      <p class="h3">{{ data.name }}</p>
+      <span class="h3 font-weight-bold hdb-day">{{ data.day | uppercase }}</span>
+      <span class="h4">{{ data.hour }}</span>
+      <div class="list-group m-auto text-left">
+        <ng-container *ngIf="data.place">
+          <span class="h5">
+            <fa-icon [icon]="['fas', 'map-marked-alt']" class="mr-3"></fa-icon>
+            <span class="text-capitalize">{{ data.place | place }}</span>
+          </span>
+        </ng-container>
+        <span class="h5 d-flex align-items-center">
+          <fa-icon [icon]="['fas', 'directions']" class="mr-3"></fa-icon>
+          <span>{{ data.reference }}</span>
+        </span>
+        <span class="h5">
+          <fa-icon [icon]="['fas', 'phone']" class="mr-3"></fa-icon>
+          <span>{{ data.telephone | phone:phoneType(data.telephone) }}</span>
+        </span>
+        <ng-container *ngIf="data.alternative">
+          <span class="h5">
+            <fa-icon [icon]="['fas', 'phone']" class="mr-3"></fa-icon>
+            <span>{{ data.alternative | phone:phoneType(data.alternative) }}</span>
+          </span>
+        </ng-container>
+      </div>
+    </div>
+    <ng-container *ngIf="validateWhatsPhone()">
+      <button ngbTooltip="Envía un mensaje!" class="btn btn-block hdb-whatsapp m-0" (click)="openWhatsapp()">
+        <span class="h4 font-weight-bold">
+          <fa-icon [icon]="['fab', 'whatsapp']" class="mr-3"></fa-icon>
+          <span>Whatsapp</span>
+        </span>
+      </button>
+    </ng-container>
+  </div>
+</ng-container>

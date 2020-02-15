@@ -74,7 +74,7 @@ export class HeaderComponent implements OnInit {
    * Despliega el sidebar
    */
   sidebarOpen(): void {
-    const html = this.document.getElementsByTagName("html")[0];
+    const html = this.document.querySelector("html");
 
     setTimeout(() => {
       this.renderer.addClass(this.toggleButton.nativeElement, "toggled");
@@ -88,7 +88,7 @@ export class HeaderComponent implements OnInit {
    * Cierra el sidebar
    */
   sidebarClose(): void {
-    const html = this.document.getElementsByTagName("html")[0];
+    const html = this.document.querySelector("html");
 
     this.renderer.removeClass(this.toggleButton.nativeElement, "toggled");
     this.sidebarVisible = false;
@@ -97,6 +97,6 @@ export class HeaderComponent implements OnInit {
 
   sidebarToggle(): void {
     if (!this.sidebarVisible) this.sidebarOpen();
-    else if (this.sidebarVisible) this.sidebarClose();
+    else this.sidebarClose();
   }
 }

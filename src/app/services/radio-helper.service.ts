@@ -15,9 +15,9 @@ export class RadioHelperService {
   private isRadioPageActive = new BehaviorSubject<boolean>(true);
 
   // Convertimos el BehaviorSubject en un observable
-  public audioState = this.audioControl.asObservable();
-  public customVolume = this.volume.asObservable();
-  public miniPlayerActive = this.isRadioPageActive.asObservable();
+  audioState = this.audioControl.asObservable();
+  customVolume = this.volume.asObservable();
+  miniPlayerActive = this.isRadioPageActive.asObservable();
 
   constructor() {}
 
@@ -26,7 +26,7 @@ export class RadioHelperService {
    * alternar entre play/pause
    * @param state el estado a cambiar
    */
-  public manageAudio(options: audioManager): void {
+  manageAudio(options: audioManager): void {
     this.audioControl.next(options);
     // console.log(options);
   }
@@ -36,7 +36,7 @@ export class RadioHelperService {
    * el sonido.
    * @param volume el valor del volumen en el rango [0, 1]
    */
-  public changeVolume(volume: number): void {
+  changeVolume(volume: number): void {
     this.volume.next(volume);
   }
 
@@ -45,7 +45,7 @@ export class RadioHelperService {
    * permitiendo alternar entre el reproductor full/mini.
    * @param state el estado a cambiar
    */
-  public playerHidden(state: boolean): void {
+  playerHidden(state: boolean): void {
     this.isRadioPageActive.next(state);
   }
 }

@@ -43,3 +43,14 @@ export interface LightHDB {
   image: string;
   color: string;
 }
+
+export interface StateHDB {
+  id: string;
+  state: boolean;
+}
+
+export interface Filter {
+  name: string;
+  color: string;
+  places: string[];
+}

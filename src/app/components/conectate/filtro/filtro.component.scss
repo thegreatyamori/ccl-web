@@ -1,0 +1,7 @@
+.filter-button {
+  border: 0;
+
+  &:focus {
+    outline-width: 0;
+  }
+}

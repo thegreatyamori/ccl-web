@@ -1,0 +1,21 @@
+<div id="hogares-bendicion" class="section p-0">
+  <ngx-spinner size="large" color="white" type="square-jelly-box" [fullScreen]="false">
+    <p class="text-light">Cargando...</p>
+  </ngx-spinner>
+
+  <div class="container">
+    <h2 class="title text-center m-0">Tenemos un lugar para ti !</h2>
+    <p class="h5 text-center mb-3">Puedes encontrarnos en varias partes de la ciudad.</p>
+    <div class="row">
+      <ng-container *ngIf="isDesktop">
+        <div id="lojaMap" [ngClass]="{'loja-map col-lg-8': isDesktop}">
+          <app-mapa></app-mapa>
+        </div>
+      </ng-container>
+
+      <div [ngClass]="{'col-md-8 m-auto': isTablet, 'col-lg-4': isDesktop, 'col-12': isMobile}">
+        <app-buscador></app-buscador>
+      </div>
+    </div>
+  </div>
+</div>

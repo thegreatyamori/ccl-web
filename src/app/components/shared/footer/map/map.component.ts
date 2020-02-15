@@ -8,7 +8,7 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, TemplateRef } from "@angular/core";
 import { NgbModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
@@ -25,7 +25,7 @@ export class MapComponent implements OnInit {
    * Recibe el ng-template a abrir
    * @param content TemplateRef
    */
-  open(content: any): void {
+  open(content: TemplateRef<any>): void {
     this.modalService.open(content, { size: "xl", centered: true });
   }
 }

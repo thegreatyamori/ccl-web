@@ -15,7 +15,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 import { PastoresService } from "src/app/services/pastores.service";
 
 import { RootObject as Res, Pastor } from "src/app/models/pastores";
-import { Settings } from "src/app/models/config";
+import { Settings } from 'src/config/config';
 
 @Component({
   selector: "app-cuerpo-pastoral",

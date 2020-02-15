@@ -15,12 +15,14 @@ import { environment } from "src/environments/environment";
 import { RootObject as HDBs, LightHDB, HDB } from "src/app/models/hdb";
 import { Observable, throwError } from "rxjs";
 import { map, catchError } from "rxjs/operators";
+import { Settings } from 'src/config/config';
 
 @Injectable({
   providedIn: "root"
 })
 export class HdbService {
   private uri: string = environment.api + "hdb.php";
+  private baseTheme = Settings.base_theme;
 
   constructor(private http: HttpClient) {}
 
@@ -65,14 +67,10 @@ export class HdbService {
         ? `${firstName} & ${surName}`
         : `${firstName} ${surName}`;
     hdb.image = hdb.image || "assets/img/logo.png";
-    hdb.color =
-      hdb.typeHDB === "jovenes"
-        ? "#C56060"
-        : hdb.typeHDB === "damas"
-        ? "#8660C5"
-        : hdb.typeHDB === "caballeros"
-        ? "#383838"
-        : "#607CC5";
+    if (hdb.typeHDB === "jovenes") hdb.color = this.baseTheme.colors.jovenes;
+    if (hdb.typeHDB === "damas") hdb.color = this.baseTheme.colors.damas;
+    if (hdb.typeHDB === "caballeros") hdb.color = this.baseTheme.colors.caballeros;
+    if (hdb.typeHDB === "matrimonios") hdb.color = this.baseTheme.colors.matrimonios;
 
     return hdb;
   }

@@ -1,9 +1,9 @@
 import { Component, OnInit } from "@angular/core";
 import { Title } from "@angular/platform-browser";
-import { Settings } from "src/app/models/config";
 import { NgxSpinnerService } from "ngx-spinner";
 import { MisionesService } from "src/app/services/misiones.service";
 import { Misiones, Mision } from "src/app/models/misiones";
+import { Settings } from 'src/config/config';
 
 @Component({
   selector: "app-campos-blancos",

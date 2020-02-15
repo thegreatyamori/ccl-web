@@ -1,0 +1,61 @@
+<ng-container *ngIf="isDevice()">
+  <div class="bt" (touchstart)="swipe($event)" (touchend)="swipe($event)">
+    <div class="p-4 bt-body animation text-white" [ngStyle]="{'background-color': data.color}">
+      <div class="bt-swipe-down-hand">
+        <img src="assets/img/conectate/swipe-down-hand.svg">
+      </div>
+
+      <div class="container">
+        <div class="separator bg-white my-0"></div>
+        <div class="text-center">
+          <h4 class="font-weight-bold my-2">{{ data.typeHDB | uppercase }}</h4>
+        </div>
+
+        <div class="row hdb-row p-4">
+          <div class="col-12 col-md-6 text-center">
+            <img alt="{{ data.name }}" class="rounded-circle" [src]="data.image | sanitizeUrl"
+              [ngClass]="{'w-50': isMobile, 'w-75': isTablet}">
+          </div>
+
+          <div class="col-12 col-md-6">
+            <div class="list-group">
+              <span class="h3 mb-0 my-md-3">{{ data.name }}</span>
+              <span class="h3 font-weight-bold mb-0">{{ data.day | uppercase }}</span>
+              <span class="h4 mt-0">{{ data.hour }}</span>
+              <ng-container *ngIf="data.place">
+                <span class="h5 m-0 mb-md-3">
+                  <fa-icon [icon]="['fas', 'map-marked-alt']" class="mr-3"></fa-icon>
+                  <span class="text-capitalize">{{ data.place | place }}</span>
+                </span>
+              </ng-container>
+              <span class="h5 m-0 mb-md-3 d-flex align-items-center">
+                <fa-icon [icon]="['fas', 'directions']" class="mr-3"></fa-icon>
+                <span>{{ data.reference }}</span>
+              </span>
+              <span class="h5 m-0 mb-md-3">
+                <fa-icon [icon]="['fas', 'phone']" class="mr-3"></fa-icon>
+                <span>{{ data.telephone | phone:phoneType(data.telephone) }}</span>
+              </span>
+              <ng-container *ngIf="data.alternative">
+                <span class="h5 m-0 mb-md-3">
+                  <fa-icon [icon]="['fas', 'phone']" class="mr-3"></fa-icon>
+                  <span>{{ data.alternative | phone:phoneType(data.alternative) }}</span>
+                </span>
+              </ng-container>
+              <ng-container *ngIf="validateWhatsPhone()">
+                <button class="btn btn-block hdb-whatsapp m-0" (click)="openWhatsapp()">
+                  <span class="h4 font-weight-bold">
+                    <fa-icon [icon]="['fab', 'whatsapp']" class="mr-3"></fa-icon>
+                    <span>Whatsapp</span>
+                  </span>
+                </button>
+              </ng-container>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="bt-background"></div>
+</ng-container>

@@ -10,7 +10,7 @@
 
 import { Component, OnInit } from "@angular/core";
 import { Carousel } from "src/app/models/carousel";
-import { Settings } from 'src/app/models/config';
+import { Settings } from 'src/config/config';
 
 @Component({
   selector: "sponsor-slider",
@@ -18,29 +18,30 @@ import { Settings } from 'src/app/models/config';
   styleUrls: ["./sponsor-slider.component.scss"]
 })
 export class SponsorSliderComponent implements OnInit {
-  customOptions: Carousel = {
-    loop: true,
-    mouseDrag: true,
-    touchDrag: true,
-    pullDrag: false,
-    dots: false,
-    navSpeed: 700,
-    navText: ["", ""],
-    autoplayTimeout: 3500,
-    autoplaySpeed: 1000,
-    autoplay: true,
-    responsive: {
-      0: {
-        items: 1
-      }
-    },
-    nav: false
-  };
+  customOptions: Carousel;
   sponsors: any;
 
   constructor() {}
 
   ngOnInit() {
     this.sponsors = Settings.sponsors;
+    this.customOptions = {
+      loop: true,
+      mouseDrag: true,
+      touchDrag: true,
+      pullDrag: false,
+      dots: false,
+      navSpeed: 700,
+      navText: ["", ""],
+      autoplayTimeout: 3500,
+      autoplaySpeed: 1000,
+      autoplay: true,
+      responsive: {
+        0: {
+          items: 1
+        }
+      },
+      nav: false
+    };
   }
 }

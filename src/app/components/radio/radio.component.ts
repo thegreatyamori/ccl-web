@@ -13,7 +13,7 @@
 import { Component, OnInit, Inject } from "@angular/core";
 import { Title } from "@angular/platform-browser";
 import { NAVIGATOR } from "src/app/services/navigator.service";
-import { Settings } from 'src/app/models/config';
+import { Settings } from 'src/config/config';
 
 @Component({
   selector: "app-radio",
@@ -31,50 +31,51 @@ export class RadioComponent implements OnInit {
   ngOnInit() {
     this.titleDocument.setTitle("CCL Radio");
     this.settings = Settings.radio;
-    // this.mediaSession();
+    this.mediaSession();
   }
 
-  // mediaSession() {
-  //   // mediaSession docs in: https://developers.google.com/web/updates/2017/02/media-session
-  //   // only supported by Chrome & Microsoft Egde
-  //   if ("mediaSession" in this.navigator) {
-  //     this.navigator.mediaSession.metadata = new MediaMetadata({
-  //       title: "Radio CCL",
-  //       artist: "",
-  //       album: "",
-  //       artwork: [
-  //         {
-  //           src: "assets/img/radio/logo.png",
-  //           sizes: "96x96",
-  //           type: "image/png"
-  //         },
-  //         {
-  //           src: "assets/img/radio/logo.png",
-  //           sizes: "128x128",
-  //           type: "image/png"
-  //         },
-  //         {
-  //           src: "assets/img/radio/logo.png",
-  //           sizes: "192x192",
-  //           type: "image/png"
-  //         },
-  //         {
-  //           src: "assets/img/radio/logo.png",
-  //           sizes: "256x256",
-  //           type: "image/png"
-  //         },
-  //         {
-  //           src: "assets/img/radio/logo.png",
-  //           sizes: "384x384",
-  //           type: "image/png"
-  //         },
-  //         {
-  //           src: "assets/img/radio/logo.png",
-  //           sizes: "512x512",
-  //           type: "image/png"
-  //         }
-  //       ]
-  //     });
-  //   }
-  // }
+  mediaSession() {
+    // mediaSession docs in: https://developers.google.com/web/updates/2017/02/media-session
+    // only supported by Chrome & Microsoft Egde
+    // if ("mediaSession" in this.navigator) {
+    //   // @ts-ignore
+    //   this.navigator.mediaSession.metadata = new MediaMetadata({
+    //     title: "Radio CCL",
+    //     artist: "",
+    //     album: "",
+    //     artwork: [
+    //       {
+    //         src: "assets/img/radio/logo.png",
+    //         sizes: "96x96",
+    //         type: "image/png"
+    //       },
+    //       {
+    //         src: "assets/img/radio/logo.png",
+    //         sizes: "128x128",
+    //         type: "image/png"
+    //       },
+    //       {
+    //         src: "assets/img/radio/logo.png",
+    //         sizes: "192x192",
+    //         type: "image/png"
+    //       },
+    //       {
+    //         src: "assets/img/radio/logo.png",
+    //         sizes: "256x256",
+    //         type: "image/png"
+    //       },
+    //       {
+    //         src: "assets/img/radio/logo.png",
+    //         sizes: "384x384",
+    //         type: "image/png"
+    //       },
+    //       {
+    //         src: "assets/img/radio/logo.png",
+    //         sizes: "512x512",
+    //         type: "image/png"
+    //       }
+    //     ]
+    //   });
+    // }
+  }
 }
