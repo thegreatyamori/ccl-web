@@ -11,6 +11,7 @@
 import { Component, OnInit } from "@angular/core";
 import { DeviceDetectorService } from "ngx-device-detector";
 import { NgxSpinnerService } from "ngx-spinner";
+import { Timeout } from 'src/app/classes/timeout';
 
 @Component({
   selector: "app-hogares-bendicion",
@@ -35,11 +36,9 @@ export class HogaresBendicionComponent implements OnInit {
     this.showSpinner();
   }
 
-  private delay = (t: number) => new Promise(resolve => setTimeout(resolve, t));
-
   showSpinner() {
     this.spinner.show();
 
-    this.delay(3000).then(() => this.spinner.hide());
+    Timeout.delay(3000).then(() => this.spinner.hide());
   }
 }

@@ -57,7 +57,7 @@ export class Settings {
   // Tow-dah
   public static towdah: any = {
     bg_image: "assets/img/home/bg-buttons-bar.svg",
-    logo: "assets/img/home/tow-dah.jpeg",
+    logo: "assets/img/home/tow-dah-150.jpg",
     bg_image_tow: "assets/img/home/bg-tow-dah.jpg",
     social: [
       {

@@ -45,7 +45,7 @@
           <p>{{ mision.servants_description }}</p>
           <ng-container *ngIf="mision.main_image">
             <div class="d-flex justify-content-center">
-              <img class="w-75" [src]="mision.main_image" [alt]="mision.mission_sector">
+              <img class="w-75 h-75 m-auto" [src]="mision.main_image" [alt]="mision.mission_sector">
             </div>
           </ng-container>
         </div>
@@ -57,7 +57,7 @@
           <p>{{ mision.servants_message }}</p>
           <ng-container *ngIf="mision.servants_image">
             <div class="d-flex justify-content-center">
-              <img class="w-50" [src]="mision.servants_image" [alt]="mision.mission_name">
+              <img class="w-50 h-50 m-auto" [src]="mision.servants_image" [alt]="mision.mission_name">
             </div>
           </ng-container>
         </div>

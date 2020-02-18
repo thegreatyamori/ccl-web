@@ -10,6 +10,7 @@
 
 import { Component, OnInit } from "@angular/core";
 import { Settings } from 'src/config/config';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
   selector: "app-tow-dah",
@@ -18,10 +19,14 @@ import { Settings } from 'src/config/config';
 })
 export class TowDahComponent implements OnInit {
   settings: any;
+  isMobile: boolean;
+  isDesktop: boolean;
 
-  constructor() {}
+  constructor(private deviceDetector: DeviceDetectorService) {}
 
   ngOnInit() {
     this.settings = Settings.towdah;
+    this.isDesktop = this.deviceDetector.isDesktop();
+    this.isMobile = this.deviceDetector.isMobile();
   }
 }
