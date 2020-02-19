@@ -6,27 +6,25 @@ import { NgxSpinnerModule } from "ngx-spinner";
 import { PipeModule } from '../shared/pipe.module';
 import { LazyLoadImageModule } from "ng-lazyload-image";
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DirectivesModule } from '../shared/directives.module';
 
 import { MisionesRoutingModule } from "./misiones-routing.module";
 import { MisionesComponent } from "./misiones.component";
-import { TransculturalesComponent } from "./transculturales/transculturales.component";
-import { FilialesComponent } from "./filiales/filiales.component";
-import { CamposBlancosComponent } from "./campos-blancos/campos-blancos.component";
+import { DetailComponent } from './detail/detail.component';
 import { ModalComponent } from './modal/modal.component';
 
 @NgModule({
   declarations: [
     MisionesComponent,
-    TransculturalesComponent,
-    FilialesComponent,
-    CamposBlancosComponent,
-    ModalComponent
+    ModalComponent,
+    DetailComponent
   ],
   imports: [
     NgbModule,
     PipeModule,
     CommonModule,
     FooterModule,
+    DirectivesModule,
     NgxSpinnerModule,
     FontAwesomeModule,
     LazyLoadImageModule,

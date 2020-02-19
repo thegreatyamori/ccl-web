@@ -17,7 +17,7 @@
     </div>
   </header>
 
-  <section id="cuerpo-pastoral" class="parallax-container section section-md-post pb-0">
+  <section id="misiones-detalle" class="parallax-container section section-md-post pb-0">
     <div class="container container-md-post">
       <div class="row">
         <div class="col-md-10 m-auto">
@@ -30,38 +30,45 @@
                 </div>
                 <div class="px-4 pt-4">
                   <p class="card-description text-center">
-                    El Centro Cristiano de Loja, actualmente cuenta con {{ transculturales.length }} proyectos misioneros en el mundo.
+                    El Centro Cristiano de Loja, actualmente posee {{ misiones.length }}
+                    <b>{{ settings.title }}</b>
+                    en la provincia de Loja.
                   </p>
                 </div>
                 <button class="btn btn-simple">Felicidades</button>
               </div>
             </div>
             <ng-container *ngIf="status">
-              <ng-container *ngFor="let transcultural of transculturales;">
+              <ng-container *ngFor="let mision of misiones;">
                 <div class="col-12 col-md-6 col-lg-4">
                   <div class="card">
                     <div class="card-image">
-                      <ng-container *ngIf="transcultural.main_image">
-                        <img [src]="transcultural.main_image | sanitizeUrl" [alt]="transcultural.mission_name"
-                          [title]="transcultural.mission_name">
+                      <ng-container *ngIf="mision.main_image">
+                        <img [src]="mision.main_image | sanitizeUrl" [alt]="mision.mission_name"
+                          [title]="mision.mission_name">
                       </ng-container>
                     </div>
                     <div class="card-body">
-                      <h6 class="text-primary">{{ transcultural.mission_sector }}</h6>
-                      <h5 class="card-title">{{ transcultural.mission_name }}</h5>
+                      <h6 class="text-primary">{{ mision.mission_sector }}</h6>
+                      <h5 class="card-title">{{ mision.mission_name }}</h5>
                       <div class="d-flex justify-content-between align-items-center">
-                        <ng-container *ngIf="transcultural.servants_image">
-                          <img alt="misionero" class="w-25 rounded-circle img-raised"
-                          [src]="transcultural.servants_image | sanitizeUrl">
+                        <ng-container *ngIf="mision.servants_image">
+                          <img alt="obrero" class="w-25 rounded-circle img-raised"
+                            [src]="mision.servants_image | sanitizeUrl">
                         </ng-container>
                         <div class="d-flex flex-column">
-                          <span class="badge badge-primary">{{ transcultural.mission_type }}</span>
-                          <span class="badge badge-success">{{ transcultural.mission_support }}</span>
+                          <span class="badge badge-primary">{{ mision.mission_type }}</span>
+                          <ng-container *ngIf="mision.mission_locale">
+                            <span class="badge badge-success">{{ mision.mission_locale }}</span>
+                          </ng-container>
+                          <ng-container *ngIf="mision.mission_support">
+                            <span class="badge badge-success">{{ mision.mission_support }}</span>
+                          </ng-container>
                         </div>
                       </div>
 
                       <div class="d-flex justify-content-center">
-                        <app-modal [data]="transcultural"></app-modal>
+                        <app-modal [data]="mision"></app-modal>
                       </div>
                     </div>
                   </div>

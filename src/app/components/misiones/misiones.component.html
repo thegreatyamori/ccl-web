@@ -9,7 +9,7 @@
             <h3 class="m-0">{{ card.title }}</h3>
             <p class="card-text">{{ card.text }}</p>
             <ng-container *ngIf="card.btnText">
-              <a [ngClass]="card.btnColor" class="btn btn-round" [routerLink]="card.link">{{ card.btnText }}</a>
+              <a [ngClass]="card.btnColor" class="btn btn-round" [routerLink]="[card.link]">{{ card.btnText }}</a>
             </ng-container>
           </div>
         </div>
