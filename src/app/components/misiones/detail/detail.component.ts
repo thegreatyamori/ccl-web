@@ -3,6 +3,7 @@ import { Title } from "@angular/platform-browser";
 import { ActivatedRoute } from '@angular/router';
 import { NgxSpinnerService } from "ngx-spinner";
 import { MisionesService } from "src/app/services/misiones.service";
+import { WINDOW } from 'src/app/services/window.service';
 import { Misiones, Mision } from "src/app/models/misiones";
 import { Settings } from "src/config/config";
 
@@ -20,7 +21,8 @@ export class DetailComponent implements OnInit {
     private titleDocument: Title,
     private route: ActivatedRoute,
     private rest: MisionesService,
-    private spinner: NgxSpinnerService
+    private spinner: NgxSpinnerService,
+    @Inject(WINDOW) private window: Window
   ) {}
 
   ngOnInit() {
@@ -107,5 +109,39 @@ export class DetailComponent implements OnInit {
       this.misiones = data.res;
       this.spinner.hide();
     });
+  }
+
+  shoot() {
+    try {
+      this.confetti({
+        startVelocity: 30,
+        spread: 360,
+        ticks: 60,
+        shapes: ["square"],
+        origin: {
+          x: Math.random(),
+          // since they fall down, start a bit higher than random
+          y: 0
+        }
+      });
+    } catch (error) {
+      console.error("noop, confettijs may not be loaded yet");
+    }
+  }
+  private random(min: number, max: number) {
+    return Math.random() * (max - min) + min;
+  }
+  private confetti(args: any) {
+    const end = Date.now() + 15 * 1000;
+
+    const interval = setInterval(() => {
+      if (Date.now() > end) {
+        return clearInterval(interval);
+      }
+
+      this.window["confetti"].apply(this, args);
+    }, 200);
+
+    // return this.window["confetti"].apply(this, args);
   }
 }
