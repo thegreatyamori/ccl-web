@@ -49,8 +49,25 @@ export interface StateHDB {
   state: boolean;
 }
 
-export interface Filter {
-  name: string;
-  color: string;
-  places: string[];
+export interface MapState {
+  isActive: boolean;
+  place: string;
+}
+
+export interface FilterState {
+  title: string;
+  type: boolean;
+  day: boolean;
+}
+
+export interface ColorState {
+  classMap: string;
+  classStroke: string;
+  classBg: string;
+}
+
+export interface SVGTag {
+  type: string;
+  attributes: any;
+  children?: any;
 }

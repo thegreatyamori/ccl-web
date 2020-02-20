@@ -1,8 +1,9 @@
 import { Component, OnInit, Input, Output } from "@angular/core";
 import { EventEmitter } from "@angular/core";
 import { HdbHelperService } from "src/app/services/hdb-helper.service";
-import { LightHDB, Filter } from "src/app/models/hdb";
+import { LightHDB, FilterState } from "src/app/models/hdb";
 import { Settings } from "src/config/config";
+import { Title } from "src/app/classes/title";
 
 @Component({
   selector: "button-filtro",
@@ -10,23 +11,17 @@ import { Settings } from "src/config/config";
   styleUrls: ["./filtro.component.scss"]
 })
 export class FiltroComponent implements OnInit {
-  dropdown: { title: string; type: boolean; day: boolean };
+  dropdown: FilterState;
   hdbs: LightHDB[];
 
   @Input() color: string;
-  @Output("reset") onReset = new EventEmitter<string>();
-  @Output("filter") onFilter = new EventEmitter<Filter>();
+  @Output("filter") onFilter = new EventEmitter<string[]>();
 
   constructor(private helper: HdbHelperService) {}
 
   ngOnInit(): void {
-    this.dropdown = {
-      title: "Filtrar",
-      type: false,
-      day: false
-    };
-
     this.getData();
+    this.getFilterState();
   }
 
   /**
@@ -34,42 +29,50 @@ export class FiltroComponent implements OnInit {
    */
   getData(): void {
     this.helper.hdbs$.subscribe((hdbs: LightHDB[]) => (this.hdbs = hdbs));
+  }
 
-    // cambiamos la visibilidad del buscador
-    // TODO: revisar si se utiliza este pedazo de codigo
-    // this.helper.isCardActive$.subscribe(
-    //   (state: boolean) => (this.isActive = state)
-    // );
+  /**
+   * Retorna el estado del filtro
+   */
+  getFilterState(): void {
+    this.helper.filterState$.subscribe(
+      (state: FilterState) => (this.dropdown = state)
+    );
   }
 
   /**
    * Muestra el menu para filtrar por tipo
    */
   selectTypeFilter(): void {
-    this.dropdown.title = "Por Tipo";
-    this.dropdown.type = true;
+    this.helper.setFilterState({
+      title: "Por Tipo",
+      type: true,
+      day: false
+    });
   }
 
   /**
    * Muestra el menu para filtrar por día
    */
   selectDayFilter(): void {
-    this.dropdown.title = "Por Día";
-    this.dropdown.day = true;
+    this.helper.setFilterState({
+      title: "Por Día",
+      type: false,
+      day: true
+    });
   }
 
   /**
    * Regresa al menú principal
    */
   back(): void {
-    this.dropdown = {
+    this.helper.setFilterState({
       title: "Filtrar",
       type: false,
       day: false
-    };
+    });
 
-    // Emitimos un evento para resetar el coloreado
-    this.onReset.emit("all");
+    this.helper.reset("all");
   }
 
   /**
@@ -78,7 +81,11 @@ export class FiltroComponent implements OnInit {
    */
   filter(key: string): void {
     // cambiamos el titulo del filtro seleccionado
-    this.dropdown.title = this.capitalize(key);
+    this.helper.setFilterState({
+      title: Title.capitalize(key),
+      type: this.dropdown.type,
+      day: this.dropdown.day
+    });
 
     // filtramos los hdbs que coinciden con el dia|lugar, luego
     // mapeamos las ubicaciones de los hdbs resultantes
@@ -95,21 +102,6 @@ export class FiltroComponent implements OnInit {
     // seteamos el color correspondiente
     const color = Settings.base_theme.colors.active;
 
-    this.onFilter.emit({
-      name: key,
-      color: color,
-      places: ubicaciones
-    });
-  }
-
-  /**
-   * Capitaliza la primera letra de una palabra
-   *  @param str cadena a capitalizar
-   * @returns la cadena capitalizada
-   */
-  private capitalize(str: string): string {
-    return str.replace(/(^|\s)([a-z])/g, (_m, p1, p2) => {
-      return p1 + p2.toUpperCase();
-    });
+    this.onFilter.emit(ubicaciones);
   }
 }

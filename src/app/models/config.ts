@@ -1,6 +1,5 @@
 export interface BaseColors {
   colors: Colors;
-  classes: Colors;
 }
 
 export interface Colors {
@@ -8,6 +7,5 @@ export interface Colors {
   damas: string;
   caballeros: string;
   matrimonios: string;
-  title: string;
   active: string;
 }

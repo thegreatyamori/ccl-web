@@ -1,9 +1,9 @@
 <div class="btn-group w-100" role="group">
-  <button class="btn btn-secondary m-0" [ngStyle]="{'background-color': itemColor}">{{ hoverSector }}</button>
-  <button class="btn btn-secondary m-0" [ngStyle]="{'background-color': itemColor}">{{ titleSector }}</button>
-  <button-filtro [color]="itemColor" (reset)="reset($event)" (filter)="filter($event)"></button-filtro>
+  <button class="btn btn-secondary m-0" [ngClass]="colorState.classBg">{{ hoverSector }}</button>
+  <button class="btn btn-secondary m-0" [ngClass]="colorState.classBg">{{ titleSector }}</button>
+  <button-filtro [color]="colorState.classBg" (filter)="filter($event)"></button-filtro>
 </div>
-<div [ngStyle]="{'border': '1px solid ' + itemColor}">
+<div [ngClass]="colorState.classStroke">
   <svg version="1.1" viewBox="0 0 568.68 362.35" xmlns="http://www.w3.org/2000/svg" id="svg_map">
     <g id="mapa" fill="#bec3cc" stroke="#080342" stroke-linejoin="round">
       <path #path id="PERPETUO_SOCORRO"

@@ -1,0 +1,20 @@
+<ng-container *ngIf="filtered">
+  <div class="btn-group-vertical w-100" role="group">
+    <ng-container *ngFor="let hdb of hdbs | searchFilter:filtered | slice:startPagination():endPagination()">
+      <button (click)="open(hdb)" class="btn m-0" [ngStyle]="{'background-color': hdb.color}">
+        <b>{{ hdb.typeHDB | titlecase }}</b>
+        <ng-container *ngIf="hdb.place">
+          <p class="text-capitalize m-0">{{ hdb.place | place }}</p>
+        </ng-container>
+      </button>
+    </ng-container>
+    <div class="pt-3 w-100 d-flex flex-column align-items-center">
+      <span>{{ (hdbs | searchFilter:filtered)?.length }} resultados</span>
+      <ngb-pagination class="pagination-primary" [(page)]="page" [pageSize]="itemsPerPage"
+        [collectionSize]="(hdbs | searchFilter:filtered)?.length">
+      </ngb-pagination>
+    </div>
+  </div>
+</ng-container>
+
+<app-card-v2></app-card-v2>

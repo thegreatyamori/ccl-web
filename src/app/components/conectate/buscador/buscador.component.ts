@@ -8,84 +8,37 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit, ViewChild } from "@angular/core";
-import {
-  trigger,
-  transition,
-  animate,
-  keyframes,
-  style
-} from "@angular/animations";
-import { LightHDB } from "src/app/models/hdb";
-import { HdbHelperService } from "src/app/services/hdb-helper.service";
-import { BottomSheetService } from "../card-v2/card-v2.service";
+import { Component, OnInit, Renderer2 } from "@angular/core";
 import { DeviceDetectorService } from "ngx-device-detector";
-import { CardV2Component } from "../card-v2/card-v2.component";
+import { HdbHelperService } from "src/app/services/hdb-helper.service";
+import { MapState } from 'src/app/models/hdb';
 
 @Component({
   selector: "app-buscador",
   templateUrl: "./buscador.component.html",
-  styleUrls: ["./buscador.component.scss"],
-  animations: [
-    trigger("ZoomInOut", [
-      transition(":enter", [
-        animate(
-          500,
-          keyframes([
-            style({
-              opacity: 0,
-              transform: "scale3d(0.3, 0.3, 0.3)",
-              offset: 0
-            }),
-            style({ offset: 1 })
-          ])
-        )
-      ]),
-      transition(":leave", [
-        animate(
-          500,
-          keyframes([
-            style({
-              opacity: 0,
-              transform: "scale3d(0.3, 0.3, 0.3)",
-              offset: 1
-            })
-          ])
-        )
-      ])
-    ])
-  ]
+  styleUrls: ["./buscador.component.scss"]
 })
 export class BuscadorComponent implements OnInit {
-  filterHDB: string;
-  isClicked: boolean;
+  word: string;
+  sector: string;
   isActive: boolean;
   isTablet: boolean;
   isMobile: boolean;
-
-  // variables para la paginacion
-  page: number;
-  itemsPerPage: number;
-  previousPage: number;
-
-  hdbs: LightHDB[];
-
-  @ViewChild(CardV2Component) card: CardV2Component;
+  isMapClicked: boolean;
 
   constructor(
-    private helper: HdbHelperService,
     private deviceService: DeviceDetectorService,
-    private bottomSheet: BottomSheetService
+    private helper: HdbHelperService
   ) {}
 
   ngOnInit(): void {
-    this.filterHDB = "";
-    this.isClicked = false;
+    this.word = "";
+    this.sector = "";
     this.isTablet = this.deviceService.isTablet();
     this.isMobile = this.deviceService.isMobile();
-    this.itemsPerPage = 6;
-    this.page = 1;
-    this.getData();
+
+    this.getCardState();
+    this.getMapClicked();
   }
 
   /**
@@ -93,53 +46,49 @@ export class BuscadorComponent implements OnInit {
    * para dispositivos moviles siempre retorna true
    */
   isDevice(): boolean {
-    if (this.isMobile || this.isTablet) {
-      return true;
-    }
+    if (this.isMobile || this.isTablet) return true;
 
     return !this.isActive;
   }
 
   /**
-   * Retorna todos los hogares de bendicion de tipo LightHDB
+   * Obtenemos el estado de la tarjeta, nos permite
+   * cambiar la visibilidad del buscador
    */
-  getData(): void {
-    this.helper.hdbs$.subscribe((hdbs: LightHDB[]) => (this.hdbs = hdbs));
-
-    // cambiamos la visibilidad del buscador
+  getCardState(): void {
     this.helper.isCardActive$.subscribe(
       (state: boolean) => (this.isActive = state)
     );
   }
 
   /**
-   * Retorna el valor inicial segun el resultado del filtro de hdbs
+   * Obtenemos los clicks en el mapa, nos permite
+   * cambiar la visibilidad de la lista
    */
-  startPagination(): number {
-    return (this.page - 1) * this.itemsPerPage;
+  getMapClicked(): void {
+    this.helper.mapClicked$.subscribe((state: MapState) => {
+      this.isMapClicked = state.isActive;
+      this.sector = state.place;
+    });
+  }
+
+  activateList(): boolean {
+    // si la palabra tiene + de 2 letras y el mapa no esta activo
+    return this.word.length > 2 && !this.isMapClicked;
   }
 
   /**
-   * Retorna el valor final en segun el resultado del filtro de hdbs
+   * Resetea el mapa cuando la barra de busqueda esta en foco
    */
-  endPagination(): number {
-    return (this.page - 1) * this.itemsPerPage + this.itemsPerPage;
-  }
+  zoomout(): void {
+    // reset del mapa
+    this.helper.reset("all");
 
-  /**
-   * Permite abrir una tarjeta o un bottomSheet
-   */
-  open(item: LightHDB): void {
-    // cargamos el elemento seleccionado
-    this.helper.setItem(item);
-
-    // cambiamos la visibilidad de la tarjeta
-    this.helper.changeVisibility(true);
-
-    // dependiendo del tipo de dispositivo se abre una tarjeta
-    if (this.isMobile || this.isTablet) {
-      // en dispositivos moviles se abre el modal
-      this.bottomSheet.open(this.card);
-    }
+    // reset del filtro
+    this.helper.setFilterState({
+      title: "Filtrar",
+      type: false,
+      day: false
+    });
   }
 }

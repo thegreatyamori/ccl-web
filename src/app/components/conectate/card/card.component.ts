@@ -63,7 +63,6 @@ export class CardComponent implements OnInit {
    * @param ref TemplateRef
    */
   close(): void {
-    console.log(this.data.place);
     this.helper.changeVisibility(false);
   }
 

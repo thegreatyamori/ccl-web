@@ -33,23 +33,4 @@ export class ConectateComponent implements OnInit {
       logo_title: Settings.conectate.logo_title
     };
   }
-
-  /**
-   * Dibuja un punto dentro de un svg
-   * @param svg elemento svg
-   * @param x centro en x
-   * @param y centro en y
-   */
-  private drawPoint(svg: SVGAElement, x: number, y: number): void {
-    var circle = document.createElementNS(
-      "http://www.w3.org/2000/svg",
-      "circle"
-    );
-    circle.setAttribute("style", "stroke:transparent; fill:green");
-    circle.setAttribute("r", "1");
-    circle.setAttribute("cx", `${x}`);
-    circle.setAttribute("cy", `${y}`);
-
-    svg.appendChild(circle);
-  }
 }

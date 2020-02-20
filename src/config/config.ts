@@ -1,4 +1,3 @@
-import { StateHDB } from "../app/models/hdb";
 import { BaseColors } from "src/app/models/config";
 
 export class Settings {
@@ -179,94 +178,19 @@ export class Settings {
   };
 
   /**
-   * los colores van en rgb
    * cambiar los colores y las clases tambien en:
-   * src\app\components\conectate\mapa\mapa.component.scss
+   * src\assets\sass\hdb-colors.scss
    */
   public static base_theme: BaseColors = {
     colors: {
-      jovenes: "#C56060",
-      damas: "#8660C5",
-      caballeros: "#383838",
-      matrimonios: "#607CC5",
-      title: "#343a40",
+      jovenes: "#ff5722",
+      damas: "#e91e63",
+      caballeros: "#795548",
+      //  caballeros: "#383838",
+      matrimonios: "#4caf50",
       active: "#009688"
-    },
-    classes: {
-      jovenes: "jovenes",
-      damas: "damas",
-      caballeros: "caballeros",
-      matrimonios: "matrimonios",
-      title: "#343a40",
-      active: "base"
     }
   };
-  // HDBs
-  public static hdbs: StateHDB[] = [
-    { id: "PERPETUO_SOCORRO", state: false },
-    { id: "RAMON_PINTO", state: false },
-    { id: "DIECIOCHO_DE_NOVIEMBRE", state: false },
-    { id: "STO_DOMINGO", state: false },
-    { id: "BARRIO_CENTRAL", state: false },
-    { id: "VEINTICUATRO_DE_MAYO", state: false },
-    { id: "ORILLAS_DEL_ZAMORA", state: false },
-    { id: "JUAN_DE_SALINAS", state: false },
-    { id: "ZAMORA_HUAYCO", state: false },
-    { id: "SAN_SEBASTIAN", state: false },
-    { id: "PUCARA", state: false },
-    { id: "GERANIOS", state: false },
-    { id: "LA_PRADERA", state: false },
-    { id: "LOS_ROSALES", state: false },
-    { id: "YAHUARCUNA", state: false },
-    { id: "CAPULI", state: false },
-    { id: "SANTIAGO_FERNANDEZ", state: false },
-    { id: "SAN_CAYETANO", state: false },
-    { id: "LA_ESTANCIA", state: false },
-    { id: "LA_PAZ", state: false },
-    { id: "LA_INMACULADA", state: false },
-    { id: "CHINGUILANCHI", state: false },
-    { id: "AMABLE_MARIA", state: false },
-    { id: "JIPIRO", state: false },
-    { id: "EL_VALLE", state: false },
-    { id: "SAUCES_NORTE", state: false },
-    { id: "ZALAPA", state: false },
-    { id: "MOTUPE", state: false },
-    { id: "LA_BANDA", state: false },
-    { id: "LAS_PITAS", state: false },
-    { id: "CARIGAN", state: false },
-    { id: "LAS_PALMAS", state: false },
-    { id: "ALBORADA", state: false },
-    { id: "GRAN_COLOMBIA", state: false },
-    { id: "BELEN", state: false },
-    { id: "TURUNUMA", state: false },
-    { id: "CLODOVEO", state: false },
-    { id: "SAN_JOSE", state: false },
-    { id: "CELI_ROMAN", state: false },
-    { id: "SAN_VICENTE", state: false },
-    { id: "EL_PEDESTAL", state: false },
-    { id: "BORJA", state: false },
-    { id: "PLATEADO", state: false },
-    { id: "BOLONIA", state: false },
-    { id: "OBRAPIA", state: false },
-    { id: "TIERRAS_COLORADAS", state: false },
-    { id: "CAPULI_LOMA", state: false },
-    { id: "MIRAFLORES", state: false },
-    { id: "MENFIS", state: false },
-    { id: "CHONTACRUZ", state: false },
-    { id: "HEROES_DEL_CENEPA", state: false },
-    { id: "DANIEL_ALVAREZ", state: false },
-    { id: "JUAN_JOSE_CASTILLO", state: false },
-    { id: "ST_TERESITA", state: false },
-    { id: "LA_TEBAIDA", state: false },
-    { id: "SAN_PEDRO", state: false },
-    { id: "ISIDRO_AYORA", state: false },
-    { id: "COLINAS_LOJANAS", state: false },
-    { id: "SOL_DE_LOS_ANDES", state: false },
-    { id: "SAN_ISIDRO", state: false },
-    { id: "CIUDAD_ALEGRIA", state: false },
-    { id: "LA_ARGELIA", state: false },
-    { id: "FUERA_DE_LA_CIUDAD", state: false }
-  ];
 
   // -------------------------------------------------------
   // Radio

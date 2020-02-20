@@ -18,9 +18,9 @@ import {
   ElementRef
 } from "@angular/core";
 import { HdbHelperService } from "src/app/services/hdb-helper.service";
-import { BaseColors } from "src/app/models/config";
 import { Settings } from "src/config/config";
-import { Filter } from "src/app/models/hdb";
+import { LightHDB, FilterState, ColorState } from "src/app/models/hdb";
+import { Title } from "src/app/classes/title";
 
 @Component({
   selector: "app-mapa",
@@ -31,24 +31,26 @@ export class MapaComponent implements OnInit, AfterViewInit {
   titleSector: string;
   hoverSector: string;
   itemColor: string;
-  filterName: string;
-  filterColor: string;
-  colorClass: string;
-  baseTheme: BaseColors;
+  filterPlaces: string[];
+  filterState: FilterState;
+  colorState: ColorState;
   paths: SVGAElement[];
+
+  // variable donde se van a almacenar los hdbs
+  _hdbs: LightHDB[];
 
   @ViewChildren("path") pathsRef: QueryList<ElementRef>;
 
   constructor(private renderer: Renderer2, private helper: HdbHelperService) {}
 
   ngOnInit(): void {
-    this.baseTheme = Settings.base_theme;
     this.titleSector = Settings.msg_mapa.click;
     this.hoverSector = Settings.msg_mapa.hover;
-    this.itemColor = this.baseTheme.colors.title;
-    this.colorClass = this.baseTheme.classes.active;
-    this.filterName = "";
-    this.filterColor = "";
+    this.filterPlaces = [];
+
+    this.getData();
+    this.getFilterState();
+    this.getColorState();
   }
 
   ngAfterViewInit(): void {
@@ -57,7 +59,12 @@ export class MapaComponent implements OnInit, AfterViewInit {
       .map(el => {
         // añadimos un listener para que escuche todos los clicks en los paths
         this.renderer.listen(el, "click", (evt: MouseEvent) => {
-          this.zoom(evt);
+          // verificamos si hay filtros activos
+          if (this.filterState.title !== "Filtrar") {
+            // verificamos si el elemento clickado es uno de los activos
+            const place = this.filterPlaces.find(item => item === el.id);
+            if (place) this.zoom(evt);
+          } else this.zoom(evt);
         });
 
         // añadimos un listener para que escuche todos los mouseenter en los paths
@@ -73,8 +80,37 @@ export class MapaComponent implements OnInit, AfterViewInit {
         return el;
       });
 
+    // seteamos el mapa
+    const mapa = this.renderer.parentNode(paths[0]);
+    this.helper.setMap(mapa);
+
     // retornamos una HTMLCollection de paths
     this.paths = paths;
+  }
+
+  /**
+   * Obtenemos los datos desde el Observable hdbs$
+   */
+  getData() {
+    this.helper.hdbs$.subscribe((hdbs: LightHDB[]) => (this._hdbs = hdbs));
+  }
+
+  /**
+   * Retorna el estado del filtro
+   */
+  getFilterState(): void {
+    this.helper.filterState$.subscribe(
+      (state: FilterState) => (this.filterState = state)
+    );
+  }
+
+  /**
+   * Retorna el estado del color
+   */
+  getColorState(): void {
+    this.helper.colorState$.subscribe(
+      (state: ColorState) => (this.colorState = state)
+    );
   }
 
   /**
@@ -82,46 +118,15 @@ export class MapaComponent implements OnInit, AfterViewInit {
    * @param evt Evento click
    */
   zoom(evt: MouseEvent): void {
-    const path: SVGAElement = this.renderer.selectRootElement(evt.target);
-    const name: string = path.id.split("_").join(" ");
-    let color: string = this.baseTheme.colors.active;
+    const path: SVGPathElement = this.renderer.selectRootElement(evt.target);
 
-    let state: boolean = path.classList.contains("active") ? false : true;
+    // (active)= zoom(false) || (!active) = zoom(true)
+    const state: boolean = path.classList.contains("active") ? false : true;
 
-    // color igual a base_theme.active
-    if (this.filterColor === color) {
-      switch (this.filterName) {
-        case "jovenes":
-          this.colorClass = this.baseTheme.classes.active;
-          color = this.baseTheme.colors.jovenes;
-          break;
-        case "damas":
-          this.colorClass = this.baseTheme.classes.damas;
-          color = this.baseTheme.colors.damas;
-          break;
-        case "caballeros":
-          this.colorClass = this.baseTheme.classes.caballeros;
-          color = this.baseTheme.colors.caballeros;
-          break;
-        case "matrimonios":
-          this.colorClass = this.baseTheme.classes.matrimonios;
-          color = this.baseTheme.colors.matrimonios;
-          break;
-        default:
-          this.colorClass = this.baseTheme.classes.active;
-          color = this.baseTheme.colors.active;
-          break;
-      }
-    }
+    // cambiamos el texto del titleSector
+    this.titleSector = state ? Title.convert(path.id) : Settings.msg_mapa.click;
 
-    // Eliminamos el estilo fill de todos los paths menos el seleccionado
-    this.reset(path.id);
-
-    // cambiamos el color y el texto del titleSector y hoverSector
-    this.itemColor = state ? color : this.baseTheme.colors.title;
-    this.titleSector = state ? name : Settings.msg_mapa.click;
-
-    this.helper.zoom(path, state, this.colorClass);
+    this.helper.zoomManager(path, state);
   }
 
   /**
@@ -131,9 +136,7 @@ export class MapaComponent implements OnInit, AfterViewInit {
    */
   hoverEnter(evt: MouseEvent): void {
     const path: SVGAElement = this.renderer.selectRootElement(evt.target);
-    const name: string = path.id.split("_").join(" ");
-
-    this.hoverSector = name;
+    this.hoverSector = Title.convert(path.id);
   }
 
   /**
@@ -146,45 +149,20 @@ export class MapaComponent implements OnInit, AfterViewInit {
   }
 
   /**
-   * Eliminamos el estilo fill de los paths indicados
-   * @param evt parametros aceptados [all | path.id]
-   */
-  reset(evt: string) {
-    if (evt === "all") {
-      const map = this.renderer.parentNode(this.paths[0]);
-
-      this.renderer.removeAttribute(map, "transform");
-    }
-
-    this.paths.map(el => {
-      if (evt === "all") {
-        this.renderer.removeStyle(el, "fill");
-        this.renderer.removeAttribute(el, "class");
-        this.colorClass = this.baseTheme.classes.active;
-        this.filterColor = "";
-      } else if (el.id !== evt) {
-        this.renderer.removeAttribute(el, "class");
-      }
-    });
-  }
-
-  /**
    * Aplica el filtro seleccionado
-   * @param evt contiene el color y la lista de ubicaciones
+   * @param place contiene el color y la lista de ubicaciones
    */
-  filter(evt: Filter) {
-    this.reset("all");
+  filter(places: string[]) {
+    this.helper.reset("all");
 
-    // retornamos el nombre del filtro
-    this.filterName = evt.name;
-    this.filterColor = evt.color;
+    this.filterPlaces = places;
 
-    evt.places.forEach(place => {
+    places.forEach(place => {
       // buscamos cada ubicacion en el mapa
       const path = this.paths.find(item => item.id === place);
 
       // agregamos el color
-      this.renderer.setStyle(path, "fill", evt.color);
+      this.renderer.setStyle(path, "fill", Settings.base_theme.colors.active);
     });
   }
 }

@@ -1,5 +1,5 @@
 <div ngbDropdown class="dropdown"  placement="right-top">
-  <button [ngStyle]="{'background-color': color}" class="dropdown-toggle filter-button p-3 text-light"
+  <button [ngClass]="color" class="dropdown-toggle filter-button p-3 text-light"
     ngbDropdownToggle>{{ dropdown.title }}</button>
   <div ngbDropdownMenu>
     <ng-container *ngIf="!dropdown.type && !dropdown.day">
