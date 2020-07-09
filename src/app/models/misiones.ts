@@ -1,3 +1,14 @@
+/**
+ * ***************************************
+ * Centro Cristiano de Loja Web
+ * @author Jerson Morocho
+ *
+ * ---------------------------------------
+ * - Creation (14-dec-2019)
+ * - Updated main_image => mission_image (9-jul-2020)
+ * ---------------------------------------
+ */
+
 export interface Misiones {
   status: boolean;
   res: Mision[];
@@ -12,7 +23,7 @@ export interface Mision {
   mission_type: string;
   mission_locale?: string;
   mission_support?: string;
-  main_image?: string;
+  mission_image?: string;
   servants_image?: string;
   servants_description?: string;
   servants_message?: string;

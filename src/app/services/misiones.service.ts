@@ -1,8 +1,20 @@
+/**
+ * ***************************************
+ * Centro Cristiano de Loja Web
+ * @author Jerson Morocho
+ *
+ * ---------------------------------------
+ * - Creation (9-nov-2019)
+ * - Modified uri + headers (17-nov-2019)
+ * - Modified uri + params (9-jul-2020)
+ * ---------------------------------------
+ */
+
 import { Injectable } from "@angular/core";
 import {
   HttpClient,
   HttpParams,
-  HttpErrorResponse
+  HttpErrorResponse,
 } from "@angular/common/http";
 import { Subscription, ReplaySubject, throwError } from "rxjs";
 import { Misiones } from "../models/misiones";
@@ -10,10 +22,10 @@ import { environment } from "src/environments/environment";
 import { retry, catchError } from "rxjs/operators";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class MisionesService {
-  private url: string = environment.api + "misiones.php";
+  private url: string = `${environment.api}/misiones`;
   private _dataCB: ReplaySubject<any> = new ReplaySubject<any>();
   private _dataOB: ReplaySubject<any> = new ReplaySubject<any>();
   private _dataT: ReplaySubject<any> = new ReplaySubject<any>();
@@ -33,11 +45,8 @@ export class MisionesService {
    * @returns Una subscripcion al ReplaySubject
    */
   private getCamposBlancos(): Subscription {
-    const options = {
-      params: new HttpParams().set("tipo", "l").set("class", "cb")
-    };
     return this.http
-      .get<Misiones>(this.url, options)
+      .get<Misiones>(`${this.url}/l/cb`)
       .pipe(retry(2), catchError(this.handleError))
       .subscribe((data: Misiones) => this._dataCB.next(data));
   }
@@ -47,11 +56,8 @@ export class MisionesService {
    * @returns Una subscripcion al ReplaySubject
    */
   private getFiliales(): Subscription {
-    const options = {
-      params: new HttpParams().set("tipo", "l").set("class", "of")
-    };
     return this.http
-      .get<Misiones>(this.url, options)
+      .get<Misiones>(`${this.url}/l/of`)
       .pipe(retry(2), catchError(this.handleError))
       .subscribe((data: Misiones) => this._dataOB.next(data));
   }
@@ -61,28 +67,25 @@ export class MisionesService {
    * @returns Una subscripcion al ReplaySubject
    */
   private getTransculturales(): Subscription {
-    const options = {
-      params: new HttpParams().set("tipo", "t")
-    };
     return this.http
-      .get<Misiones>(this.url, options)
+      .get<Misiones>(`${this.url}/t`)
       .pipe(retry(2), catchError(this.handleError))
       .subscribe((data: Misiones) => this._dataT.next(data));
   }
 
   // Handle API errors
-  handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
+  handleError(response: HttpErrorResponse) {
+    if (response.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
-      console.error("An error occurred:", error.error.message);
+      console.error("Ocurrió un error:", response.error.message);
     } else {
-      // The backend returned an unsuccessful response code.
+      // The backend returned an unsuccessful error code.
       // The response body may contain clues as to what went wrong,
       console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+        `El servidor retornó un código ${response.status}, el error: ${response.error}`
       );
     }
     // return an observable with a user-facing error message
-    return throwError("Something bad happened; please try again later.");
+    return throwError("Algo malo ocurrió; por favor intenta en unos momentos.");
   }
 }

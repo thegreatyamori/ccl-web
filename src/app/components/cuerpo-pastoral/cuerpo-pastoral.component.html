@@ -27,7 +27,7 @@
               <ng-container *ngFor="let pastor of pastores;">
                 <div class="col-12 col-md-6">
                   <div class="d-flex justify-content-center">
-                    <img [src]="pastor.image | sanitizeUrl" [alt]="pastor.title" class="img-raised rounded-circle">
+                    <img [src]="pastor.image | sanitizeUrl" [alt]="pastor.title" class="img-raised rounded-circle w-50">
                   </div>
                   <h4>{{ pastor.title }}</h4>
                   <h6 class="text-primary">{{ pastor.position }}</h6>
