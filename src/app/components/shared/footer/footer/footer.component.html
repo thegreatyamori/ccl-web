@@ -42,14 +42,20 @@
           <li><a [routerLink]="'/radio'">
               <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Radio
             </a></li>
+          <li><a [routerLink]="'/misiones'">
+              <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Misiones
+            </a></li>
+          <li><a [routerLink]="'/pastores'">
+              <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Pastores
+            </a></li>
+          <li><a href="https://example.com" target="_blank">
+              <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Aula Virtual CCL
+            </a></li>
           <li><a [routerLink]="'/actividades'">
               <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Calendario
             </a></li>
           <li><a [routerLink]="'/conectate'" fragment="hogares-bendicion">
               <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Hogares de Bendición
-            </a></li>
-          <li><a [routerLink]="'/misiones'">
-              <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Misiones
             </a></li>
         </ul>
       </div>
@@ -84,11 +90,11 @@
         </nav>
       </div>
       <div class="col-12 text-center">
-        <p><span class="font-weight-bold">&copy; 2020</span> Centro Cristiano de Loja.</p>
+        <p><span class="font-weight-bold">&copy; {{ year }}</span> Centro Cristiano de Loja.</p>
       </div>
       <div class="col-md-6 col-12 text-center">
-        <p>Developed with ❤ by
-          <a class="text-success" href="https://www.instagram.com/jersonaleksander/" target="_blank">@yamori</a>
+        <p>Desarrolado con ❤ por
+          <a class="text-success" href="https://jersonalexander.now.sh/about/" target="_blank">@jerson</a>
         </p>
       </div>
       <div class="col-md-6 col-12">

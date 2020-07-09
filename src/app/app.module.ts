@@ -16,10 +16,11 @@ import { NAVIGATOR_PROVIDERS } from "./services/navigator.service";
 
 import { AppComponent } from "./app.component";
 import { HeaderComponent } from "./components/shared/header/header.component";
+import { RedirectComponent } from './components/redirect/redirect.component';
 import { AuthInterceptor } from "./interceptors/auth.interceptor";
 
 @NgModule({
-  declarations: [AppComponent, HeaderComponent],
+  declarations: [AppComponent, HeaderComponent, RedirectComponent],
   imports: [
     NgbModule,
     FormsModule,

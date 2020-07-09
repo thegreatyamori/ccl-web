@@ -3,7 +3,7 @@
     <div class="container py-5">
       <div class="row">
         <ng-container *ngFor="let button of settings.opts;">
-          <div class="col-12 col-sm-6 col-lg">
+          <div class="col-12 col-sm-6 col-lg-4">
             <div class="card bg-dark m-0">
               <a class="nav-card-link" [routerLink]="button.navLink">
                 <img src="{{ button.navImage }}" alt="{{ button.navText }}">

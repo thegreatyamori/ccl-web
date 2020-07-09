@@ -33,6 +33,12 @@ export class Settings {
     bg_image: "assets/img/home/bg-buttons-bar.svg",
     opts: [
       {
+        navLink: "/aula-virtual",
+        navImage: "assets/img/home/card-calendar.jpg",
+        navText: "Aula Virtual CCL",
+        navIcon: "calendar-alt"
+      },
+      {
         navLink: "/actividades",
         navImage: "assets/img/home/card-calendar.jpg",
         navText: "Calendario",
