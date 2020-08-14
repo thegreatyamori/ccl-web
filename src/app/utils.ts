@@ -4,14 +4,14 @@
  * @author Jerson Morocho
  *
  * ---------------------------------------
- * - Creation (14-dec-2019)
+ * - Creation (12-ago-2020)
  * ---------------------------------------
  */
 
-export interface styles {
-  top: string,
-  bottom: string,
-  left: string,
-  right: string,
-  "z-index": number
-}
+/**
+ * Envuelve la imagen en una funcion css
+ * @returns string url()
+ */
+export const backgroundImageUrl = (image: string): string => {
+  return `url('${image}')`;
+};

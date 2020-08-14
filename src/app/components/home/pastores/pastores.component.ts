@@ -10,6 +10,7 @@
 
 import { Component, OnInit } from "@angular/core";
 import { Settings } from 'src/config/config';
+import { DeviceDetectorService } from "ngx-device-detector";
 
 @Component({
   selector: "app-pastores",
@@ -18,10 +19,12 @@ import { Settings } from 'src/config/config';
 })
 export class PastoresComponent implements OnInit {
   settings: any;
+  isMobile: boolean;
 
-  constructor() {}
+  constructor(private deviceService: DeviceDetectorService) {}
 
   ngOnInit() {
     this.settings = Settings.pastores;
+    this.isMobile = this.deviceService.isMobile();
   }
 }

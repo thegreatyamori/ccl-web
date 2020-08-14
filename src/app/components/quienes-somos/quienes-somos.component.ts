@@ -8,6 +8,7 @@
  * - Added service, titleDocument (9-nov-2019)
  * - Modified onTabChange (11-nov-2019)
  * - Added FadeIn animation (28-ene-2020)
+ * - Added setBackgroundImageUrl() (13-ago -2020)
  * ---------------------------------------
  */
 
@@ -18,7 +19,8 @@ import { NgbTabChangeEvent } from "@ng-bootstrap/ng-bootstrap";
 import { NgxSpinnerService } from "ngx-spinner";
 import { RootObject as Res, Tab } from "src/app/models/quienesSomos";
 import { QuienesSomosService } from "src/app/services/quienes-somos.service";
-import { Settings } from 'src/config/config';
+import { Settings } from "src/config/config";
+import { backgroundImageUrl } from "src/app/utils";
 
 @Component({
   selector: "app-quienes-somos",
@@ -28,10 +30,10 @@ import { Settings } from 'src/config/config';
     trigger("fadeIn", [
       transition(":enter", [
         style({ opacity: 0 }),
-        animate(500, style({ opacity: 1 }))
-      ])
-    ])
-  ]
+        animate(500, style({ opacity: 1 })),
+      ]),
+    ]),
+  ],
 })
 export class QuienesSomosComponent implements OnInit {
   titleTab: string;
@@ -72,9 +74,17 @@ export class QuienesSomosComponent implements OnInit {
    * @param event NgbTabChangeEvent
    */
   onTabChange(event: NgbTabChangeEvent) {
-    let tab = this.tabs.find(tab => tab.id === Number(event.nextId));
+    let tab = this.tabs.find((tab) => tab.id === Number(event.nextId));
 
     this.titleTab = tab.title;
     this.titleDocument.setTitle(this.titleTab);
+  }
+
+  /**
+   * Envuelve la imagen en una funcion css
+   * @returns string url()
+   */
+  setBackgroundImageUrl(): string {
+    return backgroundImageUrl(this.settings.bg_image);
   }
 }

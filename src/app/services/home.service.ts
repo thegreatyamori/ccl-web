@@ -7,6 +7,7 @@
  * - Creation (23-oct-2019)
  * - Added Slide Interface (27-oct-2019)
  * - Modified uri + headers (17-nov-2019)
+ * - Modified uri (9-jul-2020)
  * ---------------------------------------
  */
 
@@ -19,10 +20,10 @@ import { environment } from "../../environments/environment";
 import { RootObject as Slides } from "../models/slide";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class HomeService {
-  private uri: string = environment.api + "slides.php";
+  private uri: string = `${environment.api}sliders`;
 
   constructor(private http: HttpClient) {}
 
@@ -37,18 +38,18 @@ export class HomeService {
   }
 
   // Handle API errors
-  handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
+  handleError(response: HttpErrorResponse) {
+    if (response.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
-      console.error("An error occurred:", error.error.message);
+      console.error("Ocurrió un error:", response.error.message);
     } else {
-      // The backend returned an unsuccessful response code.
+      // The backend returned an unsuccessful error code.
       // The response body may contain clues as to what went wrong,
       console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+        `El servidor retornó un código ${response.status}, el error: ${response.error}`
       );
     }
     // return an observable with a user-facing error message
-    return throwError("Something bad happened; please try again later.");
+    return throwError("Sucedió algo malo; por favor intenta en un momento.");
   }
 }

@@ -5,6 +5,7 @@
  *
  * ---------------------------------------
  * - Creation (26-ene-2020)
+ * - Update uri (9-jul-2020)
  * ---------------------------------------
  */
 
@@ -17,10 +18,10 @@ import { environment } from "../../environments/environment";
 import { RootObject as Pastores } from "../models/pastores";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class PastoresService {
-  private uri: string = environment.api + "pastores.php";
+  private uri: string = `${environment.api}pastores`;
   private _data: ReplaySubject<any> = new ReplaySubject<any>();
   data$ = this._data.asObservable();
 
@@ -40,18 +41,19 @@ export class PastoresService {
   }
 
   // Handle API errors
-  handleError(error: HttpErrorResponse) {
-    if (error.error instanceof ErrorEvent) {
+  handleError(response: HttpErrorResponse) {
+    if (response.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
-      console.error("An error occurred:", error.error.message);
+      console.error("Ocurrió un error:", response.error.message);
     } else {
-      // The backend returned an unsuccessful response code.
+      // The backend returned an unsuccessful error code.
       // The response body may contain clues as to what went wrong,
       console.error(
-        `Backend returned code ${error.status}, ` + `body was: ${error.error}`
+        `El servidor retornó un código ${response.status}, ` +
+          `el error: ${response.error}`
       );
     }
     // return an observable with a user-facing error message
-    return throwError("Something bad happened; please try again later.");
+    return throwError("Algo malo ocurrió; por favor intenta en unos momentos.");
   }
 }

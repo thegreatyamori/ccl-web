@@ -43,8 +43,8 @@
                 <div class="col-12 col-md-6 col-lg-4">
                   <div class="card">
                     <div class="card-image">
-                      <ng-container *ngIf="mision.main_image">
-                        <img [src]="mision.main_image | sanitizeUrl" [alt]="mision.mission_name"
+                      <ng-container *ngIf="mision.mission_image">
+                        <img [src]="mision.mission_image | sanitizeUrl" [alt]="mision.mission_name"
                           [title]="mision.mission_name">
                       </ng-container>
                     </div>

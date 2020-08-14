@@ -16,11 +16,12 @@ import { PastoresService } from "src/app/services/pastores.service";
 
 import { RootObject as Res, Pastor } from "src/app/models/pastores";
 import { Settings } from 'src/config/config';
+import { backgroundImageUrl } from 'src/app/utils';
 
 @Component({
   selector: "app-cuerpo-pastoral",
   templateUrl: "./cuerpo-pastoral.component.html",
-  styleUrls: ["./cuerpo-pastoral.component.scss"]
+  styleUrls: ["./cuerpo-pastoral.component.scss"],
 })
 export class CuerpoPastoralComponent implements OnInit {
   status: boolean;
@@ -50,5 +51,13 @@ export class CuerpoPastoralComponent implements OnInit {
       this.pastores = data.res;
       this.spinner.hide();
     });
+  }
+
+  /**
+   * Envuelve la imagen en una funcion css
+   * @returns string url()
+   */
+  setBackgroundImageUrl(): string {
+    return backgroundImageUrl(this.settings.bg_image);
   }
 }

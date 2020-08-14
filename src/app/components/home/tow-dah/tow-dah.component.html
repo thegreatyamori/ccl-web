@@ -1,15 +1,14 @@
 <section id="tow-dah">
-  <div class="bg-dark text-light bg-cover"
-    [ngStyle]="{'background-image': 'url(' + settings.bg_image + ')'}">
+  <div class="bg-dark text-light bg-cover" [ngStyle]="{'background-image': 'url(' + settings.bg_image + ')'}">
     <div class="container py-5 py-sm-0">
       <div class="row">
         <div class="col-12 d-flex flex-column flex-md-row align-items-center">
-          <img src="{{ settings.logo }}" alt="Tow Dah"[ngClass]="{ 'w-25': isMobile,'h-75': isDesktop }" class="m-auto">
+          <img src="{{ settings.logo }}" alt="Tow Dah" [ngClass]="{ 'w-25': isMobile, 'h-75': isDesktop }"
+            class="m-auto">
           <blockquote class="h4 m-0 p-2">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque quas maxime ex rem nemo hic asperiores, minima
-            esse in officiis quisquam natus! Voluptates quasi quas veritatis omnis. Sed, fugit sapiente.
-            <!-- <br> -->
-            <!-- <small class="float-right">- Ps. Pablo y Patricia Celi</small> -->
+            La música fue creada por Dios para su adoración, por ello continuando con ese legado el Centro Cristiano de
+            Loja formó el grupo musical denominado Tow Dah que significa en hebreo “Alabar, Glorificar y Celebrar”. Con
+            el propósito de impactar en los corazones de las personas, ministrando con poder y autoridad.
           </blockquote>
         </div>
       </div>
@@ -22,8 +21,8 @@
       <div>
         <nav class="d-flex justify-content-center">
           <ng-container *ngFor="let social of settings.social">
-            <a ngbTooltip="{{ social.text }}" class="m-0 btn btn-link"
-              [href]="social.link | sanitizeUrl" target="_blank">
+            <a ngbTooltip="{{ social.text }}" class="m-0 btn btn-link" [href]="social.link | sanitizeUrl"
+              target="_blank">
               <ng-container *ngIf="social.icon == 'align-left'">
                 <fa-icon [icon]="[social.typeIcon, social.icon]" size="3x" rotate="270"></fa-icon>
               </ng-container>
@@ -34,7 +33,8 @@
           </ng-container>
         </nav>
         <iframe src="https://open.spotify.com/embed/artist/4YTjf9SYX6HL0eOaWEoMng" class="w-100" height="300"
-          frameborder="0" allowtransparency="true" allow="encrypted-media"></iframe>
+          frameborder="0" allowtransparency="true" allow="encrypted-media">
+        </iframe>
       </div>
     </div>
   </div>

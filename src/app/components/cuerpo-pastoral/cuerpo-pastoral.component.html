@@ -5,11 +5,11 @@
 <article>
   <header class="page-header page-header-small">
     <div parallax speedImg="0.1" speedContainer="0.5" class="parallax-image page-header-image"
-      [ngStyle]="{'background-image': 'url(' + settings.bg_image + ')'}">
+      [ngStyle]="{'background-image': setBackgroundImageUrl()}">
     </div>
     <div class="container">
       <div class="content-center">
-        <!-- <h1 class="title">{{ settings.title }}</h1> -->
+        <h1 class="title">{{ settings.title }}</h1>
         <div class="text-center">
           <img src="{{ settings.logo_title }}" alt="" class="img-fluid">
         </div>
@@ -21,13 +21,13 @@
     <div class="container container-md-post">
       <div class="row">
         <div class="col-md-10 ml-auto mr-auto">
-          <h2 class="title text-center">Cuerpo Pastoral</h2>
+          <!-- <h2 class="title text-center">Cuerpo Pastoral</h2> -->
           <div class="row">
             <ng-container *ngIf="status">
               <ng-container *ngFor="let pastor of pastores;">
                 <div class="col-12 col-md-6">
                   <div class="d-flex justify-content-center">
-                    <img [src]="pastor.image | sanitizeUrl" [alt]="pastor.title" class="img-raised rounded-circle">
+                    <img [src]="pastor.image | sanitizeUrl" [alt]="pastor.title" class="img-raised rounded-circle w-50">
                   </div>
                   <h4>{{ pastor.title }}</h4>
                   <h6 class="text-primary">{{ pastor.position }}</h6>
@@ -38,13 +38,10 @@
           </div>
           <div class="separator separator-primary"></div>
           <blockquote class="h4 m-0">
-            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Porro minima pariatur facere deserunt
-            reprehenderit, nisi, reiciendis quo voluptatem, commodi recusandae ducimus atque fugiat qui aperiam
-            laboriosam asperiores. Consectetur, tenetur ratione.
+            y os daré pastores según mi corazón, que os apacienten con ciencia y con inteligencia.
             <br>
-            <small class="float-right">- Ps. Pablo y Patricia Celi</small>
+            <small class="float-right">Jeremías 3:15 RVR1960</small>
           </blockquote>
-          <div class="separator separator-primary"></div>
         </div>
       </div>
     </div>
