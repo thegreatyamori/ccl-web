@@ -22,7 +22,7 @@ import { RootObject as Pages } from "../models/quienesSomos";
   providedIn: 'root'
 })
 export class QuienesSomosService {
-  private uri: string = `${environment.api}/quienes-somos`;
+  private uri: string = `${environment.api}quienes-somos`;
   private _data: ReplaySubject<any> = new ReplaySubject<any>();
   data$ = this._data.asObservable();
 

@@ -18,10 +18,10 @@ import { environment } from "../../environments/environment";
 import { RootObject as Pastores } from "../models/pastores";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class PastoresService {
-  private uri: string = `${environment.api}/pastores`;
+  private uri: string = `${environment.api}pastores`;
   private _data: ReplaySubject<any> = new ReplaySubject<any>();
   data$ = this._data.asObservable();
 
@@ -49,7 +49,8 @@ export class PastoresService {
       // The backend returned an unsuccessful error code.
       // The response body may contain clues as to what went wrong,
       console.error(
-        `El servidor retornó un código ${response.status}, ` + `el error: ${response.error}`
+        `El servidor retornó un código ${response.status}, ` +
+          `el error: ${response.error}`
       );
     }
     // return an observable with a user-facing error message

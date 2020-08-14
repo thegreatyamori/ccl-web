@@ -23,7 +23,7 @@ import { RootObject as Slides } from "../models/slide";
   providedIn: "root",
 })
 export class HomeService {
-  private uri: string = `${environment.api}/sliders`;
+  private uri: string = `${environment.api}sliders`;
 
   constructor(private http: HttpClient) {}
 
