@@ -1,39 +1,31 @@
-<div style="position: absolute;top: 0;bottom: 0;left: 0;right: 0;background-color: rgba(0, 0, 0, 0.6);"></div>
-<div
-    style="background-image: url('assets/img/bg4.jpg');background-size:cover;background-position:center;height:100vh;display:flex;align-items:center;">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-md-12 col-sm-12 text-center" style="display:flex;align-items:center;justify-content:center;">
-                <div>
-                    <h1 class="text-white d-none d-sm-block" style="font-weight:bold;">Transferencia Bancaria</h1>
-                    <div class="text-white h3 d-none d-sm-block">
-                      <ul class="list-unstyled">
-                        <li>Diezmos - Ofrendas</li>
-                        <li>Misiones - Promesas</li>
-                        <li>Banco de Loja</li>
-                        <li>Cuenta Corriente #2901099211</li>
-                        <li>a nombre de CENTRO CRISTIANO DE LOJA</li>
-                        <li>RUC: 1191702456001</li>
-                        <li>E-mail: centrocristianodeloja@gmail.com</li>
-                      </ul>
-                    </div>
-                    <h2 class="text-white d-none d-block d-sm-none" style="font-weight:bold;">Transferencia Bancaria</h2>
-                    <div class="text-white h5 d-none d-block d-sm-none">
-                      Banco de Loja
-                      <ul class="list-unstyled">
-                        <li>Diezmos - Ofrendas</li>
-                        <li>Misiones - Promesas</li>
-                        <li>Cuenta Corriente #2901099211</li>
-                        <li>a nombre de CENTRO CRISTIANO DE LOJA</li>
-                        <li>RUC: 1191702456001</li>
-                      </ul>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-sm-12 d-none d-lg-block d-xl-block" style="height: 100vh;">
-                <img src="assets/img/wireframe.webp" alt="Wireframe CCLApp" style="width:75%;position:absolute;bottom:0;">
-            </div>
+<div class="bg-color"></div>
+
+<div class="bg-image d-flex align-items-center" style="background-image: url('assets/img/donaciones/bg.jpg');">
+  <div class="container">
+    <div class="row text-white">
+      <div class="col-12 col-lg-6">
+        <div class="border p-4">
+          <h1 class="font-weight-bold h2">Transferencia Bancaria</h1>
+          <div [ngClass]="textSize()">
+            <ul class="list-unstyled">
+              <li>Diezmos - Ofrendas</li>
+              <li>Misiones - Promesas</li>
+              <li>Banco de Loja</li>
+              <li>Cuenta Corriente #2901099211</li>
+              <li>a nombre de CENTRO CRISTIANO DE LOJA</li>
+              <li>RUC: 1191702456001</li>
+              <li>E-mail: centrocristianodeloja@gmail.com</li>
+            </ul>
+          </div>
         </div>
+      </div>
+
+      <div class="col-12 col-lg-6">
+        <div class="border p-4">
+          <p class="h3">Pronto habilitaremos las donaciones a través de medio eléctrónicos</p>
+        </div>
+      </div>
     </div>
+  </div>
 </div>
 <app-footer></app-footer>
