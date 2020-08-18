@@ -1,76 +1,59 @@
-import { NgModule } from "@angular/core";
-import { Routes, RouterModule, ExtraOptions } from "@angular/router";
-import { HomeComponent } from "./components/home/home.component";
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule, ExtraOptions } from '@angular/router';
+import { HomeComponent } from './components/home/home.component';
 import { RedirectComponent } from './components/redirect/redirect.component';
 
 const routes: Routes = [
-  { path: "", redirectTo: "home", pathMatch: "full" },
-  { path: "home", component: HomeComponent },
+  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: 'home', component: HomeComponent },
   {
-    path: "actividades",
+    path: 'actividades',
+    loadChildren: () => import('./components/actividades/actividades.module').then((m) => m.ActividadesModule),
+  },
+  {
+    path: 'conectate',
+    loadChildren: () => import('./components/conectate/conectate.module').then((m) => m.ConectateModule),
+  },
+  {
+    path: 'cuerpo-pastoral',
     loadChildren: () =>
-      import("./components/actividades/actividades.module").then(
-        (m) => m.ActividadesModule
-      ),
+      import('./components/cuerpo-pastoral/cuerpo-pastoral.module').then((m) => m.CuerpoPastoralModule),
   },
   {
-    path: "conectate",
-    loadChildren: () =>
-      import("./components/conectate/conectate.module").then(
-        (m) => m.ConectateModule
-      ),
+    path: 'donaciones',
+    loadChildren: () => import('./components/donaciones/donaciones.module').then((m) => m.DonacionesModule),
   },
   {
-    path: "cuerpo-pastoral",
-    loadChildren: () =>
-      import("./components/cuerpo-pastoral/cuerpo-pastoral.module").then(
-        (m) => m.CuerpoPastoralModule
-      ),
+    path: 'misiones',
+    loadChildren: () => import('./components/misiones/misiones.module').then((m) => m.MisionesModule),
   },
   {
-    path: "donaciones",
-    loadChildren: () =>
-      import("./components/donaciones/donaciones.module").then(
-        (m) => m.DonacionesModule
-      ),
+    path: 'quienes-somos',
+    loadChildren: () => import('./components/quienes-somos/quienes-somos.module').then((m) => m.QuienesSomosModule),
   },
   {
-    path: "misiones",
-    loadChildren: () =>
-      import("./components/misiones/misiones.module").then(
-        (m) => m.MisionesModule
-      ),
+    path: 'radio',
+    loadChildren: () => import('./components/radio/radio.module').then((m) => m.RadioModule),
   },
   {
-    path: "quienes-somos",
-    loadChildren: () =>
-      import("./components/quienes-somos/quienes-somos.module").then(
-        (m) => m.QuienesSomosModule
-      ),
+    path: 'aula-virtual',
+    component: RedirectComponent,
   },
   {
-    path: "radio",
-    loadChildren: () =>
-      import("./components/radio/radio.module").then((m) => m.RadioModule),
+    path: 'live',
+    component: RedirectComponent,
   },
   {
-    path: "aula-virtual",
-    component: RedirectComponent
+    path: '404',
+    loadChildren: () => import('./components/not-found/not-found.module').then((m) => m.NotFoundModule),
   },
-  {
-    path: "404",
-    loadChildren: () =>
-      import("./components/not-found/not-found.module").then(
-        (m) => m.NotFoundModule
-      ),
-  },
-  { path: "**", redirectTo: "/404" },
+  { path: '**', redirectTo: '/404' },
 ];
 
 const routerOptions: ExtraOptions = {
   useHash: false,
-  anchorScrolling: "enabled",
-  scrollPositionRestoration: "enabled",
+  anchorScrolling: 'enabled',
+  scrollPositionRestoration: 'enabled',
 };
 
 @NgModule({

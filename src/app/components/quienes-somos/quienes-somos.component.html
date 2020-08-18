@@ -4,15 +4,19 @@
 
 <article>
   <header class="page-header page-header-small">
-    <div parallax speedImg="0.1" speedContainer="0.5" class="parallax-image page-header-image"
-      [ngStyle]="{'background-image': setBackgroundImageUrl()}">
-    </div>
+    <div
+      parallax
+      speedImg="0.1"
+      speedContainer="0.5"
+      class="parallax-image page-header-image bg-top"
+      [ngStyle]="setBackgroundImageUrl()"
+    ></div>
     <div class="container">
       <div class="content-center">
-        <h1 class="title">{{ settings.title }}</h1>
         <div class="text-center">
-          <img src="{{ settings.logo_title }}" alt="" class="img-fluid">
+          <img src="{{ settings.logo_title }}" alt="" class="img-fluid" />
         </div>
+        <h1 class="title">{{ settings.title }}</h1>
       </div>
     </div>
   </header>
@@ -28,8 +32,7 @@
                 <ngb-tabset #tabQuienesSomos [justify]="'center'" (tabChange)="onTabChange($event)">
                   <ngb-tab *ngFor="let tab of tabs" id="{{ tab.id }}" title="{{ tab.title }}">
                     <ng-template ngbTabContent>
-                      <div [@fadeIn]="true" [innerHtml]="tab.paragraph | sanitizeHtml">
-                      </div>
+                      <div [@fadeIn]="true" [innerHtml]="tab.paragraph | sanitizeHtml"></div>
                     </ng-template>
                   </ngb-tab>
                 </ngb-tabset>

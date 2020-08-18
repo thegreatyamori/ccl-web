@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewChild, Inject } from "@angular/core";
-import { FaIconLibrary } from "@fortawesome/angular-fontawesome";
+import { Component, OnInit, ViewChild, Inject } from '@angular/core';
+import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import {
   faBroadcastTower,
   faUsers,
@@ -27,8 +27,10 @@ import {
   faPlay,
   faPause,
   faFireAlt,
-  faInfo
-} from "@fortawesome/free-solid-svg-icons";
+  faInfo,
+  faChalkboard,
+  faDonate,
+} from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
   faWhatsapp,
@@ -38,28 +40,25 @@ import {
   faChrome,
   faFirefox,
   faSpotify,
-  faApple
-} from "@fortawesome/free-brands-svg-icons";
-import { RadioHelperService } from "./services/radio-helper.service";
-import { audioManager } from "./models/audioManager";
-import { Router, NavigationEnd } from "@angular/router";
-import { filter } from "rxjs/operators";
-import { HeaderComponent } from "./components/shared/header/header.component";
+  faApple,
+  faDeezer,
+} from '@fortawesome/free-brands-svg-icons';
+import { RadioHelperService } from './services/radio-helper.service';
+import { audioManager } from './models/audioManager';
+import { Router, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
+import { HeaderComponent } from './components/shared/header/header.component';
 
 @Component({
-  selector: "app-root",
-  templateUrl: "./app.component.html",
-  styleUrls: ["./app.component.scss"]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss'],
 })
 export class AppComponent implements OnInit {
   audioOptions: audioManager;
   @ViewChild(HeaderComponent) navbar: HeaderComponent;
 
-  constructor(
-    private library: FaIconLibrary,
-    private router: Router,
-    private helper: RadioHelperService,
-  ) {
+  constructor(private library: FaIconLibrary, private router: Router, private helper: RadioHelperService) {
     library.addIcons(
       faBroadcastTower,
       faUsers,
@@ -88,6 +87,8 @@ export class AppComponent implements OnInit {
       faPause,
       faFireAlt,
       faInfo,
+      faChalkboard,
+      faDonate,
       faFacebook,
       faWhatsapp,
       faTwitter,
@@ -96,24 +97,21 @@ export class AppComponent implements OnInit {
       faChrome,
       faFirefox,
       faSpotify,
-      faApple
+      faApple,
+      faDeezer
     );
   }
 
   ngOnInit() {
-    this.helper.audioState.subscribe(
-      (options: audioManager) => (this.audioOptions = options)
-    );
-    this.router.events
-      .pipe(filter(event => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => {
-        this.navbar.sidebarClose();
+    this.helper.audioState.subscribe((options: audioManager) => (this.audioOptions = options));
+    this.router.events.pipe(filter((event) => event instanceof NavigationEnd)).subscribe((event: NavigationEnd) => {
+      this.navbar.sidebarClose();
 
-        if (this.audioOptions.id === "initial") this.helper.playerHidden(true);
-        else {
-          if (event.url === "/radio") this.helper.playerHidden(true);
-          else this.helper.playerHidden(false);
-        }
-      });
+      if (this.audioOptions.id === 'initial') this.helper.playerHidden(true);
+      else {
+        if (event.url === '/radio') this.helper.playerHidden(true);
+        else this.helper.playerHidden(false);
+      }
+    });
   }
 }

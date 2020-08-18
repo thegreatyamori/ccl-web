@@ -15,3 +15,11 @@
 export const backgroundImageUrl = (image: string): string => {
   return `url('${image}')`;
 };
+
+/**
+ * Retorna un objeto con la propiedad background-image
+ * @returns object
+ */
+export const backgroundImage = (image: string): object => {
+  return { 'background-image': backgroundImageUrl(image) };
+};

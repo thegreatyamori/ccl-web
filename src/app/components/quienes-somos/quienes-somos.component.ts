@@ -20,7 +20,7 @@ import { NgxSpinnerService } from "ngx-spinner";
 import { RootObject as Res, Tab } from "src/app/models/quienesSomos";
 import { QuienesSomosService } from "src/app/services/quienes-somos.service";
 import { Settings } from "src/config/config";
-import { backgroundImageUrl } from "src/app/utils";
+import { backgroundImage } from 'src/app/utils';
 
 @Component({
   selector: "app-quienes-somos",
@@ -84,7 +84,7 @@ export class QuienesSomosComponent implements OnInit {
    * Envuelve la imagen en una funcion css
    * @returns string url()
    */
-  setBackgroundImageUrl(): string {
-    return backgroundImageUrl(this.settings.bg_image);
+  setBackgroundImageUrl(): object {
+    return backgroundImage(this.settings.bg_image);
   }
 }

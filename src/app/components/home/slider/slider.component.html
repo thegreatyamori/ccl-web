@@ -1,11 +1,16 @@
 <section>
   <div class="page-header bg-parallax">
-    <div parallax speedImg="0" speedContainer="0.5" class="parallax-image page-header-image"
-      [defaultImage]="settings.bg.default" [lazyLoad]="settings.bg.final">
-    </div>
+    <div
+      parallax
+      speedImg="0"
+      speedContainer="0.5"
+      class="parallax-image page-header-image"
+      [defaultImage]="settings.bg.default"
+      [lazyLoad]="settings.bg.final"
+    ></div>
     <div class="container d-flex align-items-center justify-content-center">
       <div class="d-flex flex-column">
-        <img class="m-auto" [src]="settings.logo_ccl" alt="{{ settings.bg_title }}">
+        <img class="m-auto" [src]="settings.logo_ccl" alt="{{ settings.bg_title }}" />
         <h1 class="h1-seo">{{ settings.bg_title }}</h1>
         <!-- <h3>A beautiful Bootstrap 4 UI kit. Yours free.</h3> -->
       </div>
@@ -15,10 +20,12 @@
 
 <section class="parallax-container section p-4">
   <div class="container">
-    <h2 class="text-center">Iglesia Online</h2>
-    <p class="h5">El Centro Cristiano de Loja con el objetivo de expandir el evangelio en todo lugar, ha creado lo que denominamos la
-    iglesia online, para que las personas que viven fuera de la ciudad de Loja y en el extranjero tengan acceso a los
-    cultos, hogares de bendición y actividades que se desarrollan dentro de la iglesia.</p>
+    <h2 class="h1 text-center text-uppercase text-primary font-weight-bold">Iglesia Online</h2>
+    <p class="h4">
+      El Centro Cristiano de Loja con el objetivo de expandir el evangelio en todo lugar, ha creado lo que denominamos
+      la iglesia online, para que las personas que viven fuera de la ciudad de Loja y en el extranjero tengan acceso a
+      los cultos, hogares de bendición y actividades que se desarrollan dentro de la iglesia.
+    </p>
   </div>
 </section>
 
@@ -26,7 +33,7 @@
   <owl-carousel-o [options]="customOptions">
     <ng-template carouselSlide *ngFor="let slide of slides">
       <a class="outer-link" [href]="slide.link | sanitizeUrl">
-        <img [defaultImage]="settings.bg.default" [lazyLoad]="slide.image" [alt]="slide.title" [title]="slide.title">
+        <img [defaultImage]="settings.bg.default" [lazyLoad]="slide.image" [alt]="slide.title" [title]="slide.title" />
       </a>
     </ng-template>
   </owl-carousel-o>

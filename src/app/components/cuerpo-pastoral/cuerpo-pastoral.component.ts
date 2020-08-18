@@ -16,7 +16,7 @@ import { PastoresService } from "src/app/services/pastores.service";
 
 import { RootObject as Res, Pastor } from "src/app/models/pastores";
 import { Settings } from 'src/config/config';
-import { backgroundImageUrl } from 'src/app/utils';
+import { backgroundImage } from 'src/app/utils';
 
 @Component({
   selector: "app-cuerpo-pastoral",
@@ -57,7 +57,7 @@ export class CuerpoPastoralComponent implements OnInit {
    * Envuelve la imagen en una funcion css
    * @returns string url()
    */
-  setBackgroundImageUrl(): string {
-    return backgroundImageUrl(this.settings.bg_image);
+  setBackgroundImageUrl(): object {
+    return backgroundImage(this.settings.bg_image);
   }
 }

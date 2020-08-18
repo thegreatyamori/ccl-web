@@ -1,5 +1,5 @@
 <section id="buttons-bar">
-  <div class="bg-blue bg-cover" [ngStyle]="{'background-image': 'url(' + settings.bg_image + ')'}">
+  <div class="bg-blue bg-cover" [ngStyle]="setBackgroundImageUrl()">
     <div class="container py-5">
       <div class="row">
         <ng-container *ngFor="let button of settings.opts;">
