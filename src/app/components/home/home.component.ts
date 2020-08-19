@@ -18,10 +18,12 @@ import { Title } from '@angular/platform-browser';
   styles: []
 })
 export class HomeComponent implements OnInit {
+  title: string;
 
-  constructor(private titleDocument: Title) { }
+  constructor(private titleDocument: Title) {}
 
   ngOnInit() {
-    this.titleDocument.setTitle("Centro Cristiano de Loja");
+    this.title = "Centro Cristiano de Loja";
+    this.titleDocument.setTitle(this.title);
   }
 }

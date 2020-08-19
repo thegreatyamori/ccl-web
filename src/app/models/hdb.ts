@@ -2,7 +2,7 @@
  * ***************************************
  * Centro Cristiano de Loja Web
  * @author Jerson Morocho
- * 
+ *
  * ---------------------------------------
  * - Creation (14-dec-2019)
  * ---------------------------------------
@@ -42,4 +42,32 @@ export interface LightHDB {
   alternative: number;
   image: string;
   color: string;
+}
+
+export interface StateHDB {
+  id: string;
+  state: boolean;
+}
+
+export interface MapState {
+  isActive: boolean;
+  place: string;
+}
+
+export interface FilterState {
+  title: string;
+  type: boolean;
+  day: boolean;
+}
+
+export interface ColorState {
+  classMap: string;
+  classStroke: string;
+  classBg: string;
+}
+
+export interface SVGTag {
+  type: string;
+  attributes: any;
+  children?: any;
 }

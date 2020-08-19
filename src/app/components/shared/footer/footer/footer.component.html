@@ -1,0 +1,137 @@
+<footer data-background-color="black" class="section">
+  <div class="container">
+    <div class="row text-sm-left text-md-left">
+      <div class="col-12 col-sm-4">
+        <h5>Información</h5>
+        <p>
+          El Centro Cristiano de Loja es una iglesia comprometida en engrandecer el Reino de Dios a través de la
+          predicación haciendo de cada creyente un instrumento en sus manos.
+        </p>
+      </div>
+      <div class="col-12 col-sm-4">
+        <h5>Contacto</h5>
+        <ul class="list-unstyled information">
+          <li ngbTooltip="(Diagonal a Plaza del Valle Shopping)">
+            <fa-icon [icon]="['fas', 'directions']"></fa-icon>
+            Av. Nueva Loja entre Guayaquil y Salinas
+          </li>
+          <li>
+            <fa-icon [icon]="['fas', 'globe']"></fa-icon>
+            10112 Loja - Ecuador
+          </li>
+          <li>
+            <fa-icon [icon]="['fas', 'phone']"></fa-icon>
+            (07) 272-9569
+          </li>
+          <li>
+            <fa-icon [icon]="['fab', 'whatsapp']"></fa-icon>
+            <a class="text-primary" href="https://wa.me/593985249927" ngbTooltip="Haga click para ir a chat directo">
+              0985249927
+            </a>
+          </li>
+          <li ngbTooltip="Haz click para ver el mapa" class="text-center">
+            <modal-map></modal-map>
+          </li>
+        </ul>
+      </div>
+      <div class="col-12 col-sm-4">
+        <h5>Descubre</h5>
+        <ul class="list-unstyled quick-links">
+          <li>
+            <a [routerLink]="'/'"> <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Home </a>
+          </li>
+          <!-- <li><a [routerLink]="'/radio'">
+              <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Radio
+            </a></li> -->
+          <!-- <li><a [routerLink]="'/misiones'">
+              <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Misiones
+            </a></li> -->
+          <li>
+            <a [routerLink]="'/cuerpo-pastoral'">
+              <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Pastores
+            </a>
+          </li>
+          <!-- <li><a href="https://example.com" target="_blank">
+              <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Aula Virtual CCL
+            </a></li> -->
+          <li>
+            <a [routerLink]="'/actividades'"> <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Calendario </a>
+          </li>
+          <!-- <li>
+            <a [routerLink]="'/conectate'" fragment="hogares-bendicion">
+              <fa-icon [icon]="['fas', 'angle-double-right']"></fa-icon> Hogares de Bendición
+            </a>
+          </li> -->
+        </ul>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12 mt-2 mt-sm-5 text-center">
+        <p class="h3">Siguenos en nuestras redes sociales:</p>
+      </div>
+      <div class="col-12">
+        <nav class="text-center">
+          <a
+            ngbTooltip="Siguenos en Facebook"
+            class="btn btn-link"
+            href="https://www.facebook.com/centrocristianoloja"
+            target="_blank"
+          >
+            <fa-icon [icon]="['fab', 'facebook']" size="3x"></fa-icon>
+          </a>
+          <a
+            ngbTooltip="Siguenos en Twitter"
+            class="btn btn-link"
+            href="https://twitter.com/cristianodeloja"
+            target="_blank"
+          >
+            <fa-icon [icon]="['fab', 'twitter']" size="3x"></fa-icon>
+          </a>
+          <a
+            ngbTooltip="Siguenos en Instagram"
+            class="btn btn-link"
+            href="https://www.instagram.com/centro_cristiano_de_loja"
+            target="_blank"
+          >
+            <fa-icon [icon]="['fab', 'instagram']" size="3x"></fa-icon>
+          </a>
+          <a
+            ngbTooltip="Siguenos en YouTube"
+            class="btn btn-link"
+            href="https://www.youtube.com/channel/UCBYMaBHyTN-VljfX0wR8a1g"
+            target="_blank"
+          >
+            <fa-icon [icon]="['fab', 'youtube']" size="3x"></fa-icon>
+          </a>
+          <a
+            ngbTooltip="Envianos un mensaje"
+            class="btn btn-link"
+            href="mailto:centrocristianodeloja@gmail.com"
+            target="_blank"
+          >
+            <fa-icon [icon]="['fas', 'envelope']" size="3x"></fa-icon>
+          </a>
+        </nav>
+      </div>
+      <div class="col-12 text-center">
+        <p>
+          <span class="font-weight-bold">&copy; {{ year }}</span> Centro Cristiano de Loja.
+        </p>
+      </div>
+      <div class="col-md-6 col-12 text-center">
+        <p>
+          Desarrollado con ❤ por
+          <a class="text-success" href="https://jersonalexander.now.sh/about/" target="_blank">@thegr</a>
+        </p>
+      </div>
+      <div class="col-md-6 col-12">
+        <p class="browsers-support">
+          <span>Este sitio funciona mejor con &nbsp;</span>
+          <fa-icon [icon]="['fab', 'chrome']" size="2x"></fa-icon> &nbsp;
+          <fa-icon [icon]="['fab', 'firefox']" size="2x"></fa-icon>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>

@@ -1,14 +1,13 @@
-import { Pipe, PipeTransform } from '@angular/core';
+import { Pipe, PipeTransform } from "@angular/core";
 
 @Pipe({
-  name: 'place'
+  name: "place"
 })
 export class PlacePipe implements PipeTransform {
-
   transform(value: string): any {
     value.toLocaleLowerCase();
     // separamos la cadena en un array
-    let place = value.split('_');
+    let place = value.split("_");
 
     // unimos el resultado
     let join = place.join(" ");

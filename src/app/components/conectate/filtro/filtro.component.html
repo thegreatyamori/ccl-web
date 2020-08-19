@@ -1,0 +1,30 @@
+<div ngbDropdown class="dropdown"  placement="right-top">
+  <button [ngClass]="color" class="dropdown-toggle filter-button p-3 text-light"
+    ngbDropdownToggle>{{ dropdown.title }}</button>
+  <div ngbDropdownMenu>
+    <ng-container *ngIf="!dropdown.type && !dropdown.day">
+      <button class="dropdown-item" (click)="selectTypeFilter()">Por tipo</button>
+      <button class="dropdown-item" (click)="selectDayFilter()">Por día</button>
+    </ng-container>
+
+    <ng-container *ngIf="dropdown.type">
+      <button class="dropdown-item" (click)="filter('jovenes')">Jovenes</button>
+      <button class="dropdown-item" (click)="filter('damas')">Damas</button>
+      <button class="dropdown-item" (click)="filter('caballeros')">Caballeros</button>
+      <button class="dropdown-item" (click)="filter('matrimonios')">Matrimonios</button>
+      <div class="dropdown-divider"></div>
+      <button class="dropdown-item" (click)="back()">Regresar</button>
+    </ng-container>
+
+    <ng-container *ngIf="dropdown.day">
+      <button class="dropdown-item" (click)="filter('lunes')">Lunes</button>
+      <button class="dropdown-item" (click)="filter('martes')">Martes</button>
+      <button class="dropdown-item" (click)="filter('miercoles')">Miercoles</button>
+      <button class="dropdown-item" (click)="filter('jueves')">Jueves</button>
+      <button class="dropdown-item" (click)="filter('viernes')">Viernes</button>
+      <button class="dropdown-item" (click)="filter('sabado')">Sábado</button>
+      <div class="dropdown-divider"></div>
+      <button class="dropdown-item" (click)="back()">Regresar</button>
+    </ng-container>
+  </div>
+</div>

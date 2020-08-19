@@ -1,0 +1,31 @@
+<button (click)="switchState()" class='btn btn-audio btn-link m-0 p-0 w-100'>
+  <!-- Svg from: https://codepen.io/lukemeyrick/pen/qdxqwM -->
+  <svg version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+    xmlns:a="http://ns.adobe.com/AdobeSVGViewerExtensions/3.0/" viewBox="0 0 213.7 213.7"
+    enable-background="new 0 0 213.7 213.7" xml:space="preserve">
+
+    <polygon [ngStyle]="{'opacity':audioOptions.state ? 0 : 1 }" class='play' fill="none" stroke-width="7"
+      stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10"
+      points=" 73.5,62.5 148.5,105.8 73.5,149.1 " />
+
+    <circle [ngClass]="{'circle-active':audioOptions.state}" class='circle' fill="none" stroke-width="7"
+      stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" cx="106.8" cy="106.8" r="103.3" />
+
+    <g [ngStyle]="{'opacity':audioOptions.state ? 1 : 0 }" [ngClass]="{'pause-active':audioOptions.state}"
+      class="pause">
+      <line fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="60.4"
+        y1="91.7" x2="121.6" y2="152.9" />
+      <line fill="none" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" x1="93.4"
+        y1="58.7" x2="154.6" y2="119.9" />
+    </g>
+  </svg>
+</button>
+
+<div class="d-none d-lg-block">
+  <div class="slider-volume d-flex align-items-center p-3">
+    <!-- Slider by seanstopnik: https://codepen.io/seanstopnik/pen/CeLqA -->
+    <input class="range-slider__range" type="range" min="0" max="1" step="0.1" orient="vertical" [(ngModel)]="volume"
+      (ngModelChange)="volumeControl($event)" />
+    <fa-icon [icon]="['fas', iconVolume]" size="3x" class="pl-3"></fa-icon>
+  </div>
+</div>

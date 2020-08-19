@@ -2,37 +2,36 @@
  * ***************************************
  * Centro Cristiano de Loja Web
  * @author Jerson Morocho
- * 
+ *
  * ---------------------------------------
  * - Creation (6-oct-2019)
+ * - Modified textHDB to textMisions (3-ene-2020)
  * ---------------------------------------
  */
 
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from "@angular/core";
+import { Settings } from 'src/config/config';
+import { backgroundImage } from 'src/app/utils';
 
 @Component({
   selector: 'app-buttons-bar',
   templateUrl: './buttons-bar.component.html',
-  styleUrls: ['./buttons-bar.component.scss']
+  styleUrls: ['./buttons-bar.component.scss'],
 })
 export class ButtonsBarComponent implements OnInit {
-  navImage: string;
-  navCalendarImage: string;
-  navDonationsImage: string;
-  navHDBImage: string;
-  textCaledar: string;
-  textDonations: string;
-  textHDB: string;
+  settings: any;
 
-  constructor() { }
+  constructor() {}
 
   ngOnInit() {
-    this.navImage = 'assets/img/home/bg-buttons-bar.svg'
-    this.navCalendarImage = 'assets/img/home/card-calendar.jpg'
-    this.navDonationsImage = 'assets/img/home/card-donations.jpg'
-    this.navHDBImage = 'assets/img/home/card-hdb.jpg'
-    this.textCaledar = 'Calendario'
-    this.textDonations = 'Donaciones'
-    this.textHDB = 'Hogares de Bendición'
+    this.settings = Settings.buttons_bar;
+  }
+
+  /**
+   * Envuelve la imagen en una funcion css
+   * @returns string url()
+   */
+  setBackgroundImageUrl(): object {
+    return backgroundImage(this.settings.bg_image);
   }
 }

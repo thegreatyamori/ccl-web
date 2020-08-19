@@ -1,0 +1,27 @@
+<ng-container *ngIf="isDevice()">
+  <div>
+    <div class="form-group d-flex">
+      <fa-icon [icon]="['fas', 'search']" class="px-2 d-flex align-items-center"></fa-icon>
+      <input (focus)="zoomout()" class="form-control" placeholder="Busca 'jovenes'" type="search" name="word"
+        [(ngModel)]="word">
+    </div>
+    <ng-container *ngIf="activateList(); else search_message">
+      <app-list-by-word [filtered]="word"></app-list-by-word>
+    </ng-container>
+
+    <ng-container *ngIf="isMapClicked">
+      <app-list-by-sector [filtered]="sector"></app-list-by-sector>
+    </ng-container>
+
+    <ng-template #search_message>
+      <div class="alert alert-primary" [hidden]="isMapClicked">
+        Puedes buscar un hogar de bendición de acuerdo a los siguientes criterios:
+        <ul>
+          <li>Por el tipo de hogar de bendición eg. damas</li>
+          <li>Por día eg. lunes</li>
+          <li>Por una referencia de ubicación eg. las peñas</li>
+        </ul>
+      </div>
+    </ng-template>
+  </div>
+</ng-container>

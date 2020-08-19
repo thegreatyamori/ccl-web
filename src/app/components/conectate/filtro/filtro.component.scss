@@ -1,0 +1,9 @@
+@import "src/assets/sass/hdb-colors.scss";
+
+.filter-button {
+  border: 0;
+
+  &:focus {
+    outline-width: 0;
+  }
+}

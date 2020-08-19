@@ -1,0 +1,31 @@
+@import "src/assets/sass/hdb-colors.scss";
+
+svg#svg_map {
+  path {
+    fill: $base-color;
+    stroke: $stroke-color;
+    cursor: pointer;
+    transition: fill 0.3s;
+
+    &:hover {
+      fill: $hover-color;
+    }
+
+    &:active {
+      fill: $active-color;
+    }
+  }
+
+  #brujula {
+    path {
+      fill: initial;
+      stroke: initial;
+    }
+  }
+}
+
+.btn-group {
+  button {
+    border-radius: 0;
+  }
+}

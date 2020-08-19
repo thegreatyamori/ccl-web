@@ -1,35 +1,60 @@
 /* You can add global styles to this file, and also import other style files */
-@import "~bootstrap/scss/bootstrap.scss";
+@import '~bootstrap/scss/bootstrap.scss';
 
+// general styles
+.bg-cover {
+  background-size: cover;
+}
 
-// Animations
+.parallax {
+  height: 100%;
+  background-attachment: fixed;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.parallax-image {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+}
+.parallax-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100%;
+  z-index: 1;
+}
+
 .animated {
   animation-duration: 1s;
   animation-fill-mode: both;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-
-  to {
-    opacity: 1;
-  }
-}
-.fadeIn  {
-  animation-name: fadeIn;
+.animated.infinite {
+  animation-iteration-count: infinite;
 }
 
-@keyframes fadeOut {
-  from {
-    opacity: 1;
-  }
-
-  to {
-    opacity: 0;
-  }
+.section-md-post {
+  padding-top: 0 !important;
 }
-.fadeOut {
-  animation-name: fadeOut;
+
+.container-md-post {
+  position: relative;
+  top: -65px;
+  background-color: white;
+  padding-top: 65px;
+  border-radius: 20px;
+}
+
+.bg-top {
+  background-position: top !important;
+}
+
+.px-9 {
+  padding-left: 9em;
+  padding-right: 9em;
 }

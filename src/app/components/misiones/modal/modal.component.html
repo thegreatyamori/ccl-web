@@ -1,0 +1,67 @@
+<button class="btn btn-simple btn-primary" (click)="open(modal)">
+  <fa-icon [icon]="['fas', 'info']"></fa-icon>
+  Más info
+</button>
+
+<ng-template #modal let-modal>
+  <div class="modal-header justify-content-center">
+    <button class="close" (click)="modal.dismiss('Cross click')">
+      <i class="now-ui-icons ui-1_simple-remove"></i>
+    </button>
+    <h4 class="title title-up">{{ mision.mission_name }}</h4>
+  </div>
+  <div class="modal-body">
+    <span class="badge badge-primary">{{ mision.mission_type }}</span>
+    <ng-container *ngIf="mision.mission_support">
+      <span class="badge badge-success">{{ mision.mission_support }}</span>
+    </ng-container>
+    <ng-container *ngIf="mision.mission_locale">
+      <span class="badge badge-success">{{ mision.mission_locale }}</span>
+    </ng-container>
+    <br>
+    <span class="h5">
+      <b>Sector/País: </b>
+      <span class="text-primary">{{ mision.mission_sector }}</span>
+    </span>
+    <br>
+    <ng-container *ngIf="mision.mission_address">
+      <span class="h5">
+        <b>Dirección: </b>
+        <span>{{ mision.mission_address }}</span>
+      </span>
+      <br>
+    </ng-container>
+    <ng-container *ngIf="mision.mission_schedules">
+      <span class="h5">
+        <b>Horarios: </b>
+        <span>{{ mision.mission_schedules }}</span>
+      </span>
+      <br>
+    </ng-container>
+    <div class="row">
+      <ng-container *ngIf="mision.servants_description">
+        <div class="col-12 col-md h5">
+          <b>Descripción</b>
+          <p>{{ mision.servants_description }}</p>
+          <ng-container *ngIf="mision.mission_image">
+            <div class="d-flex justify-content-center">
+              <img class="w-75 h-75 m-auto" [src]="mision.mission_image" [alt]="mision.mission_sector">
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="mision.servants_message">
+        <div class="col-12 col-md h5">
+          <b>Mensaje</b>
+          <p>{{ mision.servants_message }}</p>
+          <ng-container *ngIf="mision.servants_image">
+            <div class="d-flex justify-content-center">
+              <img class="w-50 h-50 m-auto" [src]="mision.servants_image" [alt]="mision.mission_name">
+            </div>
+          </ng-container>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</ng-template>

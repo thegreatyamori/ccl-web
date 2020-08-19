@@ -1,0 +1,67 @@
+$base-color: #9E9E9E;
+$secondary-color: #212529;
+$active-color: #009688;
+
+$hover-color: $secondary-color;
+$stroke-color: $secondary-color;
+
+$jovenes-color: #ff5722;
+$damas-color: #e91e63;
+$caballeros-color: #795548;
+// $caballeros-color: #383838;
+$matrimonios-color: #4caf50;
+
+
+.click {
+  fill: $active-color !important;
+}
+.jovenes {
+  fill: $jovenes-color !important;
+}
+.damas {
+  fill: $damas-color !important;
+}
+.caballeros {
+  fill: $caballeros-color !important;
+}
+.matrimonios {
+  fill: $matrimonios-color !important;
+}
+
+.base-bg {
+  background-color: $secondary-color !important;
+}
+.click-bg {
+  background-color: $active-color !important;
+}
+.jovenes-bg {
+  background-color: $jovenes-color !important;
+}
+.damas-bg {
+  background-color: $damas-color !important;
+}
+.caballeros-bg {
+  background-color: $caballeros-color !important;
+}
+.matrimonios-bg {
+  background-color: $matrimonios-color !important;
+}
+
+.base-stroke {
+  border: 1px solid $stroke-color;
+}
+.click-stroke {
+  border: 1px solid $active-color;
+}
+.jovenes-stroke {
+  border: 1px solid $jovenes-color;
+}
+.damas-stroke {
+  border: 1px solid $damas-color;
+}
+.caballeros-stroke {
+  border: 1px solid $caballeros-color;
+}
+.matrimonios-stroke {
+  border: 1px solid $matrimonios-color;
+}

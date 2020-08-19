@@ -2,32 +2,34 @@
  * ***************************************
  * Centro Cristiano de Loja Web
  * @author Jerson Morocho
- * 
+ *
  * ---------------------------------------
  * - Creation (17-dec-2019)
  * ---------------------------------------
  */
 
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpErrorResponse } from '@angular/common/http';
+import { Injectable } from "@angular/core";
+import { HttpClient, HttpErrorResponse } from "@angular/common/http";
 
-import { environment } from 'src/environments/environment';
+import { environment } from "src/environments/environment";
 import { RootObject as HDBs, LightHDB, HDB } from "src/app/models/hdb";
 import { Observable, throwError } from "rxjs";
-import { map, catchError } from 'rxjs/operators';
+import { map, catchError } from "rxjs/operators";
+import { Settings } from 'src/config/config';
 
 @Injectable({
   providedIn: "root"
 })
 export class HdbService {
-  uri: string = environment.api + "hdb.php";
+  private uri: string = environment.api + "hdb.php";
+  private baseTheme = Settings.base_theme;
 
   constructor(private http: HttpClient) {}
 
-  /** 
+  /**
    * Obtiene todos los hogares de bendición desde el api
    * @return observable
-  */
+   */
   getAll(): Observable<any> {
     return this.http.get<HDBs>(this.uri).pipe(
       // ordena alfabeticamente el array segun el typeHDB
@@ -35,7 +37,7 @@ export class HdbService {
 
       // Convierte cada elemento de tipo HDB a LightHDB
       map(hdbs => hdbs.map(hdb => this.formatHDB(hdb))),
-      
+
       // Despliega un error console si falla la petcion get
       catchError(this.handleError)
     );
@@ -46,7 +48,7 @@ export class HdbService {
    * @param a element A
    * @param b element B
    */
-  private sortByType(a: HDB, b: HDB) {
+  private sortByType(a: HDB, b: HDB): number {
     if (a.typeHDB < b.typeHDB) return -1;
     if (a.typeHDB > b.typeHDB) return 1;
     return 0;
@@ -57,29 +59,18 @@ export class HdbService {
    * @param item HDB element
    */
   private formatHDB(item: HDB) {
-    let hdb = <LightHDB>{};
-    hdb.typeHDB = item.typeHDB;
-    hdb.day = item.day;
-    hdb.hour = item.hour;
-    hdb.place = item.place;
-    hdb.reference = item.reference;
-    hdb.posX = item.posX;
-    hdb.posY = item.posY;
-    hdb.telephone = item.telephone;
-    hdb.alternative = item.alternative;
+    const { id, isActive, firstName, surName, ...light }: HDB = item;
+    let hdb = <LightHDB>{ ...light };
+
     hdb.name =
-      item.typeHDB === "matrimonios"
-        ? `${item.firstName} & ${item.surName}`
-        : `${item.firstName} ${item.surName}`;
-    hdb.image = item.image === null ? "assets/img/logo.png" : item.image;
-    hdb.color =
-      item.typeHDB === "jovenes"
-        ? "#C56060"
-        : item.typeHDB === "damas"
-        ? "#8660C5"
-        : item.typeHDB === "caballeros"
-        ? "#383838"
-        : "#607CC5";
+      hdb.typeHDB === "matrimonios"
+        ? `${firstName} & ${surName}`
+        : `${firstName} ${surName}`;
+    hdb.image = hdb.image || "assets/img/logo.png";
+    if (hdb.typeHDB === "jovenes") hdb.color = this.baseTheme.colors.jovenes;
+    if (hdb.typeHDB === "damas") hdb.color = this.baseTheme.colors.damas;
+    if (hdb.typeHDB === "caballeros") hdb.color = this.baseTheme.colors.caballeros;
+    if (hdb.typeHDB === "matrimonios") hdb.color = this.baseTheme.colors.matrimonios;
 
     return hdb;
   }
