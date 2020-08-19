@@ -5,8 +5,8 @@
 export const environment = {
   production: false,
   // api: "https://ccl-api.herokuapp.com/api",
-  api: "http://localhost:8000/api/v1/",
-  radio: "https://174.142.126.11:9942/stream"
+  api: 'http://localhost:8000/api/v1/',
+  radio: 'https://174.142.126.11:9942/stream',
   // radio: "http://listen.radioking.com/radio/226162/stream/269701",
   // radio: "http://rfcmedia.streamguys1.com/MusicPulse.mp3"
 };
