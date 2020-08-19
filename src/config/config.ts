@@ -14,7 +14,7 @@ export class Settings {
     bg_title: 'Discipulado y Multiplicación',
     logo_ccl: Settings.logo,
     bg: {
-      default: 'assets/img/home/default_slider.jpg',
+      default: 'assets/img/home/large.jpg',
       final: 'assets/img/home/header.jpg',
     },
   };
