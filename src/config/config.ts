@@ -31,12 +31,12 @@ export class Settings {
   public static buttons_bar: any = {
     bg_image: 'assets/img/home/bg-buttons-bar.svg',
     opts: [
-      // {
-      //   navLink: '/aula-virtual',
-      //   navImage: 'assets/img/home/card-eva.jpg',
-      //   navText: 'Aula Virtual CCL',
-      //   navIcon: 'chalkboard',
-      // },
+      {
+        navLink: '/aula-virtual',
+        navImage: 'assets/img/home/card-eva.jpg',
+        navText: 'Aula Virtual CCL',
+        navIcon: 'chalkboard',
+      },
       {
         navLink: '/actividades',
         navImage: 'assets/img/home/card-calendar.jpg',

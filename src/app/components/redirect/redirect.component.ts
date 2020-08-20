@@ -32,7 +32,7 @@ export class RedirectComponent implements OnInit {
         break;
       }
       case '/aula-virtual': {
-        redirect = 'https://example.com';
+        redirect = 'https://www.eva.centrocristianodeloja.org/';
         break;
       }
       default:
