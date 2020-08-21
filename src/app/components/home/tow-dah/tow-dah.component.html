@@ -1,5 +1,5 @@
 <section id="tow-dah">
-  <div class="bg-dark text-light bg-cover" [ngStyle]="{ 'background-image': 'url(' + settings.bg_image + ')' }">
+  <div class="bg-dark text-light bg-cover" [ngStyle]="bgTowDahLogo()">
     <div class="container py-5">
       <div class="row">
         <div class="col-12 d-flex flex-column flex-md-row align-items-center">
@@ -19,17 +19,14 @@
     </div>
   </div>
 
-  <div
-    class="page-header page-header-small parallax"
-    [ngStyle]="{ 'background-image': 'url(' + settings.bg_image_tow + ')' }"
-  >
+  <div class="page-header page-header-small parallax" [ngStyle]="bgTowDahBand()">
     <div class="container d-flex align-items-center justify-content-center justify-content-lg-end">
       <div>
         <nav class="d-flex justify-content-center">
           <ng-container *ngFor="let social of settings.social">
             <a
               ngbTooltip="{{ social.text }}"
-              class="m-0 btn btn-link"
+              class="m-0 btn btn-link text-light"
               [href]="social.link | sanitizeUrl"
               target="_blank"
             >

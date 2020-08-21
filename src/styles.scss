@@ -7,8 +7,9 @@
 }
 
 .parallax {
+  width: 100%;
   height: 100%;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;

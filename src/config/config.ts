@@ -36,24 +36,28 @@ export class Settings {
         navImage: 'assets/img/home/card-eva.jpg',
         navText: 'Aula Virtual CCL',
         navIcon: 'chalkboard',
+        navTarget: '_blank',
       },
       {
         navLink: '/actividades',
         navImage: 'assets/img/home/card-calendar.jpg',
         navText: 'Calendario',
         navIcon: 'calendar-alt',
+        navTarget: '_self',
       },
       {
         navLink: '/donaciones',
         navImage: 'assets/img/home/card-donations.jpg',
         navText: 'Donaciones',
         navIcon: 'donate',
+        navTarget: '_self',
       },
       // {
       //   navLink: '/misiones',
       //   navImage: 'assets/img/home/card-misiones.jpg',
       //   navText: 'Misiones',
       //   navIcon: 'globe-americas',
+      //   navTarget: '_self',
       // },
     ],
   };
