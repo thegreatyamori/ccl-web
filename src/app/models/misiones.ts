@@ -16,15 +16,18 @@ export interface Misiones {
 
 export interface Mision {
   id: number;
-  mission_name: string;
-  mission_sector: string;
-  mission_address?: string;
-  mission_schedules?: string;
-  mission_type: string;
-  mission_locale?: string;
-  mission_support?: string;
-  mission_image?: string;
-  servants_image?: string;
-  servants_description?: string;
-  servants_message?: string;
+  name: string;
+  sector: string;
+  address?: string;
+  schedules?: string;
+  type: string;
+  subtype?: string;
+  image?: Images;
+  description?: string;
+  message?: string;
+}
+
+interface Images {
+  mission: string;
+  servant: string;
 }

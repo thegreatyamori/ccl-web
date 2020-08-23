@@ -4,8 +4,12 @@
 
 export const environment = {
   production: true,
-  api: 'https://admin.centrocristianodeloja.org/api/v1/',
+  // api: 'https://admin.centrocristianodeloja.org/api/v1/',
+  // storage: 'http://localhost:8000/storage/',
   // api: 'http://localhost:8000/api/v1/',
+  // storage: 'http://localhost:8000/storage/',
+  api: 'https://4ddb5eb2e29b.ngrok.io/api/v1/',
+  storage: 'https://4ddb5eb2e29b.ngrok.io/storage/',
   radio: 'none',
 };
 

@@ -8,56 +8,53 @@
     <button class="close" (click)="modal.dismiss('Cross click')">
       <i class="now-ui-icons ui-1_simple-remove"></i>
     </button>
-    <h4 class="title title-up">{{ mision.mission_name }}</h4>
+    <h4 class="title title-up">{{ mision.name }}</h4>
   </div>
   <div class="modal-body">
-    <span class="badge badge-primary">{{ mision.mission_type }}</span>
-    <ng-container *ngIf="mision.mission_support">
-      <span class="badge badge-success">{{ mision.mission_support }}</span>
+    <span class="badge badge-primary">{{ mision.type }}</span>
+    <ng-container *ngIf="mision.subtype">
+      <span class="badge badge-success">{{ mision.subtype }}</span>
     </ng-container>
-    <ng-container *ngIf="mision.mission_locale">
-      <span class="badge badge-success">{{ mision.mission_locale }}</span>
-    </ng-container>
-    <br>
+    <br />
     <span class="h5">
       <b>Sector/País: </b>
-      <span class="text-primary">{{ mision.mission_sector }}</span>
+      <span class="text-primary">{{ mision.sector }}</span>
     </span>
-    <br>
-    <ng-container *ngIf="mision.mission_address">
+    <br />
+    <ng-container *ngIf="mision.address">
       <span class="h5">
         <b>Dirección: </b>
-        <span>{{ mision.mission_address }}</span>
+        <span>{{ mision.address }}</span>
       </span>
-      <br>
+      <br />
     </ng-container>
-    <ng-container *ngIf="mision.mission_schedules">
+    <ng-container *ngIf="mision.schedules">
       <span class="h5">
         <b>Horarios: </b>
-        <span>{{ mision.mission_schedules }}</span>
+        <span>{{ mision.schedules }}</span>
       </span>
-      <br>
+      <br />
     </ng-container>
     <div class="row">
-      <ng-container *ngIf="mision.servants_description">
+      <ng-container *ngIf="mision.description">
         <div class="col-12 col-md h5">
           <b>Descripción</b>
-          <p>{{ mision.servants_description }}</p>
-          <ng-container *ngIf="mision.mission_image">
+          <p>{{ mision.description }}</p>
+          <ng-container *ngIf="mision.image">
             <div class="d-flex justify-content-center">
-              <img class="w-75 h-75 m-auto" [src]="mision.mission_image" [alt]="mision.mission_sector">
+              <img class="w-75 h-75 m-auto" [src]="mision.image.mission" [alt]="mision.sector" />
             </div>
           </ng-container>
         </div>
       </ng-container>
 
-      <ng-container *ngIf="mision.servants_message">
+      <ng-container *ngIf="mision.message">
         <div class="col-12 col-md h5">
           <b>Mensaje</b>
-          <p>{{ mision.servants_message }}</p>
-          <ng-container *ngIf="mision.servants_image">
+          <p>{{ mision.message }}</p>
+          <ng-container *ngIf="mision.image">
             <div class="d-flex justify-content-center">
-              <img class="w-50 h-50 m-auto" [src]="mision.servants_image" [alt]="mision.mission_name">
+              <img class="w-75 h-75 m-auto" [src]="mision.image.servant" [alt]="mision.name" />
             </div>
           </ng-container>
         </div>

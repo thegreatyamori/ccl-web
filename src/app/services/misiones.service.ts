@@ -10,22 +10,18 @@
  * ---------------------------------------
  */
 
-import { Injectable } from "@angular/core";
-import {
-  HttpClient,
-  HttpParams,
-  HttpErrorResponse,
-} from "@angular/common/http";
-import { Subscription, ReplaySubject, throwError } from "rxjs";
-import { Misiones } from "../models/misiones";
-import { environment } from "src/environments/environment";
-import { retry, catchError } from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { HttpClient, HttpParams, HttpErrorResponse } from '@angular/common/http';
+import { Subscription, ReplaySubject, throwError } from 'rxjs';
+import { Misiones } from '../models/misiones';
+import { environment } from 'src/environments/environment';
+import { retry, catchError } from 'rxjs/operators';
 
 @Injectable({
-  providedIn: "root",
+  providedIn: 'root',
 })
 export class MisionesService {
-  private url: string = `${environment.api}/misiones`;
+  private url: string = `${environment.api}misiones`;
   private _dataCB: ReplaySubject<any> = new ReplaySubject<any>();
   private _dataOB: ReplaySubject<any> = new ReplaySubject<any>();
   private _dataT: ReplaySubject<any> = new ReplaySubject<any>();
@@ -77,15 +73,13 @@ export class MisionesService {
   handleError(response: HttpErrorResponse) {
     if (response.error instanceof ErrorEvent) {
       // A client-side or network error occurred. Handle it accordingly.
-      console.error("Ocurrió un error:", response.error.message);
+      console.error('Ocurrió un error:', response.error.message);
     } else {
       // The backend returned an unsuccessful error code.
       // The response body may contain clues as to what went wrong,
-      console.error(
-        `El servidor retornó un código ${response.status}, el error: ${response.error}`
-      );
+      console.error(`El servidor retornó un código ${response.status}, el error: ${response.error}`);
     }
     // return an observable with a user-facing error message
-    return throwError("Algo malo ocurrió; por favor intenta en unos momentos.");
+    return throwError('Algo malo ocurrió; por favor intenta en unos momentos.');
   }
 }

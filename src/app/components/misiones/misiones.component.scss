@@ -9,9 +9,10 @@
 }
 
 .card-background {
-  background-position: center center;
+  background-position: center top;
   background-size: cover;
   text-align: center;
+  height: 100vh;
 
   &:after {
     position: absolute;
@@ -21,7 +22,7 @@
     display: block;
     left: 0;
     top: 0;
-    content: "";
+    content: '';
     background-color: rgba(0, 0, 0, 0.63);
   }
 
