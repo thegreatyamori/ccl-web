@@ -1,0 +1,46 @@
+$base-color: rgb(222, 222, 222);
+$white-03: rgba($base-color, 0.3);
+$white-05: rgba($base-color, 0.5);
+
+.btn-no-border {
+  background-color: $white-03;
+
+  &:hover,
+  &:focus,
+  &:not(:disabled):not(.disabled):active,
+  &:not(:disabled):not(.disabled).active,
+  &:not(:disabled):not(.disabled):active:focus,
+  &:not(:disabled):not(.disabled).active:focus,
+  &:active:hover,
+  &.active:hover,
+  .show > &.dropdown-toggle,
+  .show > &.dropdown-toggle:focus,
+  .show > &.dropdown-toggle:hover {
+    background-color: $white-05 !important;
+  }
+}
+
+.form-check-radio {
+  & .form-check-sign::before,
+  & .form-check-sign::after {
+    border-width: 0px;
+    background-color: $white-03;
+  }
+  & input[type='radio']:checked + .form-check-sign::after {
+    background-color: $base-color;
+  }
+}
+
+.form-check {
+  .form-check-label {
+    color: $base-color;
+  }
+  & .form-check-sign::before,
+  & .form-check-sign::after {
+    border-width: 0px;
+    background-color: $white-03;
+  }
+  & .form-check-sign::after {
+    color: $base-color;
+  }
+}

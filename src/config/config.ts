@@ -53,13 +53,13 @@ export class Settings {
         navIcon: 'donate',
         navTarget: '_self',
       },
-      // {
-      //   navLink: '/misiones',
-      //   navImage: 'assets/img/home/card-misiones.jpg',
-      //   navText: 'Misiones',
-      //   navIcon: 'globe-americas',
-      //   navTarget: '_self',
-      // },
+      {
+        navLink: '/misiones',
+        navImage: 'assets/img/home/card-misiones.jpg',
+        navText: 'Misiones',
+        navIcon: 'globe-americas',
+        navTarget: '_self',
+      },
     ],
   };
 
@@ -139,19 +139,19 @@ export class Settings {
     },
     transculturales: {
       title: 'Misiones Transculturales',
-      text: `2 proyectos misioneros a largo plazo, ubicados en países con persecución muy elevada y en zonas de difícil acceso.`,
+      text: `proyectos misioneros a largo plazo, ubicados en países con persecución muy elevada y en zonas de difícil acceso.`,
       default: 'assets/img/home/large.jpg',
       bg: 'https://placebear.com/1440/960',
     },
     locales: {
       title: 'Misiones Locales',
-      text: `8 obras dentro de la provincia de Loja. Nuestro objetivo hasta el 2030 es aperturar por lo menos 70 nuevas iglesias.`,
+      text: `obras dentro de la provincia de Loja. Nuestro objetivo hasta el 2030 es aperturar por lo menos 70 nuevas iglesias.`,
       default: 'assets/img/home/large.jpg',
       bg: 'https://placebear.com/1440/960',
     },
     campos_blancos: {
       title: 'Campos Blancos',
-      text: `4 obras dentro de la provincia de Loja. Los campos blancos son lugares donde existe poca población, pero se lleva el evangelio.`,
+      text: `obras dentro de la provincia de Loja. Los campos blancos son lugares donde existe poca población, pero se lleva el evangelio.`,
       default: 'assets/img/home/large.jpg',
       bg: 'https://placebear.com/1440/960',
     },
@@ -169,7 +169,7 @@ export class Settings {
   // Conectate
   public static conectate: any = {
     title: '¡Somos una iglesia celular!',
-    bg_image: 'assets/img/bg4.jpg',
+    bg_image: 'assets/img/conectate/header.jpg',
     logo_title: 'assets/img/logo_cropped.png',
   };
 
@@ -177,6 +177,14 @@ export class Settings {
   public static msg_mapa: any = {
     click: 'Haz click en cualquier parte del mapa',
     hover: 'Coloca el mouse en cualquier parte del mapa',
+  };
+
+  // -------------------------------------------------------
+  // Iglesia Online
+  public static iglesia_online: any = {
+    title: 'Iglesia Online',
+    bg_image: 'assets/img/ccline/bg.jpg',
+    logo_title: Settings.logo,
   };
 
   /**

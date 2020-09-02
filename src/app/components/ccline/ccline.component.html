@@ -1,0 +1,29 @@
+<ngx-spinner bdColor="rgba(0,0,0,0.5)" size="medium" color="#fff" type="line-scale-pulse-out" [fullScreen]="true">
+  <p class="text-light">Procesando...</p>
+</ngx-spinner>
+
+<section>
+  <div class="container-full page-full" [ngStyle]="setBackgroundImageUrl()"></div>
+  <div class="ccl-form-page">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-12 col-md-8 col-lg-10">
+          <p class="text-light">
+            <b>Bienvenido a CCLine !</b>
+            <br />
+            El objetivo de completar este pequeño formulario, es con la finalidad de tener constancia de su
+            participación. Por lo cual, le solicitamos comedidamente, completar el registro de la información
+            solicitada.
+            <br />
+            <!-- <small>
+              Para más información sobre protección y uso de datos, por favor revise los
+              <a class="btn-googlefocus">"Terminos y Condiciones"</a>.
+            </small> -->
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <app-register-form></app-register-form>
+  </div>
+</section>

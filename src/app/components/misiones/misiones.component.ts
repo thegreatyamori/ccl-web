@@ -1,3 +1,13 @@
+/**
+ * ***************************************
+ * Centro Cristiano de Loja Web
+ * @author Jerson Morocho
+ *
+ * ---------------------------------------
+ * - Creation (22-ago-2020)
+ * ---------------------------------------
+ */
+
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { Settings } from 'src/config/config';

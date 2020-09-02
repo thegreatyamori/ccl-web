@@ -30,6 +30,8 @@ import {
   faInfo,
   faChalkboard,
   faDonate,
+  faMale,
+  faFemale,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -89,6 +91,8 @@ export class AppComponent implements OnInit {
       faInfo,
       faChalkboard,
       faDonate,
+      faMale,
+      faFemale,
       faFacebook,
       faWhatsapp,
       faTwitter,
