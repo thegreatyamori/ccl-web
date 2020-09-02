@@ -45,7 +45,6 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit() {
     this.sidebarVisible = false;
-
   }
 
   @HostListener('window:scroll', [])

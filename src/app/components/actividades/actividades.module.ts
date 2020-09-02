@@ -5,9 +5,8 @@ import { FooterModule } from '../shared/footer/footer.module';
 import { ActividadesRoutingModule } from './actividades-routing.module';
 import { ActividadesComponent } from './actividades.component';
 
-
 @NgModule({
   declarations: [ActividadesComponent],
-  imports: [CommonModule, FooterModule, ActividadesRoutingModule]
+  imports: [CommonModule, FooterModule, ActividadesRoutingModule],
 })
 export class ActividadesModule {}

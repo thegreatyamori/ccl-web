@@ -32,6 +32,6 @@ export class DonacionesComponent implements OnInit {
    * Cambiar el tamaño del texto segun el tipo de dispositivo
    */
   textSize() {
-    return {'h3': this.isDesktop}
+    return { h3: this.isDesktop };
   }
 }

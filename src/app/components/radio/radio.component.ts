@@ -10,26 +10,23 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit, Inject } from "@angular/core";
-import { Title } from "@angular/platform-browser";
-import { NAVIGATOR } from "src/app/services/navigator.service";
+import { Component, OnInit, Inject } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { NAVIGATOR } from 'src/app/services/navigator.service';
 import { Settings } from 'src/config/config';
 
 @Component({
-  selector: "app-radio",
-  templateUrl: "./radio.component.html",
-  styleUrls: ["./radio.component.scss"]
+  selector: 'app-radio',
+  templateUrl: './radio.component.html',
+  styleUrls: ['./radio.component.scss'],
 })
 export class RadioComponent implements OnInit {
   settings: any;
 
-  constructor(
-    @Inject(NAVIGATOR) private navigator: any,
-    private titleDocument: Title
-  ) {}
+  constructor(@Inject(NAVIGATOR) private navigator: any, private titleDocument: Title) {}
 
   ngOnInit() {
-    this.titleDocument.setTitle("CCL Radio");
+    this.titleDocument.setTitle('CCL Radio');
     this.settings = Settings.radio;
     this.mediaSession();
   }

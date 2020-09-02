@@ -9,33 +9,29 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit } from "@angular/core";
-import { Title } from "@angular/platform-browser";
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { NgxSpinnerService } from 'ngx-spinner';
-import { PastoresService } from "src/app/services/pastores.service";
+import { PastoresService } from 'src/app/services/pastores.service';
 
-import { RootObject as Res, Pastor } from "src/app/models/pastores";
+import { RootObject as Res, Pastor } from 'src/app/models/pastores';
 import { Settings } from 'src/config/config';
 import { backgroundImage } from 'src/app/utils';
 
 @Component({
-  selector: "app-cuerpo-pastoral",
-  templateUrl: "./cuerpo-pastoral.component.html",
-  styleUrls: ["./cuerpo-pastoral.component.scss"],
+  selector: 'app-cuerpo-pastoral',
+  templateUrl: './cuerpo-pastoral.component.html',
+  styleUrls: ['./cuerpo-pastoral.component.scss'],
 })
 export class CuerpoPastoralComponent implements OnInit {
   status: boolean;
   pastores: Pastor[];
   settings: any;
 
-  constructor(
-    private titleDocument: Title,
-    private rest: PastoresService,
-    private spinner: NgxSpinnerService
-  ) {}
+  constructor(private titleDocument: Title, private rest: PastoresService, private spinner: NgxSpinnerService) {}
 
   ngOnInit() {
-    this.titleDocument.setTitle("Cuerpo Pastoral");
+    this.titleDocument.setTitle('Cuerpo Pastoral');
     this.settings = Settings.cuerpo_pastoral;
     this.spinner.show();
     this.getPastores();

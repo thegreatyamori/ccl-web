@@ -9,7 +9,7 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { Settings } from 'src/config/config';
 import { backgroundImage } from 'src/app/utils';
 

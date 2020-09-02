@@ -7,6 +7,6 @@ const routes: Routes = [{ path: '', component: CuerpoPastoralComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class CuerpoPastoralRoutingModule { }
+export class CuerpoPastoralRoutingModule {}

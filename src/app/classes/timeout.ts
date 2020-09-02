@@ -5,6 +5,6 @@ export class Timeout {
    * @returns una promesa a resolver
    */
   static delay(t: number) {
-    return new Promise(resolve => setTimeout(resolve, t));
+    return new Promise((resolve) => setTimeout(resolve, t));
   }
 }

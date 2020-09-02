@@ -8,16 +8,16 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit } from "@angular/core";
-import { HomeService } from "src/app/services/home.service";
-import { RootObject as Res, Slide } from "src/app/models/slide";
-import { Carousel } from "src/app/models/carousel";
+import { Component, OnInit } from '@angular/core';
+import { HomeService } from 'src/app/services/home.service';
+import { RootObject as Res, Slide } from 'src/app/models/slide';
+import { Carousel } from 'src/app/models/carousel';
 import { Settings } from 'src/config/config';
 
 @Component({
-  selector: "app-slider",
-  templateUrl: "./slider.component.html",
-  styleUrls: ["./slider.component.scss"]
+  selector: 'app-slider',
+  templateUrl: './slider.component.html',
+  styleUrls: ['./slider.component.scss'],
 })
 export class SliderComponent implements OnInit {
   customOptions: Carousel;
@@ -36,7 +36,7 @@ export class SliderComponent implements OnInit {
       pullDrag: false,
       dots: false,
       navSpeed: 700,
-      navText: ["", ""],
+      navText: ['', ''],
       autoplayTimeout: 7500,
       autoplaySpeed: 2000,
       autoplay: true,
@@ -44,9 +44,9 @@ export class SliderComponent implements OnInit {
         0: { items: 1 },
         576: { items: 3 },
         850: { items: 4 },
-        1200: { items: 4 }
+        1200: { items: 4 },
       },
-      nav: false
+      nav: false,
     };
     this.settings = Settings.slider;
   }

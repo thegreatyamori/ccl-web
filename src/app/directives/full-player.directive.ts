@@ -1,7 +1,7 @@
 import { Directive, ElementRef, Input, OnChanges, SimpleChanges } from '@angular/core';
 
 @Directive({
-  selector: "[fullPlayer]"
+  selector: '[fullPlayer]',
 })
 export class FullPlayerDirective implements OnChanges {
   @Input() fullPlayer: boolean;
@@ -15,7 +15,7 @@ export class FullPlayerDirective implements OnChanges {
    */
   ngOnChanges(changes: SimpleChanges) {
     for (let propName in changes) {
-      if (propName === "fullPlayer") {
+      if (propName === 'fullPlayer') {
         if (this.fullPlayer) this.player.nativeElement.play();
         else this.player.nativeElement.pause();
       }

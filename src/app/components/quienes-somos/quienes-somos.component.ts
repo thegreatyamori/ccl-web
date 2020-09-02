@@ -12,28 +12,21 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit } from "@angular/core";
-import { Title } from "@angular/platform-browser";
-import { trigger, transition, animate, style } from "@angular/animations";
-import { NgbTabChangeEvent } from "@ng-bootstrap/ng-bootstrap";
-import { NgxSpinnerService } from "ngx-spinner";
-import { RootObject as Res, Tab } from "src/app/models/quienesSomos";
-import { QuienesSomosService } from "src/app/services/quienes-somos.service";
-import { Settings } from "src/config/config";
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
+import { trigger, transition, animate, style } from '@angular/animations';
+import { NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
+import { NgxSpinnerService } from 'ngx-spinner';
+import { RootObject as Res, Tab } from 'src/app/models/quienesSomos';
+import { QuienesSomosService } from 'src/app/services/quienes-somos.service';
+import { Settings } from 'src/config/config';
 import { backgroundImage } from 'src/app/utils';
 
 @Component({
-  selector: "app-quienes-somos",
-  templateUrl: "./quienes-somos.component.html",
+  selector: 'app-quienes-somos',
+  templateUrl: './quienes-somos.component.html',
   styles: [``],
-  animations: [
-    trigger("fadeIn", [
-      transition(":enter", [
-        style({ opacity: 0 }),
-        animate(500, style({ opacity: 1 })),
-      ]),
-    ]),
-  ],
+  animations: [trigger('fadeIn', [transition(':enter', [style({ opacity: 0 }), animate(500, style({ opacity: 1 }))])])],
 })
 export class QuienesSomosComponent implements OnInit {
   titleTab: string;
@@ -41,14 +34,10 @@ export class QuienesSomosComponent implements OnInit {
   tabs: Tab[];
   settings: any;
 
-  constructor(
-    private rest: QuienesSomosService,
-    private spinner: NgxSpinnerService,
-    private titleDocument: Title
-  ) {}
+  constructor(private rest: QuienesSomosService, private spinner: NgxSpinnerService, private titleDocument: Title) {}
 
-  ngOnInit() {
-    this.titleTab = "Reseña Histórica";
+  ngOnInit(): void {
+    this.titleTab = 'Reseña Histórica';
     this.titleDocument.setTitle(this.titleTab);
     this.settings = Settings.pages;
     this.spinner.show();
