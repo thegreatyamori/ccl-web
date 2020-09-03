@@ -10,7 +10,6 @@
 
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { Settings } from 'src/config/config';
 import { backgroundImage } from 'src/app/utils';
 
@@ -22,7 +21,7 @@ import { backgroundImage } from 'src/app/utils';
 export class CclineComponent implements OnInit {
   settings: any;
 
-  constructor(private spinner: NgxSpinnerService, private titleDocument: Title) {}
+  constructor(private titleDocument: Title) {}
 
   ngOnInit(): void {
     this.titleDocument.setTitle('Iglesia Online');

@@ -1,7 +1,14 @@
+<ngx-spinner bdColor="rgba(0,0,0,0.5)" size="medium" color="#fff" type="line-scale-pulse-out" [fullScreen]="true">
+  <p class="text-light">Procesando...</p>
+</ngx-spinner>
+
 <div class="container">
   <div class="row justify-content-center">
     <div class="col-12 col-md-8 col-lg-10">
       <h1 class="h3 text-light">Complete el Formulario</h1>
+      <p class="text-light">
+        *Todos los campos son obligatorios, una vez que complete correctamente un campo, desaparecerá la advertencia.
+      </p>
     </div>
     <ng-container *ngIf="formRes && formRes.status">
       <div class="col-12 col-md-8 col-lg-10">
@@ -73,6 +80,11 @@
           <ng-container *ngIf="country.errors.required">
             Obligatorio
           </ng-container>
+          <ng-container *ngIf="country.errors.pattern">
+            La entrada "{{ country.errors.pattern.actualValue }}" no es correcta.
+            <br />
+            Forma de ingreso: <b>ciudad, pais</b> ó <b>ciudad,pais</b>
+          </ng-container>
         </span>
       </div>
       <!-- ccline_birthday -->
@@ -121,21 +133,35 @@
       <div class="col-12 col-md-8 col-lg-5">
         <div class="form-group-no-border input-group">
           <input
+            internationalPhone
             type="tel"
             class="form-control text-light"
             id="ccline_mobile_phone"
             formControlName="ccline_mobile_phone"
             placeholder="Escriba su telefóno movil"
+            (numberData)="getNumberData($event)"
+            (valid)="isValidNumber($event)"
           />
         </div>
-        <span *ngIf="phone.errors" class="form-text text-info pb-3">
-          <ng-container *ngIf="phone.errors.required">
-            Obligatorio
+        <span class="form-text text-info pb-3">
+          <ng-container *ngIf="phone.errors">
+            <ng-container *ngIf="phone.errors.required">
+              Obligatorio
+            </ng-container>
+            <ng-container *ngIf="phone.errors.minlength">
+              Carácteres Mínimos: {{ phone.errors.minlength.requiredLength }}
+              <br />
+              Carácteres: {{ phone.errors.minlength.actualLength }}
+            </ng-container>
+            <ng-container *ngIf="phone.errors.maxlength">
+              Carácteres Máximos: {{ phone.errors.maxlength.requiredLength }}
+              <br />
+              Carácteres: {{ phone.errors.maxLength.actualLength }}
+            </ng-container>
+            <br *ngIf="!isValid"/>
           </ng-container>
-          <ng-container *ngIf="phone.errors.minlength">
-            Carácteres Mínimos: {{ phone.errors.minlength.requiredLength }}
-            <br />
-            Carácteres: {{ phone.errors.minlength.actualLength }}
+          <ng-container *ngIf="!isValid">
+            El número de teléfono es incorrecto
           </ng-container>
         </span>
       </div>
@@ -230,9 +256,13 @@
           </label>
         </div>
       </div>
+      <!-- ccline_terms -->
+      <input type="hidden" formControlName="ccline_country_code" />
       <!-- Submit -->
       <div class="col-12 col-md-8 col-lg-10">
-        <button type="submit" [disabled]="!ccline_form.valid" class="btn btn-primary btn-round">Registrarme</button>
+        <button type="submit" [disabled]="!(ccline_form.valid && isValid)" class="btn btn-primary btn-round">
+          Registrarme
+        </button>
       </div>
     </div>
   </form>

@@ -44,3 +44,9 @@ $white-05: rgba($base-color, 0.5);
     color: $base-color;
   }
 }
+
+.form-group-no-border {
+  & input#ccline_mobile_phone {
+    padding-left: 4em;
+  }
+}
