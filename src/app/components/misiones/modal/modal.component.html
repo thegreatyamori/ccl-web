@@ -29,21 +29,18 @@
       <br />
     </ng-container>
     <ng-container *ngIf="mision.schedules">
-      <span class="h5">
-        <b>Horarios: </b>
-        <span>{{ mision.schedules }}</span>
-      </span>
-      <br />
+      <div class="h5">
+        <b>Horarios:</b>
+        <p [innerHtml]="mision.schedules | breakFilter"></p>
+      </div>
     </ng-container>
     <div class="row">
       <ng-container *ngIf="mision.description">
         <div class="col-12 col-md h5">
           <b>Descripción</b>
-          <p>{{ mision.description }}</p>
+          <p [innerHtml]="mision.description | breakFilter"></p>
           <ng-container *ngIf="mision.image">
-            <div class="d-flex justify-content-center">
-              <img class="w-75 h-75 m-auto" [src]="mision.image.mission" [alt]="mision.sector" />
-            </div>
+            <img class="m-auto" [src]="mision.image.mission" [alt]="mision.sector" />
           </ng-container>
         </div>
       </ng-container>
@@ -51,11 +48,9 @@
       <ng-container *ngIf="mision.message">
         <div class="col-12 col-md h5">
           <b>Mensaje</b>
-          <p>{{ mision.message }}</p>
+          <p [innerHtml]="mision.message | breakFilter"></p>
           <ng-container *ngIf="mision.image">
-            <div class="d-flex justify-content-center">
-              <img class="w-75 h-75 m-auto" [src]="mision.image.servant" [alt]="mision.name" />
-            </div>
+            <img class="m-auto" [src]="mision.image.servant" [alt]="mision.name" />
           </ng-container>
         </div>
       </ng-container>

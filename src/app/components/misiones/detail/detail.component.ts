@@ -71,7 +71,6 @@ export class DetailComponent implements OnInit {
 
     this.rest.dataOB$.subscribe((data: Misiones) => {
       this.status = data.status;
-      console.log(data.res);
 
       this.misiones = data.res.map((mission) => {
         mission.subtype = 'obra local';
@@ -141,6 +140,7 @@ export class DetailComponent implements OnInit {
    * Transforma el url de una imagen para ser leída
    */
   private transformImg(image: string): string {
+    if (image.includes(environment.storage)) return image;
     return `${environment.storage}${image}`;
   }
 }

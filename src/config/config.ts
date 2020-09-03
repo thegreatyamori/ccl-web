@@ -141,13 +141,13 @@ export class Settings {
       title: 'Misiones Transculturales',
       text: `proyectos misioneros a largo plazo, ubicados en países con persecución muy elevada y en zonas de difícil acceso.`,
       default: 'assets/img/home/large.jpg',
-      bg: 'https://placebear.com/1440/960',
+      bg: 'assets/img/misiones/header-2.jpg',
     },
     locales: {
       title: 'Misiones Locales',
       text: `obras dentro de la provincia de Loja. Nuestro objetivo hasta el 2030 es aperturar por lo menos 70 nuevas iglesias.`,
       default: 'assets/img/home/large.jpg',
-      bg: 'https://placebear.com/1440/960',
+      bg: 'assets/img/misiones/header-1.jpg',
     },
     campos_blancos: {
       title: 'Campos Blancos',
