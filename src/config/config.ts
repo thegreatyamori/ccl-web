@@ -1,4 +1,5 @@
 import { BaseColors } from 'src/app/models/config';
+import { RootObject as MissionViews } from 'src/app/models/missionView';
 
 export class Settings {
   // -------------------------------------------------------
@@ -52,16 +53,17 @@ export class Settings {
         navIcon: 'donate',
         navTarget: '_self',
       },
-      // {
-      //   navLink: '/misiones',
-      //   navImage: 'assets/img/home/card-misiones.jpg',
-      //   navText: 'Misiones',
-      //   navIcon: 'globe-americas',
-      //   navTarget: '_self',
-      // },
+      {
+        navLink: '/misiones',
+        navImage: 'assets/img/home/card-misiones.jpg',
+        navText: 'Misiones',
+        navIcon: 'globe-americas',
+        navTarget: '_self',
+      },
     ],
   };
 
+  // -------------------------------------------------------
   // Tow-dah
   public static towdah: any = {
     bg_image: 'assets/img/home/bg-buttons-bar.svg',
@@ -111,49 +113,48 @@ export class Settings {
 
   // -------------------------------------------------------
   // Misiones
-  public static misiones: any = {
-    cards: [
-      {
-        tag: '',
-        title: 'Misiones',
-        text: `Misiones es llevar y compartir el evangelio a toda etnia y nación; donde existen personas que ni si quiera han podido escuchar el nombre de Jesús.`,
-        btnText: null,
-        btnColor: null,
-        link: null,
-        default: 'assets/img/home/large.jpg',
-        bg: 'assets/img/home/large.jpg',
-      },
-      {
-        tag: 'Misiones',
-        title: 'Transculturales',
-        text: `2 proyectos misioneros a largo plazo, ubicados en países con persecución muy elevada y en zonas de difícil acceso.`,
-        btnText: 'Ver más...',
-        btnColor: 'btn-neutral',
-        link: 'transculturales',
-        default: 'assets/img/home/large.jpg',
-        bg: 'https://placebear.com/1440/960',
-      },
-      {
-        tag: 'Obras',
-        title: 'Locales',
-        text: `8 obras dentro de la provincia de Loja. Nuestro objetivo hasta el 2030 es aperturar por lo menos 70 nuevas iglesias.`,
-        btnText: 'Ver más...',
-        btnColor: 'btn-neutral',
-        link: 'filiales',
-        default: 'assets/img/home/large.jpg',
-        bg: 'assets/img/misiones/local.jpg',
-      },
-      {
-        tag: 'Campos',
-        title: 'Blancos',
-        text: `4 obras dentro de la provincia de Loja. Los campos blancos son lugares donde existe poca población, pero se lleva el evangelio.`,
-        btnText: 'Ver más...',
-        btnColor: 'btn-danger',
-        link: 'campos-blancos',
-        default: 'assets/img/home/large.jpg',
-        bg: 'https://placebear.com/1440/960',
-      },
-    ],
+  public static misiones: MissionViews = {
+    general: {
+      title: 'Misiones',
+      text: `Misiones es llevar y compartir el evangelio a toda etnia y nación; donde existen personas que ni si quiera han podido escuchar el nombre de Jesús.`,
+      buttons: [
+        {
+          text: 'Transculturales',
+          color: 'btn-neutral',
+          link: 'transculturales',
+        },
+        {
+          text: 'Locales',
+          color: 'btn-danger',
+          link: 'locales',
+        },
+        {
+          text: 'Campos Blancos',
+          color: 'btn-neutral',
+          link: 'campos-blancos',
+        },
+      ],
+      default: 'assets/img/home/large.jpg',
+      bg: 'assets/img/misiones/bg.jpg',
+    },
+    transculturales: {
+      title: 'Misiones Transculturales',
+      text: `proyectos misioneros a largo plazo, ubicados en países con persecución muy elevada y en zonas de difícil acceso.`,
+      default: 'assets/img/home/large.jpg',
+      bg: 'assets/img/misiones/header-2.jpg',
+    },
+    locales: {
+      title: 'Misiones Locales',
+      text: `obras dentro de la provincia de Loja. Nuestro objetivo hasta el 2030 es aperturar por lo menos 70 nuevas iglesias.`,
+      default: 'assets/img/home/large.jpg',
+      bg: 'assets/img/misiones/header-1.jpg',
+    },
+    campos_blancos: {
+      title: 'Campos Blancos',
+      text: `obras dentro de la provincia de Loja. Los campos blancos son lugares donde existe poca población, pero se lleva el evangelio.`,
+      default: 'assets/img/home/large.jpg',
+      bg: 'https://placebear.com/1440/960',
+    },
   };
 
   // -------------------------------------------------------
@@ -168,7 +169,7 @@ export class Settings {
   // Conectate
   public static conectate: any = {
     title: '¡Somos una iglesia celular!',
-    bg_image: 'assets/img/bg4.jpg',
+    bg_image: 'assets/img/conectate/header.jpg',
     logo_title: 'assets/img/logo_cropped.png',
   };
 
@@ -176,6 +177,14 @@ export class Settings {
   public static msg_mapa: any = {
     click: 'Haz click en cualquier parte del mapa',
     hover: 'Coloca el mouse en cualquier parte del mapa',
+  };
+
+  // -------------------------------------------------------
+  // Iglesia Online
+  public static iglesia_online: any = {
+    title: 'Iglesia Online',
+    bg_image: 'assets/img/ccline/bg.jpg',
+    logo_title: Settings.logo,
   };
 
   /**

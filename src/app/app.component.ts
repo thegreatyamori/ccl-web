@@ -30,6 +30,8 @@ import {
   faInfo,
   faChalkboard,
   faDonate,
+  faMale,
+  faFemale,
 } from '@fortawesome/free-solid-svg-icons';
 import {
   faFacebook,
@@ -52,7 +54,7 @@ import { HeaderComponent } from './components/shared/header/header.component';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss'],
+  styles: [],
 })
 export class AppComponent implements OnInit {
   audioOptions: audioManager;
@@ -89,6 +91,8 @@ export class AppComponent implements OnInit {
       faInfo,
       faChalkboard,
       faDonate,
+      faMale,
+      faFemale,
       faFacebook,
       faWhatsapp,
       faTwitter,

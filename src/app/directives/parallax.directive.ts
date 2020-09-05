@@ -1,16 +1,9 @@
-import {
-  Directive,
-  Inject,
-  ElementRef,
-  Renderer2,
-  HostListener,
-  Input
-} from "@angular/core";
-import { WINDOW } from "../services/window.service";
-import { DeviceDetectorService } from "ngx-device-detector";
+import { Directive, Inject, ElementRef, Renderer2, HostListener, Input } from '@angular/core';
+import { WINDOW } from '../services/window.service';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Directive({
-  selector: "[parallax]"
+  selector: '[parallax]',
 })
 export class ParallaxDirective {
   isDesktop: boolean;
@@ -30,7 +23,7 @@ export class ParallaxDirective {
   /**
    * Crea un efecto parallax doble sobre un elemento
    */
-  @HostListener("window:scroll") parallax(): void {
+  @HostListener('window:scroll') parallax(): void {
     if (this.isDesktop) {
       const distance = this.window.scrollY;
       const bgImage = this.el.nativeElement;
@@ -39,11 +32,10 @@ export class ParallaxDirective {
       const sContainer = distance * this.speedContainer;
 
       // Velocidad del container
-      this.renderer.setStyle(header, "transform", `translateY(${sContainer}px)`);
+      this.renderer.setStyle(header, 'transform', `translateY(${sContainer}px)`);
 
       // Velocidad de la imagen
-      this.renderer.setStyle(bgImage, "transform", `translateY(${sImg}px)`);
+      this.renderer.setStyle(bgImage, 'transform', `translateY(${sImg}px)`);
     }
-
   }
 }

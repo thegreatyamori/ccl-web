@@ -2,7 +2,7 @@
  * ***************************************
  * Centro Cristiano de Loja Web
  * @author Jerson Morocho
- * 
+ *
  * ---------------------------------------
  * - Creation (28-sep-2019)
  * - Added Title Document (9-nov-2019)
@@ -15,7 +15,7 @@ import { Title } from '@angular/platform-browser';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styles: []
+  styles: [],
 })
 export class HomeComponent implements OnInit {
   title: string;
@@ -23,7 +23,7 @@ export class HomeComponent implements OnInit {
   constructor(private titleDocument: Title) {}
 
   ngOnInit() {
-    this.title = "Centro Cristiano de Loja";
+    this.title = 'Centro Cristiano de Loja';
     this.titleDocument.setTitle(this.title);
   }
 }

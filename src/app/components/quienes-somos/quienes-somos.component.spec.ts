@@ -11,9 +11,8 @@ describe('QuienesSomosComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ QuienesSomosComponent, NgbTabset, NgbTab ]
-    })
-    .compileComponents();
+      declarations: [QuienesSomosComponent, NgbTabset, NgbTab],
+    }).compileComponents();
   }));
 
   describe(':', () => {
@@ -45,9 +44,9 @@ describe('QuienesSomosComponent', () => {
 
     it('should render headerImg', () => {
       fixture.detectChanges();
-      expect(
-        element.querySelector(".parallax-img").getAttribute("src")
-      ).toContain("assets/img/quienes-somos/header.jpg");
+      expect(element.querySelector('.parallax-img').getAttribute('src')).toContain(
+        'assets/img/quienes-somos/header.jpg'
+      );
     });
 
     it('should change to "tabResena"', async(() => {

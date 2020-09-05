@@ -7,6 +7,6 @@ const routes: Routes = [{ path: '', component: RadioComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class RadioRoutingModule { }
+export class RadioRoutingModule {}

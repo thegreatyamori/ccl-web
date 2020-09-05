@@ -1,0 +1,25 @@
+.page-full {
+  position: fixed;
+  background-size: cover;
+  background-position: center center;
+  width: 100%;
+  z-index: -1;
+
+  &::before {
+    background-color: rgba(0, 0, 0, 0.7);
+    position: absolute;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    display: block;
+    left: 0;
+    top: 0;
+    content: '';
+  }
+}
+.container-full {
+  height: 100vh;
+}
+.ccl-form-page {
+  padding-top: 5em;
+}

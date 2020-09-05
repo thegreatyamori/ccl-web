@@ -8,14 +8,14 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit } from "@angular/core";
-import { Carousel } from "src/app/models/carousel";
+import { Component, OnInit } from '@angular/core';
+import { Carousel } from 'src/app/models/carousel';
 import { Settings } from 'src/config/config';
 
 @Component({
-  selector: "sponsor-slider",
-  templateUrl: "./sponsor-slider.component.html",
-  styleUrls: ["./sponsor-slider.component.scss"]
+  selector: 'sponsor-slider',
+  templateUrl: './sponsor-slider.component.html',
+  styleUrls: ['./sponsor-slider.component.scss'],
 })
 export class SponsorSliderComponent implements OnInit {
   customOptions: Carousel;
@@ -32,16 +32,16 @@ export class SponsorSliderComponent implements OnInit {
       pullDrag: false,
       dots: false,
       navSpeed: 700,
-      navText: ["", ""],
+      navText: ['', ''],
       autoplayTimeout: 3500,
       autoplaySpeed: 1000,
       autoplay: true,
       responsive: {
         0: {
-          items: 1
-        }
+          items: 1,
+        },
       },
-      nav: false
+      nav: false,
     };
   }
 }

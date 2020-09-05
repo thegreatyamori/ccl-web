@@ -1,15 +1,15 @@
-import { Injectable } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { audioManager } from "../models/audioManager";
+import { Injectable } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { audioManager } from '../models/audioManager';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class RadioHelperService {
   // See more info: https://rxjs.dev/api/index/class/BehaviorSubject
   private audioControl = new BehaviorSubject<audioManager>({
-    id: "initial",
-    state: false
+    id: 'initial',
+    state: false,
   });
   private volume = new BehaviorSubject<number>(0.6);
   private isRadioPageActive = new BehaviorSubject<boolean>(true);

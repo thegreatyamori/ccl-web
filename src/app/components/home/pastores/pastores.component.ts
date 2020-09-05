@@ -8,14 +8,14 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 import { Settings } from 'src/config/config';
-import { DeviceDetectorService } from "ngx-device-detector";
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
-  selector: "app-pastores",
-  templateUrl: "./pastores.component.html",
-  styleUrls: ["./pastores.component.scss"]
+  selector: 'app-pastores',
+  templateUrl: './pastores.component.html',
+  styleUrls: ['./pastores.component.scss'],
 })
 export class PastoresComponent implements OnInit {
   settings: any;

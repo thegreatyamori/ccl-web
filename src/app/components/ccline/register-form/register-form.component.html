@@ -1,0 +1,269 @@
+<ngx-spinner bdColor="rgba(0,0,0,0.5)" size="medium" color="#fff" type="line-scale-pulse-out" [fullScreen]="true">
+  <p class="text-light">Procesando...</p>
+</ngx-spinner>
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-12 col-md-8 col-lg-10">
+      <h1 class="h3 text-light">Complete el Formulario</h1>
+      <p class="text-light">
+        *Todos los campos son obligatorios, una vez que complete correctamente un campo, desaparecerá la advertencia.
+      </p>
+    </div>
+    <ng-container *ngIf="formRes && formRes.status">
+      <div class="col-12 col-md-8 col-lg-10">
+        <ngb-alert [type]="formRes.type" [dismissible]="false">
+          <strong>Felicidades!</strong> {{ formRes.message }}
+        </ngb-alert>
+      </div>
+    </ng-container>
+  </div>
+
+  <form [formGroup]="ccline_form" (ngSubmit)="handleSubmit()">
+    <div class="row justify-content-center">
+      <!-- ccline_name -->
+      <div class="col-12 col-md-8 col-lg-5">
+        <div class="form-group-no-border input-group">
+          <input
+            type="text"
+            formControlName="ccline_name"
+            class="form-control text-light"
+            id="ccline_name"
+            placeholder="Escriba sus Nombres"
+          />
+        </div>
+        <span *ngIf="name.errors" class="form-text text-info pb-3">
+          <ng-container *ngIf="name.errors.required">
+            Obligatorio
+          </ng-container>
+          <ng-container *ngIf="name.errors.maxlength">
+            Carácteres Permitidos: {{ name.errors.maxlength.requiredLength }}
+            <br />
+            Carácteres: {{ name.errors.maxlength.actualLength }}
+          </ng-container>
+        </span>
+      </div>
+      <!-- ccline_lastname -->
+      <div class="col-12 col-md-8 col-lg-5">
+        <div class="form-group-no-border input-group">
+          <input
+            type="text"
+            formControlName="ccline_lastname"
+            class="form-control text-light"
+            id="ccline_lastname"
+            placeholder="Escriba sus Apellidos"
+          />
+        </div>
+        <span *ngIf="lastname.errors" class="form-text text-info pb-3">
+          <ng-container *ngIf="lastname.errors.required">
+            Obligatorio
+          </ng-container>
+          <ng-container *ngIf="lastname.errors.maxlength">
+            Carácteres Permitidos: {{ lastname.errors.maxlength.requiredLength }}
+            <br />
+            Carácteres: {{ lastname.errors.maxlength.actualLength }}
+          </ng-container>
+        </span>
+      </div>
+      <!-- ccline_country -->
+      <div class="col-12 col-md-8 col-lg-5">
+        <div class="form-group-no-border input-group">
+          <input
+            type="text"
+            class="form-control text-light"
+            id="ccline_country"
+            formControlName="ccline_country"
+            placeholder="En que ciudad vive"
+          />
+        </div>
+        <span *ngIf="country.errors" class="form-text text-info pb-3">
+          <ng-container *ngIf="country.errors.required">
+            Obligatorio
+          </ng-container>
+          <ng-container *ngIf="country.errors.pattern">
+            La entrada "{{ country.errors.pattern.actualValue }}" no es correcta.
+            <br />
+            Forma de ingreso: <b>ciudad, pais</b> ó <b>ciudad,pais</b>
+          </ng-container>
+        </span>
+      </div>
+      <!-- ccline_birthday -->
+      <div class="col-12 col-md-8 col-lg-5">
+        <div class="form-group-no-border input-group">
+          <input
+            type="text"
+            class="form-control text-light"
+            onfocus="(this.type='date')"
+            onblur="(this.type='text')"
+            id="ccline_birthday"
+            formControlName="ccline_birthday"
+            placeholder="Escriba su fecha de nacimiento"
+          />
+        </div>
+        <span *ngIf="birthday.errors" class="form-text text-info pb-3">
+          <ng-container *ngIf="birthday.errors.required">
+            Obligatorio
+          </ng-container>
+        </span>
+      </div>
+      <!-- ccline_email -->
+      <div class="col-12 col-md-8 col-lg-5">
+        <div class="form-group-no-border input-group">
+          <input
+            type="email"
+            class="form-control text-light"
+            id="ccline_email"
+            formControlName="ccline_email"
+            placeholder="Escriba su e-mail"
+          />
+        </div>
+        <span class="form-text text-info" [ngClass]="{ 'pb-3': email.errors || formRes }">
+          <ng-container *ngIf="email.errors && email.errors.required">
+            Obligatorio
+          </ng-container>
+          <ng-container *ngIf="email.errors && email.errors.email">
+            Email inválido
+          </ng-container>
+          <ng-container *ngIf="formRes && !formRes.status && formRes.errors.ccline_email">
+            {{ formRes.errors.ccline_email[0] }}
+          </ng-container>
+        </span>
+      </div>
+      <!-- ccline_mobile_phone -->
+      <div class="col-12 col-md-8 col-lg-5">
+        <div class="form-group-no-border input-group">
+          <input
+            internationalPhone
+            type="tel"
+            class="form-control text-light"
+            id="ccline_mobile_phone"
+            formControlName="ccline_mobile_phone"
+            placeholder="Escriba su telefóno movil"
+            (numberData)="getNumberData($event)"
+            (valid)="isValidNumber($event)"
+          />
+        </div>
+        <span class="form-text text-info pb-3">
+          <ng-container *ngIf="phone.errors">
+            <ng-container *ngIf="phone.errors.required">
+              Obligatorio
+            </ng-container>
+            <ng-container *ngIf="phone.errors.minlength">
+              Carácteres Mínimos: {{ phone.errors.minlength.requiredLength }}
+              <br />
+              Carácteres: {{ phone.errors.minlength.actualLength }}
+            </ng-container>
+            <ng-container *ngIf="phone.errors.maxlength">
+              Carácteres Máximos: {{ phone.errors.maxlength.requiredLength }}
+              <br />
+              Carácteres: {{ phone.errors.maxLength.actualLength }}
+            </ng-container>
+            <br *ngIf="!isValid"/>
+          </ng-container>
+          <ng-container *ngIf="!isValid">
+            El número de teléfono es incorrecto
+          </ng-container>
+        </span>
+      </div>
+      <!-- ccline_gender -->
+      <div class="col-12 col-md-8 col-lg-10 pb-3">
+        <span class="text-light">
+          Seleccione el género
+          <span *ngIf="gender.errors && gender.errors.required" class="text-info">
+            (Obligatorio)
+          </span>
+        </span>
+        <div class="d-flex justify-content-center">
+          <div class="btn-group btn-group-toggle" ngbRadioGroup name="ccline_gender" formControlName="ccline_gender">
+            <label ngbButtonLabel class="btn-round btn-no-border mx-2">
+              <input ngbButton type="radio" value="masculino" />
+              <fa-icon [icon]="['fas', 'male']" size="2x"></fa-icon>
+            </label>
+            <label ngbButtonLabel class="btn-round btn-no-border mx-2">
+              <input ngbButton type="radio" value="femenino" />
+              <fa-icon [icon]="['fas', 'female']" size="2x"></fa-icon>
+            </label>
+          </div>
+        </div>
+      </div>
+      <!-- ccline_discover -->
+      <div class="col-12 col-md-8 col-lg-10 pb-3">
+        <span class="text-light">
+          ¿A través de que medio se enteró de CCLine?
+          <span *ngIf="discover.errors && discover.errors.required" class="text-info">
+            (Obligatorio)
+          </span>
+        </span>
+        <div class="form-check form-check-radio">
+          <label class="form-check-label">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="ccline_discover"
+              id="cclinediscover1"
+              value="redes_sociales"
+            />
+            Redes Sociales
+            <span class="form-check-sign"></span>
+          </label>
+        </div>
+        <div class="form-check form-check-radio">
+          <label class="form-check-label">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="ccline_discover"
+              id="cclinediscover2"
+              value="web"
+            />
+            Pagina Web
+            <span class="form-check-sign"></span>
+          </label>
+        </div>
+        <div class="form-check form-check-radio">
+          <label class="form-check-label">
+            <input
+              class="form-check-input"
+              type="radio"
+              formControlName="ccline_discover"
+              id="cclinediscover3"
+              value="invitacion"
+            />
+            Me invitó un amigo
+            <span class="form-check-sign"></span>
+          </label>
+        </div>
+      </div>
+      <!-- ccline_terms -->
+      <div class="col-12 col-md-8 col-lg-10 pb-3">
+        <span class="text-light">
+          Le sugerimos que antes de aceptar los términos y condiciones, los pueda revisar detenidamente
+          <app-terms title="aquí"></app-terms>.
+        </span>
+        <div class="form-check">
+          <label class="form-check-label">
+            <input class="form-check-input" type="checkbox" formControlName="ccline_terms" />
+            <span class="form-check-sign"></span>
+            He leído y acepto los Terminos y Condiciones
+            <span class="text-info">
+              <ng-container *ngIf="terms.errors && terms.errors.required">
+                (Obligatorio)
+              </ng-container>
+              <ng-container *ngIf="formRes && !formRes.status && formRes.errors.ccline_terms">
+                ({{ formRes.errors.ccline_terms[0] }})
+              </ng-container>
+            </span>
+          </label>
+        </div>
+      </div>
+      <!-- ccline_terms -->
+      <input type="hidden" formControlName="ccline_country_code" />
+      <!-- Submit -->
+      <div class="col-12 col-md-8 col-lg-10">
+        <button type="submit" [disabled]="!(ccline_form.valid && isValid)" class="btn btn-primary btn-round">
+          Registrarme
+        </button>
+      </div>
+    </div>
+  </form>
+</div>

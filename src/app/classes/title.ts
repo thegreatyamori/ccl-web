@@ -17,6 +17,6 @@ export class Title {
    *
    */
   static convert(str: string): string {
-    return str.split("_").join(" ");
+    return str.split('_').join(' ');
   }
 }

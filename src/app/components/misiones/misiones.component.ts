@@ -1,20 +1,32 @@
-import { Component, OnInit } from "@angular/core";
-import { Title } from "@angular/platform-browser";
+/**
+ * ***************************************
+ * Centro Cristiano de Loja Web
+ * @author Jerson Morocho
+ *
+ * ---------------------------------------
+ * - Creation (22-ago-2020)
+ * ---------------------------------------
+ */
+
+import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { Settings } from 'src/config/config';
+import { DeviceDetectorService } from 'ngx-device-detector';
 
 @Component({
-  selector: "app-misiones",
-  templateUrl: "./misiones.component.html",
-  styleUrls: ["./misiones.component.scss"]
+  selector: 'app-misiones',
+  templateUrl: './misiones.component.html',
+  styleUrls: ['./misiones.component.scss'],
 })
 export class MisionesComponent implements OnInit {
-  cards: any;
+  card: any;
+  isMobile: boolean;
 
-  constructor(private titleDocument: Title) {}
+  constructor(private titleDocument: Title, private deviceDetector: DeviceDetectorService) {}
 
   ngOnInit() {
-    this.cards = Settings.misiones.cards;
-    let [ misiones, ...any ] = this.cards;
-    this.titleDocument.setTitle(misiones.title);
+    this.card = Settings.misiones.general;
+    this.titleDocument.setTitle(this.card.title);
+    this.isMobile = this.deviceDetector.isMobile();
   }
 }

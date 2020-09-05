@@ -1,11 +1,11 @@
-import { Injectable, Renderer2, RendererFactory2 } from "@angular/core";
-import { BehaviorSubject } from "rxjs";
-import { LightHDB, MapState, FilterState, ColorState } from "../models/hdb";
-import { HdbService } from "./hdb.service";
-import { Marker } from "../classes/marker";
+import { Injectable, Renderer2, RendererFactory2 } from '@angular/core';
+import { BehaviorSubject } from 'rxjs';
+import { LightHDB, MapState, FilterState, ColorState } from '../models/hdb';
+import { HdbService } from './hdb.service';
+import { Marker } from '../classes/marker';
 
 @Injectable({
-  providedIn: "root"
+  providedIn: 'root',
 })
 export class HdbHelperService {
   private renderer: Renderer2;
@@ -17,17 +17,17 @@ export class HdbHelperService {
   private map = new BehaviorSubject<any>({});
   private mapClicked = new BehaviorSubject<MapState>({
     isActive: false,
-    place: ""
+    place: '',
   });
   private colorState = new BehaviorSubject<ColorState>({
-    classMap: "click",
-    classStroke: "base-stroke",
-    classBg: "base-bg"
+    classMap: 'click',
+    classStroke: 'base-stroke',
+    classBg: 'base-bg',
   });
   private filterState = new BehaviorSubject<FilterState>({
-    title: "Filtrar",
+    title: 'Filtrar',
     type: false,
-    day: false
+    day: false,
   });
 
   hdbs$ = this._hdbs.asObservable();
@@ -120,26 +120,26 @@ export class HdbHelperService {
   reset(arg: string): void {
     const mapa = this.map.getValue();
 
-    if (arg === "all") {
+    if (arg === 'all') {
       mapa.childNodes.forEach((el: any) => {
-        this.renderer.removeStyle(el, "fill");
-        this.renderer.removeAttribute(el, "class");
+        this.renderer.removeStyle(el, 'fill');
+        this.renderer.removeAttribute(el, 'class');
 
         // elimina los marcadores
         this.undrawPoint(mapa, el);
       });
 
-      this.renderer.removeAttribute(mapa, "transform");
-      this.toggleMapClick({ isActive: false, place: "" });
+      this.renderer.removeAttribute(mapa, 'transform');
+      this.toggleMapClick({ isActive: false, place: '' });
       this.setColorState({
-        classMap: "click",
-        classStroke: "base-stroke",
-        classBg: "base-bg"
+        classMap: 'click',
+        classStroke: 'base-stroke',
+        classBg: 'base-bg',
       });
     } else {
       mapa.childNodes.forEach((el: any) => {
         if (el.id !== arg) {
-          this.renderer.removeAttribute(el, "class");
+          this.renderer.removeAttribute(el, 'class');
 
           // elimina los marcadores
           this.undrawPoint(mapa, el);
@@ -167,23 +167,23 @@ export class HdbHelperService {
     // seteamos el color segun el tipo de filtro|click
     if (filterState.day || state) {
       color = {
-        classMap: "click",
-        classStroke: "click-stroke",
-        classBg: "click-bg"
+        classMap: 'click',
+        classStroke: 'click-stroke',
+        classBg: 'click-bg',
       };
     }
     if (filterState.type) {
       color = {
         classMap: colorName,
         classStroke: `${colorName}-stroke`,
-        classBg: `${colorName}-bg`
+        classBg: `${colorName}-bg`,
       };
     }
     if (!state) {
       color = {
-        classMap: "click",
-        classStroke: "base-stroke",
-        classBg: "base-bg"
+        classMap: 'click',
+        classStroke: 'base-stroke',
+        classBg: 'base-bg',
       };
       if (filterState.type) color.classMap = colorName;
       if (filterState.day) color.classMap = colorName;
@@ -215,22 +215,22 @@ export class HdbHelperService {
     const translate = `translate(${posX}, ${posY})scale(${zoom})`;
 
     this.renderer.addClass(path, color);
-    this.renderer.addClass(path, "active");
-    this.renderer.setAttribute(map, "transform", translate);
-    this.renderer.setStyle(map, "transition", "transform 750ms");
+    this.renderer.addClass(path, 'active');
+    this.renderer.setAttribute(map, 'transform', translate);
+    this.renderer.setStyle(map, 'transition', 'transform 750ms');
 
     // Enviamos el estado y el lugar para decirle al componente
     // ListaHDB que se active
     this.toggleMapClick({
       isActive: true,
-      place: path.id
+      place: path.id,
     });
 
     // colocamos los marcadores
     this.serMarkers(map, path.id);
 
     // TODO: quitar una vez esten las pruebas
-    console.log("Marker: ", xPath, yPath);
+    console.log('Marker: ', xPath, yPath);
   }
 
   /**
@@ -241,13 +241,13 @@ export class HdbHelperService {
    */
   zoomOut(map: SVGGElement, path: SVGPathElement, color: string): void {
     this.renderer.removeClass(path, color);
-    this.renderer.removeClass(path, "active");
-    this.renderer.removeAttribute(map, "transform");
-    this.renderer.setStyle(map, "transition", "transform 750ms");
+    this.renderer.removeClass(path, 'active');
+    this.renderer.removeAttribute(map, 'transform');
+    this.renderer.setStyle(map, 'transition', 'transform 750ms');
 
     // Enviamos el estado y el lugar para decirle al componente
     // ListaHDB que se desactive
-    this.toggleMapClick({ isActive: false, place: "" });
+    this.toggleMapClick({ isActive: false, place: '' });
   }
 
   /**
@@ -308,9 +308,9 @@ export class HdbHelperService {
     const filterBy = this.filterState.getValue();
     const title = filterBy.title.toLowerCase();
 
-    hdbs.forEach(item => {
+    hdbs.forEach((item) => {
       if (item.place === place) {
-        if (title === "filtrar") {
+        if (title === 'filtrar') {
           // Si el sector coincide
           this.drawPoint(map, item.posX, item.posY);
         } else if (title === item.typeHDB) {
@@ -336,7 +336,7 @@ export class HdbHelperService {
     this.renderer.appendChild(svg, marker);
 
     // TODO: quitar una vez esten las pruebas
-    console.log("Marker: ", x, y);
+    console.log('Marker: ', x, y);
   }
 
   /**
@@ -346,7 +346,7 @@ export class HdbHelperService {
    * @param y centro en y
    */
   private undrawPoint(svg: SVGGElement, path: SVGPathElement): void {
-    if (path.id === "marker") {
+    if (path.id === 'marker') {
       this.renderer.removeChild(svg, path);
     }
   }

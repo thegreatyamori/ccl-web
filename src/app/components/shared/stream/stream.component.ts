@@ -8,13 +8,13 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit } from "@angular/core";
-import { environment } from "src/environments/environment";
-import { RadioHelperService } from "src/app/services/radio-helper.service";
-import { audioManager } from "src/app/models/audioManager";
+import { Component, OnInit } from '@angular/core';
+import { environment } from 'src/environments/environment';
+import { RadioHelperService } from 'src/app/services/radio-helper.service';
+import { audioManager } from 'src/app/models/audioManager';
 
 @Component({
-  selector: "stream",
+  selector: 'stream',
   template: `
     <audio
       [fullPlayer]="audioOptions.state"
@@ -28,7 +28,7 @@ import { audioManager } from "src/app/models/audioManager";
     >
       <source [src]="url | sanitizeUrlResource" />
     </audio>
-  `
+  `,
 })
 export class StreamComponent implements OnInit {
   url: string;
@@ -39,10 +39,8 @@ export class StreamComponent implements OnInit {
 
   ngOnInit() {
     this.url = environment.radio;
-    this.helper.customVolume.subscribe(volume => (this.volume = volume));
-    this.helper.audioState.subscribe(
-      (options: audioManager) => (this.audioOptions = options)
-    );
+    this.helper.customVolume.subscribe((volume) => (this.volume = volume));
+    this.helper.audioState.subscribe((options: audioManager) => (this.audioOptions = options));
   }
 
   /**
@@ -50,7 +48,7 @@ export class StreamComponent implements OnInit {
    * @param event evento playing
    */
   onPlaying(event: any): void {
-    this.helper.manageAudio({ id: "external", state: true });
+    this.helper.manageAudio({ id: 'external', state: true });
   }
 
   /**
@@ -58,7 +56,7 @@ export class StreamComponent implements OnInit {
    * @param event evento pause
    */
   onStopped(event: any): void {
-    this.helper.manageAudio({ id: "external", state: false });
+    this.helper.manageAudio({ id: 'external', state: false });
   }
 
   /**
@@ -66,6 +64,6 @@ export class StreamComponent implements OnInit {
    * @param event evento suspend
    */
   onSuspend(event: any): void {
-    this.helper.manageAudio({ id: "initial", state: false });
+    this.helper.manageAudio({ id: 'initial', state: false });
   }
 }

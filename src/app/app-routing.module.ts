@@ -36,6 +36,10 @@ const routes: Routes = [
     loadChildren: () => import('./components/radio/radio.module').then((m) => m.RadioModule),
   },
   {
+    path: 'iglesia-online',
+    loadChildren: () => import('./components/ccline/ccline.module').then((m) => m.CclineModule),
+  },
+  {
     path: 'aula-virtual',
     component: RedirectComponent,
   },

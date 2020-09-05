@@ -1,12 +1,7 @@
 {
   "hosting": {
     "public": "dist/ccl-web",
-    "ignore": [
-      "firebase.json",
-      "**/.*",
-      "**/node_modules/**",
-      "**/.vscode/**"
-    ],
+    "ignore": ["firebase.json", "**/.*", "**/node_modules/**", "**/.vscode/**"],
     "rewrites": [
       {
         "source": "**",

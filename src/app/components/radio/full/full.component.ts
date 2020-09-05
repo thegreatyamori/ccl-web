@@ -8,14 +8,14 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit } from "@angular/core";
-import { RadioHelperService } from "src/app/services/radio-helper.service";
-import { audioManager } from "src/app/models/audioManager";
+import { Component, OnInit } from '@angular/core';
+import { RadioHelperService } from 'src/app/services/radio-helper.service';
+import { audioManager } from 'src/app/models/audioManager';
 
 @Component({
-  selector: "radio-full",
-  templateUrl: "./full.component.html",
-  styleUrls: ["./full.component.scss"]
+  selector: 'radio-full',
+  templateUrl: './full.component.html',
+  styleUrls: ['./full.component.scss'],
 })
 export class FullComponent implements OnInit {
   volume: number;
@@ -25,11 +25,9 @@ export class FullComponent implements OnInit {
   constructor(private helper: RadioHelperService) {}
 
   ngOnInit() {
-    this.helper.audioState.subscribe(
-      (options: audioManager) => (this.audioOptions = options)
-    );
-    this.helper.customVolume.subscribe(volume => (this.volume = volume));
-    this.iconVolume = "volume-up";
+    this.helper.audioState.subscribe((options: audioManager) => (this.audioOptions = options));
+    this.helper.customVolume.subscribe((volume) => (this.volume = volume));
+    this.iconVolume = 'volume-up';
   }
 
   /**
@@ -37,7 +35,7 @@ export class FullComponent implements OnInit {
    */
   switchState(): void {
     this.audioOptions.state = !this.audioOptions.state;
-    this.audioOptions.id = "full";
+    this.audioOptions.id = 'full';
     this.helper.manageAudio(this.audioOptions);
   }
 
@@ -50,12 +48,6 @@ export class FullComponent implements OnInit {
     this.helper.changeVolume(newVolume);
 
     this.iconVolume =
-      newVolume === 0
-        ? "volume-off"
-        : newVolume <= 0.5
-        ? "volume-down"
-        : newVolume > 0.5
-        ? "volume-up"
-        : "";
+      newVolume === 0 ? 'volume-off' : newVolume <= 0.5 ? 'volume-down' : newVolume > 0.5 ? 'volume-up' : '';
   }
 }

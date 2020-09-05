@@ -8,17 +8,17 @@
  * ---------------------------------------
  */
 
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: "app-shared",
+  selector: 'app-shared',
   template: `
     <radio-mini left="10" bottom="10"></radio-mini>
     <stream></stream>
-  `
+  `,
 })
 export class SharedComponent implements OnInit {
   constructor() {}
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 }

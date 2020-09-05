@@ -1,23 +1,23 @@
-import { NgModule } from "@angular/core";
-import { NgbModule } from "@ng-bootstrap/ng-bootstrap";
-import { FormsModule, FormGroup } from "@angular/forms";
-import { BrowserModule, Title } from "@angular/platform-browser";
-import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
-import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
-import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
-import { AppRoutingModule } from "./app-routing.module";
-import { SharedModule } from "./components/shared/shared.module";
-import { CarouselModule } from "ngx-owl-carousel-o";
-import { NgxSpinnerModule } from "ngx-spinner";
-import { DeviceDetectorModule } from "ngx-device-detector";
-import { HomeModule } from "./components/home/home.module";
-import { WINDOW_PROVIDERS } from "./services/window.service";
-import { NAVIGATOR_PROVIDERS } from "./services/navigator.service";
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { NgxSpinnerModule } from 'ngx-spinner';
+import { CarouselModule } from 'ngx-owl-carousel-o';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { AppRoutingModule } from './app-routing.module';
+import { DeviceDetectorModule } from 'ngx-device-detector';
+import { HomeModule } from './components/home/home.module';
+import { SharedModule } from './components/shared/shared.module';
+import { BrowserModule, Title } from '@angular/platform-browser';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { WINDOW_PROVIDERS } from './services/window.service';
+import { NAVIGATOR_PROVIDERS } from './services/navigator.service';
 
-import { AppComponent } from "./app.component";
-import { HeaderComponent } from "./components/shared/header/header.component";
+import { AppComponent } from './app.component';
+import { HeaderComponent } from './components/shared/header/header.component';
 import { RedirectComponent } from './components/redirect/redirect.component';
-import { AuthInterceptor } from "./interceptors/auth.interceptor";
+import { AuthInterceptor } from './interceptors/auth.interceptor';
 
 @NgModule({
   declarations: [AppComponent, HeaderComponent, RedirectComponent],
@@ -25,15 +25,15 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor";
     NgbModule,
     FormsModule,
     HomeModule,
-    SharedModule.forRoot(),
     BrowserModule,
     CarouselModule,
     NgxSpinnerModule,
     HttpClientModule,
     AppRoutingModule,
     FontAwesomeModule,
+    BrowserAnimationsModule,
+    SharedModule.forRoot(),
     DeviceDetectorModule.forRoot(),
-    BrowserAnimationsModule
   ],
   providers: [
     Title,
@@ -42,9 +42,9 @@ import { AuthInterceptor } from "./interceptors/auth.interceptor";
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
