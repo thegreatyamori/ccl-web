@@ -203,6 +203,13 @@ export class Settings {
   };
 
   // -------------------------------------------------------
+  // Donaciones
+  public static donaciones: any = {
+    bg_image: 'assets/img/donaciones/bg.jpg',
+    btn_paypal: 'assets/img/donaciones/donations.png'
+  };
+
+  // -------------------------------------------------------
   // Radio
   public static radio: any = {
     bg_image: 'assets/img/radio/bg.jpg',
