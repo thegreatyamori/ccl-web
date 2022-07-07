@@ -44,14 +44,14 @@ export class HomeService {
             link: 'https://forms.gle/U9466jLpXLu9S16J6'
           },
           {
-            id: 1,
+            id: 2,
             title: 'Oración',
             subtitle: 'Buscando su presencia',
             image: 'assets/img/slides/oracion.jpeg',
             link: 'https://us02web.zoom.us/j/83914386780?pwd=WUFIL2RlRXZZTjd2TjFYS0tiNVBuZz09'
           },
           {
-            id: 1,
+            id: 3,
             title: 'Adoración',
             subtitle: 'Martes y Jueves',
             image: 'assets/img/slides/adoracion.jpeg',
@@ -60,7 +60,7 @@ export class HomeService {
         ]
       }
     ]
-    const obs_hardcoded_banner = new Observable((observer) => {
+    const obs_hardcoded_banner: Observable<Slides> = new Observable((observer) => {
       observer.next(hardcoded_banner);
       observer.complete();
     })
