@@ -29,13 +29,14 @@
             <h2 class="title text-center">{{ titleTab }}</h2>
             <div class="nav-tabs-navigation">
               <div class="nav-tabs-wrapper">
-                <ngb-tabset #tabQuienesSomos [justify]="'center'" (tabChange)="onTabChange($event)">
+                <!-- see https://ng-bootstrap.github.io/releases/11.x/#/components/nav/overview -->
+                <!-- <ngb-tabset #tabQuienesSomos [justify]="'center'" (tabChange)="onTabChange($event)">
                   <ngb-tab *ngFor="let tab of tabs" id="{{ tab.id }}" title="{{ tab.title }}">
                     <ng-template ngbTabContent>
                       <div [@fadeIn]="true" [innerHtml]="tab.paragraph | sanitizeHtml"></div>
                     </ng-template>
                   </ngb-tab>
-                </ngb-tabset>
+                </ngb-tabset> -->
               </div>
             </div>
           </div>
