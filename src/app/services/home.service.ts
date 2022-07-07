@@ -32,7 +32,40 @@ export class HomeService {
    * @return observable
    */
   getSlides(): Observable<Slides> {
-    return this.http.get<Slides>(this.uri).pipe(retry(2), catchError(this.handleError));
+    const hardcoded_banner = [
+      {
+        status: true,
+        res: [
+          {
+            id: 1,
+            title: 'Congreso Pureza 2022',
+            subtitle: 'Enamorarte es la parte sencilla',
+            image: 'https://lh6.googleusercontent.com/_QyvzmXsJevLyK-AqjHGNUYuw5AfSGuNQTie___sLmvzz7aKZIxXpHn6yIPXQRBKFJ6mjuS3Jybdh1iK1TnAdcHHxNzkFNRK5cT6PRj0q0A66VEEB5cStNm6pK7EUqBgwA=w1280',
+            link: 'https://forms.gle/U9466jLpXLu9S16J6'
+          },
+          {
+            id: 1,
+            title: 'Oración',
+            subtitle: 'Buscando su presencia',
+            image: 'assets/img/slides/oracion.jpeg',
+            link: 'https://us02web.zoom.us/j/83914386780?pwd=WUFIL2RlRXZZTjd2TjFYS0tiNVBuZz09'
+          },
+          {
+            id: 1,
+            title: 'Adoración',
+            subtitle: 'Martes y Jueves',
+            image: 'assets/img/slides/adoracion.jpeg',
+            link: ''
+          },
+        ]
+      }
+    ]
+    const obs_hardcoded_banner = new Observable((observer) => {
+      observer.next(hardcoded_banner);
+      observer.complete();
+    })
+    return obs_hardcoded_banner
+    // return this.http.get<Slides>(this.uri).pipe(retry(2), catchError(this.handleError));
   }
 
   // Handle API errors
