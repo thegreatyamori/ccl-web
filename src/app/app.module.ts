@@ -4,7 +4,6 @@ import { NgxSpinnerModule } from 'ngx-spinner';
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppRoutingModule } from './app-routing.module';
-import { DeviceDetectorModule } from 'ngx-device-detector';
 import { HomeModule } from './components/home/home.module';
 import { SharedModule } from './components/shared/shared.module';
 import { BrowserModule, Title } from '@angular/platform-browser';
@@ -33,7 +32,6 @@ import { AuthInterceptor } from './interceptors/auth.interceptor';
     FontAwesomeModule,
     BrowserAnimationsModule,
     SharedModule.forRoot(),
-    DeviceDetectorModule.forRoot(),
   ],
   providers: [
     Title,

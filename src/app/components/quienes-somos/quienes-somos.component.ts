@@ -15,7 +15,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
 import { trigger, transition, animate, style } from '@angular/animations';
-import { NgbTabChangeEvent } from '@ng-bootstrap/ng-bootstrap';
+import { NgbNavChangeEvent } from '@ng-bootstrap/ng-bootstrap';
 import { NgxSpinnerService } from 'ngx-spinner';
 import { RootObject as Res, Tab } from 'src/app/models/quienesSomos';
 import { QuienesSomosService } from 'src/app/services/quienes-somos.service';
@@ -62,7 +62,7 @@ export class QuienesSomosComponent implements OnInit {
    * y setea el titulo correspondiente.
    * @param event NgbTabChangeEvent
    */
-  onTabChange(event: NgbTabChangeEvent) {
+  onTabChange(event: NgbNavChangeEvent) {
     let tab = this.tabs.find((tab) => tab.id === Number(event.nextId));
 
     this.titleTab = tab.title;
