@@ -23,7 +23,7 @@ export class SliderComponent implements OnInit {
   customOptions: Carousel;
   settings: any;
   status: boolean;
-  slides: Slide[];
+  slides: Slide[] = [];
 
   constructor(private rest: HomeService) {}
 
@@ -37,9 +37,9 @@ export class SliderComponent implements OnInit {
       dots: false,
       navSpeed: 700,
       navText: ['', ''],
-      autoplayTimeout: 7500,
-      autoplaySpeed: 2000,
-      autoplay: true,
+      // autoplayTimeout: 7500,
+      // autoplaySpeed: 2000,
+      // autoplay: true,
       responsive: {
         0: { items: 1 },
         576: { items: 3 },

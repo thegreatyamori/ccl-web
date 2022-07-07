@@ -35,10 +35,13 @@
 
 <section>
   <owl-carousel-o [options]="customOptions">
-    <ng-template carouselSlide *ngFor="let slide of slides">
-      <a class="outer-link" [href]="slide.link | sanitizeUrl">
-        <img [defaultImage]="settings.bg.default" [lazyLoad]="slide.image" [alt]="slide.title" [title]="slide.title" />
-      </a>
-    </ng-template>
+    <p>hello</p>
+    <ng-container  *ngFor="let slide of slides">
+      <ng-template carouselSlide [id]="slide.id">
+        <a class="outer-link" [href]="slide.link | sanitizeUrl">
+          <img [defaultImage]="settings.bg.default" [lazyLoad]="slide.image" [alt]="slide.title" [title]="slide.title" />
+        </a>
+      </ng-template>
+    </ng-container>
   </owl-carousel-o>
 </section>

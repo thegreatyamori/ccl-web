@@ -16,9 +16,9 @@ export interface Carousel {
   dots: boolean;
   navSpeed: number;
   navText: string[];
-  autoplayTimeout: number;
-  autoplaySpeed: number;
-  autoplay: boolean;
+  autoplayTimeout?: number;
+  autoplaySpeed?: number;
+  autoplay?: boolean;
   responsive?: Responsive;
   nav: boolean;
 }
